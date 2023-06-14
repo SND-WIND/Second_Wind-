@@ -6,7 +6,7 @@ function CreatePost () {
           <form action="" className="post-form">
             <div className="profile-caption">
                 <div className="profile-pic"></div>
-                
+                <input type="text" placeholder="What's going on?"/>
             </div>
           </form>
         </div>
