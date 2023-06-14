@@ -15,7 +15,7 @@
     --fs-s: 20px; 
     --fs-m: 24px;
     --fs-l: 42px;
-    --fs-xl: 90px;
+    --fs-xl: 80px;
 }
   
 /* Box sizing rules */
@@ -42,7 +42,7 @@ a {
 /*Stypes paragraph tags*/
 p {
     font-family: var(--ff-primary);
-    font-size: var(--fs-m);
+    font-size: var(--fs-s);
     font-weight: var(--fw-regular); 
 }
 
@@ -84,12 +84,25 @@ h6 {
     font-style: italic;
 }
 
-/* Button Styles
- 
+/* Button Styles */
+ button {
+    width: auto;
+    padding: 13px 35px;
+
+    font-size: small;
+    font-weight: 500;
+
+    border: 0px solid black;
+    border-radius: 10px;
+ }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
+    list-style: none;
+}
+
+ul{
     list-style: none;
 }
   
@@ -107,7 +120,6 @@ body {
 /* Set core body defaults */
 body {
     text-rendering: optimizeSpeed;
-    padding: 100px;
 }
   
 /* A elements that don't have a class get default styles */
@@ -125,13 +137,31 @@ picture {
 
 body {
     display: flex;
+    flex-direction: row;
 }
+
+.hero-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
 .hero-section-left {
     width: 50%;
-    background-color: var(--clr-primary);
-    line-height: 1.2;
+    padding: 80px;
+    color: var(--clr-light);
+    background-color: var(--clr-black);
+    line-height: 0.9;
 }
 
 .hero-section-right {
     width: 50%;
+    padding: 80px;
+    background-color: var(--clr-primary);
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
 }

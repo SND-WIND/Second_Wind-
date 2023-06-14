@@ -6,14 +6,12 @@ function HeroSectionRight () {
     return (
       <div className="hero-section-right">
         <div className="nav">
-          <ul>
-            <li>
-              <Link to="/"></Link>Become a partner
-            </li>
-            <li>
-              <Link to="/"></Link>Login
-            </li>
-          </ul>
+          <Link to="/sign-up">
+            <button>Become a partner</button>
+          </Link>
+          <Link to="/login">
+            <button>Log In</button>
+          </Link>
         </div>
         <div className="slider">
           <img src="" alt="" />
