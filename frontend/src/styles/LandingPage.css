@@ -123,3 +123,15 @@ picture {
     display: block;
 }
 
+body {
+    display: flex;
+}
+.hero-section-left {
+    width: 50%;
+    background-color: var(--clr-primary);
+    line-height: 1.2;
+}
+
+.hero-section-right {
+    width: 50%;
+}

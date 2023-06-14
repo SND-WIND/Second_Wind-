@@ -123,3 +123,10 @@ picture {
     display: block;
 }
 
+body {
+    display: flex;
+}
+
+.hero-section {
+    background-color: var(--clr-primary);
+}

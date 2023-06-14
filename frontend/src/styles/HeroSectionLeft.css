@@ -39,6 +39,13 @@ a {
     font-family: var(--ff-primary);
 }
 
+/*Stypes paragraph tags*/
+p {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-m);
+    font-weight: var(--fw-regular); 
+}
+
 /*Custom styles for H tags*/
 h1 {
     font-family: var(--ff-primary);
@@ -114,4 +121,14 @@ svg,
 picture {
     max-width: 100%;
     display: block;
+}
+
+/* body {
+    width: 50%;
+    background-color: var(--clr-primary);
+    
+} */
+
+.hero-section-left {
+    background-color: var(--clr-primary);
 }
