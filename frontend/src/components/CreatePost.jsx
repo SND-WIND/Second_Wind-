@@ -9,7 +9,7 @@ function CreatePost () {
                 <input type="text" placeholder="What's going on?"/>
             </div>
             <div className="options">
-                
+
             </div>
           </form>
         </div>
