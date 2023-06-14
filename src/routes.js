@@ -24,5 +24,7 @@ Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
 
 Router.post("/businesses", businessController.create);
 Router.patch("/businesses/:id", checkAuthentication, businessController.update);
+Router.post("/businesses/login", businessController.login);
+Router.delete("/businesses/logout", businessController.logout);
 
 module.exports = Router;
