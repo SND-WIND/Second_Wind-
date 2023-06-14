@@ -5,8 +5,6 @@ const createBusiness = async (req, res) => {
     body: { username, companyName, email, password },
   } = req;
 
-  console.log(Business);
-
   // TODO: check if username is taken, what should you return?
   const business = await Business.create({
     username,
