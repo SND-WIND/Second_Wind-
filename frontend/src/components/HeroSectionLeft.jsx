@@ -1,12 +1,13 @@
 import React from "react";
+import logo from "../SVG/logo_purple.svg";
 
 function HeroSectionLeft() {
   return (
     <div className="hero-section-left">
-      <image
-        src="../SVG/logo_purple.svg"
+      <img
+        src={logo}
         alt=""
-        className="logo"
+        id="logo-purple"
       />
       <div className="hero-description">
         <h1>Connecting returning citizens back to their society</h1>
@@ -15,7 +16,7 @@ function HeroSectionLeft() {
           with essential resources like jobs, housing healthcare and many more
           to rebuild their lives.
         </p>
-        <button className="sign-up-btn">Sign Up</button>
+        <button id="sign-up-btn">Sign Up</button>
       </div>
     </div>
   );

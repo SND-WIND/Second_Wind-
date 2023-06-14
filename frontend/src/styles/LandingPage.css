@@ -15,7 +15,7 @@
     --fs-s: 20px; 
     --fs-m: 24px;
     --fs-l: 42px;
-    --fs-xl: 80px;
+    --fs-xl: 70px;
 }
   
 /* Box sizing rules */
@@ -44,13 +44,14 @@ p {
     font-family: var(--ff-primary);
     font-size: var(--fs-s);
     font-weight: var(--fw-regular); 
+    line-height: 1.2;
 }
 
 /*Custom styles for H tags*/
 h1 {
     font-family: var(--ff-primary);
     font-size: var(--fs-xl);
-    font-weight: var(--fw-semi-bold);
+    font-weight: var(--fw-medium);
 }
 
 h2 {
@@ -151,7 +152,30 @@ body {
     padding: 80px;
     color: var(--clr-light);
     background-color: var(--clr-black);
-    line-height: 0.9;
+    line-height: 1;
+}
+
+#logo-purple{
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+#sign-up-btn {
+    width: 180px;
+    height: 50px;
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-xs);
+}
+
+#sign-up-btn:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+.hero-description{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .hero-section-right {
@@ -164,4 +188,52 @@ body {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
+}
+
+
+.nav-items {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
+}
+
+.nav-items:hover {
+    background-color: var(--clr-black);
+    color: var(--clr-light);
+}
+
+.carousel-wrapper {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    gap: 30px;
+}
+
+.arrow-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--clr-black);
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.display-card {
+    background-color: var(--clr-black);
+    border: 0px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.display-card-img {
+    width: 350px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../SVG/lucas.jpg');
+}
+
+.display-card-description {
+    color: var(--clr-light);
+    padding: 30px;
 }
