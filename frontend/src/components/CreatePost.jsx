@@ -8,6 +8,9 @@ function CreatePost () {
                 <div className="profile-pic"></div>
                 <input type="text" placeholder="What's going on?"/>
             </div>
+            <div className="options">
+                
+            </div>
           </form>
         </div>
     );
