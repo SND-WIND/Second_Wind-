@@ -1,5 +1,6 @@
 const express = require("express");
 const userController = require("./controllers/user");
+const businessController = require("./controllers/business");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
 
@@ -9,6 +10,8 @@ Router.use(addModels);
 Router.get("/users", userController.list);
 Router.post("/users", userController.create);
 Router.get("/users/:id", userController.show);
+
+Router.post("/businesses", businessController.create);
 // We can use middleware slotted in between the route and the controller as well
 Router.patch("/users/:id", checkAuthentication, userController.update);
 
