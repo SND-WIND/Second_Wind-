@@ -17,18 +17,12 @@ class User {
   }
 
   static async find(id) {
-    const query = "SELECT * FROM users WHERE id = ?";
-    const {
-      rows: [user],
-    } = await knex.raw(query, [id]);
+    const [user] = await knex("users").where("id", id);
     return user ? new User(user) : null;
   }
 
   static async findByUsername(username) {
-    const query = "SELECT * FROM users WHERE username = ?";
-    const {
-      rows: [user],
-    } = await knex.raw(query, [username]);
+    const [user] = await knex("users").where("username", username);
     return user ? new User(user) : null;
   }
 
