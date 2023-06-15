@@ -15,7 +15,7 @@
     --fs-s: 20px; 
     --fs-m: 24px;
     --fs-l: 42px;
-    --fs-xl: 90px;
+    --fs-xl: 70px;
 }
   
 /* Box sizing rules */
@@ -42,15 +42,16 @@ a {
 /*Stypes paragraph tags*/
 p {
     font-family: var(--ff-primary);
-    font-size: var(--fs-m);
+    font-size: var(--fs-s);
     font-weight: var(--fw-regular); 
+    line-height: 1.2;
 }
 
 /*Custom styles for H tags*/
 h1 {
     font-family: var(--ff-primary);
     font-size: var(--fs-xl);
-    font-weight: var(--fw-semi-bold);
+    font-weight: var(--fw-medium);
 }
 
 h2 {
@@ -84,12 +85,25 @@ h6 {
     font-style: italic;
 }
 
-/* Button Styles
- 
+/* Button Styles */
+ button {
+    width: auto;
+    padding: 13px 35px;
+
+    font-size: small;
+    font-weight: 500;
+
+    border: 0px solid black;
+    border-radius: 10px;
+ }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
+    list-style: none;
+}
+
+ul{
     list-style: none;
 }
   
@@ -107,7 +121,6 @@ body {
 /* Set core body defaults */
 body {
     text-rendering: optimizeSpeed;
-    padding: 100px;
 }
   
 /* A elements that don't have a class get default styles */
@@ -123,3 +136,103 @@ picture {
     display: block;
 }
 
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.hero-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.hero-section-left {
+    width: 50%;
+    padding: 80px;
+    color: var(--clr-light);
+    background-color: var(--clr-black);
+    line-height: 1;
+}
+
+#logo-purple{
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+#sign-up-btn {
+    width: 180px;
+    height: 50px;
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-xs);
+}
+
+#sign-up-btn:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+.hero-description{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-section-right {
+    width: 50%;
+    padding: 80px;
+    background-color: var(--clr-primary);
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.nav-items {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
+}
+
+.nav-items:hover {
+    background-color: var(--clr-black);
+    color: var(--clr-light);
+}
+
+.carousel-wrapper {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    gap: 30px;
+}
+
+.arrow-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--clr-black);
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.display-card {
+    background-color: var(--clr-black);
+    border: 0px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.display-card-img {
+    width: 350px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../SVG/lucas.jpg');
+}
+
+.display-card-description {
+    color: var(--clr-light);
+    padding: 30px;
+}

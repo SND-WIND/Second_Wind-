@@ -1,0 +1,294 @@
+:root {
+    --clr-primary: #A674FE;
+    --clr-black: #000000;
+    --clr-grey: #080808;
+    --clr-light: #FFFFFF;
+  
+    --ff-primary: 'Poppins', sans-serif;
+    
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 900; 
+  
+    --fs-xxs: 12px;
+    --fs-xs: 16px;
+    --fs-s: 20px; 
+    --fs-m: 24px;
+    --fs-l: 42px;
+    --fs-xl: 70px;
+}
+  
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+  
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+  
+/*Removes default text styling on anchor tags*/
+a {
+    text-decoration: none;
+    color: var(--clr-primary);
+    font-family: var(--ff-primary);
+}
+
+/*Stypes paragraph tags*/
+p {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-s);
+    font-weight: var(--fw-regular); 
+    line-height: 1.2;
+}
+
+/*Custom styles for H tags*/
+h1 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-medium);
+}
+
+h2 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-l);
+    font-weight: var(--fw-medium);
+}
+
+h3 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-m);
+    font-weight: 500;
+}
+
+h4 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-s);
+    font-weight: var(--fw-regular);
+}
+
+h5 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
+}
+
+h6 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
+    font-style: italic;
+}
+
+/* Button Styles */
+ button {
+    width: auto;
+    padding: 13px 35px;
+
+    font-size: small;
+    font-weight: 500;
+
+    border: 0px solid black;
+    border-radius: 10px;
+ }
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+ul{
+    list-style: none;
+}
+  
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+  
+html,
+body {
+    height: 100%;
+    font-family: var(ff-primary);
+}
+  
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+}
+  
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+     text-decoration-skip-ink: auto;
+}
+  
+/* Make images easier to work with */
+img,
+svg,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+.home {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    gap: 80px;
+    padding: 10px;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    background-color: var(--clr-black);
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    background-color: var(--clr-grey);
+    padding: 10px;
+    border-radius: 15px;
+    gap: 30px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding: 25px 53px;
+    height: 100%;
+}
+
+.menu-items{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--clr-light);
+}
+
+.menu-item:hover {
+    background-color: #151515;
+}
+
+.menu-item{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 45px;
+    border-radius: 10px;
+    gap: 30px;
+}
+
+.profile-settings{
+    display: flex;
+    flex-direction: column;
+    color: var(--clr-light);
+    gap: 10px;
+}
+
+.feed-container {
+    width: 45%;
+    background-color: var(--clr-black);
+    padding: 10px;
+}
+
+.create-post {
+    background-color: var(--clr-grey);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.profile-caption {
+    display: flex;
+    gap: 20px;
+}
+
+.post-form {
+    width: 100%;
+    margin: 0;
+    background-color:#151515;
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.post-btn:hover{
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+    cursor: pointer;
+}
+
+.options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+.option-items{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    background-image: url('https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* #create-post-caption{
+    width: 100%;
+    padding: 15px;
+    height: 146px;
+    background-color: #151515;
+    color: var(--clr-light);
+    outline: none;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 0px solid var(--clr-black);
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+} */
+
+textarea{
+    width: 100%;
+    color: var(--clr-light);
+    background-color: #151515;
+    border: none;
+    padding-bottom: 20px;
+    outline: none;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-style: italic;
+}
+
+.messages-container {
+    display: flex;
+    width: 27%;
+    background-color: var(--clr-grey);
+    color: var(--clr-light);
+}
+
+
+
+
