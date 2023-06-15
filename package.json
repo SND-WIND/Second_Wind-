@@ -28,8 +28,10 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "icons": "^1.0.0",
     "knex": "^2.4.2",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
