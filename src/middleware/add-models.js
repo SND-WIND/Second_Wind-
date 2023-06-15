@@ -1,10 +1,12 @@
-const User = require('../db/models/user');
+const User = require("../db/models/user");
+const Business = require("../db/models/business");
 const Post = require('../db/models/post');
 
 const addModels = (req, res, next) => {
   req.db = {
     User,
-    Post
+    Business,
+    Post,
   };
   next();
 };

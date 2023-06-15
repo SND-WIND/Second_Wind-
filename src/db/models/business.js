@@ -1,7 +1,7 @@
 const knex = require("../knex");
 const { hashPassword, isValidPassword } = require("../../utils/auth-utils");
 
-class User {
+class Business {
   #passwordHash = null;
 
   constructor({ id, username, password }) {
@@ -11,45 +11,45 @@ class User {
   }
 
   static async list() {
-    const query = "SELECT * FROM users";
+    const query = "SELECT * FROM businesses";
     const { rows } = await knex.raw(query);
-    return rows.map((user) => new User(user));
+    return rows.map((business) => new Business(business));
   }
 
   static async find(id) {
-    const [user] = await knex("users").where("id", id);
-    return user ? new User(user) : null;
+    const [business] = await knex("businesses").where("id", id);
+    return business ? new Business(business) : null;
   }
 
   static async findByUsername(username) {
-    const [user] = await knex("users").where("username", username);
-    return user ? new User(user) : null;
+    const [business] = await knex("businesses").where("username", username);
+    return business ? new Business(business) : null;
   }
 
-  static async create({ username, full_name, email, password }) {
+  static async create({ username, name, email, password }) {
     const passwordHash = await hashPassword(password);
 
-    const [user] = await knex("users")
-      .insert({ username, password: passwordHash, full_name, email })
+    const [business] = await knex("businesses")
+      .insert({ username, password: passwordHash, name, email })
       .returning("*");
-    return new User(user);
+    return new Business(business);
   }
 
   static async deleteAll() {
-    return knex.raw("TRUNCATE users;");
+    return knex.raw("TRUNCATE businesses;");
   }
 
   update = async (username) => {
     // dynamic queries are easier if you add more properties
-    const [updatedUser] = await knex("users")
+    const [updatedBusiness] = await knex("businesses")
       .where({ id: this.id })
       .update({ username })
       .returning("*");
-    return updatedUser ? new User(updatedUser) : null;
+    return updatedBusiness ? new Business(updatedBusiness) : null;
   };
 
   isValidPassword = async (password) =>
     isValidPassword(password, this.#passwordHash);
 }
 
-module.exports = User;
+module.exports = Business;

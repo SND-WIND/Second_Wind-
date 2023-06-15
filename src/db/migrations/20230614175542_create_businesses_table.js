@@ -2,24 +2,25 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = (knex) =>
-  knex.schema.createTable("users", (table) => {
+exports.up = (knex) => {
+  return knex.schema.createTable("businesses", (table) => {
     table.increments().primary();
     table.string("username").notNullable().unique();
-    table.string("full_name").notNullable();
+    table.string("name").notNullable();
     table.string("email").notNullable().unique();
     table.string("password").notNullable();
     table.string("location");
-    table.string("sex");
-    table.string("age");
-    table.string("status");
+    table.string("ein");
+    table.string("business_type");
     table.string("bio");
+    table.string("description");
     table.string("profile_image");
     table.timestamps(true, true);
   });
+};
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = (knex) => knex.schema.dropTable("users");
+exports.down = (knex) => knex.schema.dropTable("businesses");

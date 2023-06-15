@@ -1,5 +1,6 @@
 const express = require("express");
 const userController = require("./controllers/user");
+const businessController = require("./controllers/business");
 const postController = require("./controllers/posts");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
@@ -20,13 +21,19 @@ Router.get("/posts/:id", postController.find);
 Router.patch("/users/:id", checkAuthentication, userController.update);
 Router.patch("/posts/:id", postController.update);
 
-Router.post("/login", userController.login);
-Router.delete("/logout", userController.logout);
+Router.post("/users/login", userController.login);
+Router.delete("/users/logout", userController.logout);
 Router.delete("/posts/:id", postController.deletePost);
 Router.get("/me", userController.showMe);
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
   res.send({ msg: "The secret is: there is no secret." });
 });
+
+Router.get("/businesses/:id", businessController.show);
+Router.post("/businesses", businessController.create);
+Router.patch("/businesses/:id", checkAuthentication, businessController.update);
+Router.post("/businesses/login", businessController.login);
+Router.delete("/businesses/logout", businessController.logout);
 
 module.exports = Router;

@@ -12,6 +12,9 @@ const createUser = async (req, res) => {
     email,
     password,
   });
+
+  if (!user) return res.sendStatus(404);
+
   session.userId = user.id;
 
   res.send(user);

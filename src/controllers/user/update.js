@@ -1,4 +1,4 @@
-const { isAuthorized } = require('../../utils/auth-utils');
+const { isAuthorized } = require("../../utils/auth-utils");
 
 const updateUser = async (req, res) => {
   const {
@@ -14,6 +14,7 @@ const updateUser = async (req, res) => {
   if (!user) return res.sendStatus(404);
 
   const updatedUser = await user.update(username);
+  if (!updatedUser) return res.sendStatus(404);
   res.send(updatedUser);
 };
 
