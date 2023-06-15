@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/Home';
 import SignUpPage from './pages/SignUp';
+import PersonalQuestionSignUp from './pages/PersonalQuestionSignUp';
 import LoginPage from './pages/Login';
 import SiteHeadingAndNav from './components/SiteHeadingAndNav';
 import NotFoundPage from './pages/NotFound';
@@ -24,7 +25,7 @@ export default function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
-        <Route path='home' element={<HomePage />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<UserPage />} />
         <Route path='*' element={<NotFoundPage />} />
