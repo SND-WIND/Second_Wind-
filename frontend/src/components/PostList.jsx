@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post';
+import { getAllPosts } from "../adapters/post-adapter";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -7,9 +8,14 @@ function PostList() {
 
   useEffect(() => {
     // fetch posts from API
-    fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
-      .then(response => response.json())
-      .then(data => setPosts(prevPosts => [...prevPosts, ...data]));
+    // fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
+    //   .then(response => response.json())
+    //   .then(data => setPosts(prevPosts => [...prevPosts, ...data]));
+    // async function fetchPosts() {
+    //     const url = '';
+    //     const res = 
+    // }
+    // fetchPosts();
   }, [page]);
 
   const handleScroll = () => {
