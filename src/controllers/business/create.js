@@ -15,7 +15,7 @@ const createBusiness = async (req, res) => {
 
   if (!business) return res.sendStatus(404);
 
-  session.userId = business.id;
+  session.businessId = business.id;
 
   res.send(business);
 };

@@ -3,7 +3,7 @@ const showMe = async (req, res) => {
     session,
     db: { Business },
   } = req;
-  if (!session.userId) return res.sendStatus(401);
+  if (!session.businessId) return res.sendStatus(401);
 
   const business = await Business.find(session.userId);
   res.send(business);
