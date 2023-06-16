@@ -20,6 +20,9 @@ export default function SettingsPage() {
       <button name="logout" id="logout" onClick={handleClick}>
         Logout
       </button>
+      <button name="terminate" id="terminate">
+        Terminate Account
+      </button>
     </div>
   );
 }

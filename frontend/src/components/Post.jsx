@@ -33,6 +33,15 @@ function Post({ post, currentUser }) {
   //     </div>
   //   </div>
   // );
+  console.log(post);
+
+  return (
+    <div>
+      <p>{post.id}</p>
+      <p>{post.caption}</p>
+      <img src={post.image_url} />
+    </div>
+  );
 }
 
 export default Post;

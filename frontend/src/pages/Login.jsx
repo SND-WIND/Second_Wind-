@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import { logUserIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import logo from "../SVG/logo_black.svg";
@@ -61,9 +61,11 @@ export default function LoginPage() {
           </button>
           <div className="login-createAccount">
             Dont have an account?
-            <a className="login-createlink" href="">
-              Create account
-            </a>
+            <Link to="/sign-up">
+              <div className="login-createlink" href="">
+                Create account
+              </div>
+            </Link>
           </div>
         </form>
         {!!errorText && <p>{errorText}</p>}
