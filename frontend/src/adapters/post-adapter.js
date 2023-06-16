@@ -2,10 +2,10 @@ import { fetchHandler, getPostOptions, getPatchOptions } from "../utils";
 
 const baseUrl = "/api/posts";
 
-export const createPost = async ({ username, fullName, email, password }) =>
+export const createPost = async ({ caption, imageUrl }) =>
   fetchHandler(
     baseUrl,
-    getPostOptions({ username, fullName, email, password })
+    getPostOptions({ caption, imageUrl })
   );
 
 // eating errors here for simplicity

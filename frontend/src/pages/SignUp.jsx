@@ -46,7 +46,7 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if(name === "sex") setSex(value);
+    if (name === "sex") setSex(value);
   };
 
   return (
@@ -74,7 +74,6 @@ export default function SignUpPage() {
           value={fullName}
           required
         />
-        
 
         <label htmlFor="username">Username</label>
         <input
