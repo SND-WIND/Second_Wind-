@@ -4,7 +4,8 @@ export default function Messages() {
     return (
         <div className="messages-container">
             <div>
-                <h1>asdfdsfsdf</h1>
+                <h1>Messages</h1>
+                <p>Currently Working on this</p>
             </div>
         </div>
     );
