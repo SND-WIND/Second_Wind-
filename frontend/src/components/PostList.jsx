@@ -6,7 +6,7 @@ function PostList() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    // fetch posts from API
+    // fetch posts from database
     fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
       .then(response => response.json())
       .then(data => setPosts(prevPosts => [...prevPosts, ...data]));
