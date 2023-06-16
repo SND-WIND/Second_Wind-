@@ -1,0 +1,194 @@
+
+:root {
+    --clr-primary: #A674FE;
+    --clr-black: #000000;
+    --clr-grey: #080808;
+    --clr-light: #FFFFFF;
+  
+    --ff-primary: 'Poppins', sans-serif;
+    
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 900; 
+  
+    --fs-xxs: 12px;
+    --fs-xs: 16px;
+    --fs-s: 20px; 
+    --fs-m: 24px;
+    --fs-l: 42px;
+    --fs-xl: 90px;
+}
+  
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+  
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+  
+/*Removes default text styling on anchor tags*/
+a {
+    text-decoration: none;
+    color: var(--clr-primary);
+    font-family: var(--ff-primary);
+}
+
+/*Stypes paragraph tags*/
+p {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-m);
+    font-weight: var(--fw-regular); 
+}
+
+/*Custom styles for H tags*/
+h1 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-semi-bold);
+}
+
+h2 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-l);
+    font-weight: var(--fw-medium);
+}
+
+h3 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-m);
+    font-weight: 500;
+}
+
+h4 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-s);
+    font-weight: var(--fw-regular);
+}
+
+h5 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
+}
+
+h6 {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
+    font-style: italic;
+}
+
+/* Button Styles
+ 
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+  
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+  
+html,
+body {
+    height: 100vh;
+    font-family: var(ff-primary);
+}
+  
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+    padding: 0px;
+}
+  
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+     text-decoration-skip-ink: auto;
+}
+  
+/* Make images easier to work with */
+img,
+svg,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+
+.login-page {
+  display:flex;
+  width: 100vw;
+  height:100vh;
+}
+
+.login-container {
+  background-color: #A674FE;
+  width: 648px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.login-image {
+  background-image: url('../2.PNG');
+  background-color: #080808;
+  width: 1048px
+
+}
+
+.loginH2{
+  margin-bottom: 33px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+#login-username{
+  padding:10px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 3px solid white;
+}
+
+#login-password{
+  padding:10px;
+  margin-top: 33px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 3px solid white;
+  
+
+}
+
+#login-submit{
+  margin-top: 33px;
+  width: 20em;  height: 2.75em;
+}
+
+#login-submit:hover {
+  background-color: var(--clr-black);
+  color: var(--clr-light);
+}
+
+
+.login-imageLogo{
+  margin-bottom: 150px;
+  margin-right: 200px;
+}
+
+#logo-black{
+  width: 200px;
+  margin-bottom: 200px;
+  margin-right:200px;
+  background-color: #A674FE;
+}
