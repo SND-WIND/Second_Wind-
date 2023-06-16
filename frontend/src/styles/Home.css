@@ -147,7 +147,7 @@ picture {
 body {
     display: flex;
     width: 100vw;
-    background-color: var(--clr-black);
+    background-color: var(--clr-light);
 }
 
 .menu{

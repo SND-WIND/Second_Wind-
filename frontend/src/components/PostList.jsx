@@ -32,9 +32,10 @@ function PostList() {
 
   return (
     <div>
-      {posts.map(post => (
+      {/* {posts.map(post => (
         <Post key={post.id} title={post.title} body={post.body} />
-      ))}
+      ))} */}
+      <Post />
     </div>
   );
 }
