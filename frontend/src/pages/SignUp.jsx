@@ -43,14 +43,7 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if (name === "sex") setSex(value);
-    if (name === "account-type") setAccountType(value);
-  };
-
-  const handleAccountTypeClick = (event) => {
-    const { value } = event.target;
-    setAccountType(value);
-    setShowForm(true);
+    if(name === "sex") setSex(value);
   };
 
   return (
@@ -78,31 +71,28 @@ export default function SignUpPage() {
               required
             />
 
-            <label htmlFor="full-name">Full Name</label>
-            <input
-              autoComplete="off"
-              type="text"
-              id="full-name"
-              name="full-name"
-              onChange={handleChange}
-              value={fullName}
-              required
-            />
+        <label htmlFor="full-name">Full Name</label>
+        <input
+          autoComplete="off"
+          type="text"
+          id="full-name"
+          name="full-name"
+          onChange={handleChange}
+          value={fullName}
+          required
+        />
+        
 
-            {accountType === "business" && (
-              <div>
-                <label htmlFor="company-name">Company Name</label>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  id="company-name"
-                  name="company-name"
-                  onChange={handleChange}
-                  value={companyName}
-                  required
-                />
-              </div>
-            )}
+        <label htmlFor="username">Username</label>
+        <input
+          autoComplete="off"
+          type="text"
+          id="username"
+          name="username"
+          onChange={handleChange}
+          value={username}
+          required
+        />
 
             <label htmlFor="username">Username</label>
             <input

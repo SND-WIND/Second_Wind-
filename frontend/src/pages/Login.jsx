@@ -9,6 +9,32 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState("");
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // // const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   // Perform validation checks
+  //   if (username === '') {
+  //     alert('Please enter a username');
+  //     return;
+  //   }
+
+  //   if (password === '') {
+  //     alert('Please enter a password');
+  //     return;
+  //   }
+
+  //   // Validation passed, proceed with login logic
+  //   // Replace this code with your actual login logic
+  //   console.log('Username:', username);
+  //   console.log('Password:', password);
+
+  //   // Clear form fields after successful login
+  //   setUsername('');
+  //   setPassword('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
