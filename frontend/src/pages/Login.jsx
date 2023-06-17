@@ -41,7 +41,7 @@ export default function LoginPage() {
           <button type="submit">Log in</button>
         </form>
         <p>
-          Don't have an account? <Link to="/signup" className="signup-link">Sign up!</Link>
+          Don't have an account? <Link to="/sign-up" className="signup-link">Sign up!</Link>
         </p>
       </div>
       <div className="login-image">
