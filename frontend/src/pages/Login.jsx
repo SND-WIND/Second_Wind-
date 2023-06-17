@@ -26,8 +26,33 @@ export default function LoginPage() {
   if (currentUser) return <Navigate to="/" />;
 
   return (
-    <>
-      <div className="login-container">
+    <div className="login-container">
+      <div className="login-form">
+      <img src={logo} alt="Logo" className="logo" />
+        <h1>Login.</h1>
+        {!!errorText && <p>{errorText}</p>}
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" name="username" required />
+
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Log in</button>
+        </form>
+        <p>
+          Don't have an account? <Link to="/signup" className="signup-link">Sign up!</Link>
+        </p>
+      </div>
+      <div className="login-image">
+      </div>
+    </div>
+  );
+}
+
+
+{/* <div className="login-container">
+      <img src={logo} alt="Logo" className="logo" />
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="logo-container">
             <img src={logo} alt="Logo" className="logo" />
@@ -49,7 +74,4 @@ export default function LoginPage() {
           {!!errorText && <p>{errorText}</p>}
         </form>
       </div>
-      <div className="login-image">image</div>
-    </>
-  );
-}
+      <div className="login-image">image</div> */}
