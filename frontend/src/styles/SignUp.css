@@ -183,17 +183,11 @@ label {
   padding: 12px;
   border-radius: 10px;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   box-sizing: border-box;
 }
 
-.clearfix {
-  margin-top: 20px;
-  text-align: center;
-}
-
 .signupbtn {
-  padding: 10px 20px;
   background-color: whitesmoke;
   color: black;
   border: none;
@@ -209,5 +203,4 @@ label {
 
 p {
   text-align: center;
-  margin-top: 10px;
 }
