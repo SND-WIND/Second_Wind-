@@ -5,8 +5,6 @@ import { createUser } from "../adapters/user-adapter";
 import "../styles/SignUp.css";
 import logo from "../SVG/logo_purple.svg";
 
-// Controlling the signup form is a good idea because we want to adde (eventually)
-// more validation and provide real time feedback to the user about usernames and passwords
 export default function SignUpPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -17,9 +15,8 @@ export default function SignUpPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  // We could also use a single state variable for the form data:
-  // const [formData, setFormData] = useState({ username: '', password: '' });
-  // What would be the pros and cons of that?
+  const [accountType, setAccountType] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   if (currentUser) return <Navigate to="/" />;
 
@@ -48,35 +45,28 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if (name === "sex") setSex(value);
+    if(name === "sex") setSex(value);
+  };
+
+  const handleAccountTypeClick = (event) => {
+    setAccountType(event.target.value);
+    setShowForm(true);
   };
 
   return (
     <>
-      <div className="signUp-container">
-        <div className="signUP-Image-Right">
-          <img id="signUp-logo-purple" src={logo} alt="Logo" className="logo" />
-        </div>
-        <div className="signUp-Form-Left">
-          <form
-            className="signUp-Form"
-            onSubmit={handleSubmit}
-            onChange={handleChange}
-          >
-            <div className="signUpForm-Container">
-              <h1 id="h1">Sign Up</h1>
-              <label htmlFor="email">Email</label>
-              <input
-                placeholder="Enter Email"
-                autoComplete="off"
-                type="email"
-                id="email"
-                className="signUp-Input-Box"
-                name="email"
-                onChange={handleChange}
-                value={email}
-                required
-              />
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit} onChange={handleChange}>
+        <label htmlFor="email">Email</label>
+        <input
+          autoComplete="off"
+          type="email"
+          id="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          required
+        />
 
               <label htmlFor="full-name">Full Name</label>
               <input
@@ -104,45 +94,39 @@ export default function SignUpPage() {
                 required
               />
 
-              <label htmlFor="password">Password</label>
-              <input
-                placeholder="Enter Password"
-                autoComplete="off"
-                type="password"
-                id="password"
-                className="signUp-Input-Box"
-                name="password"
-                onChange={handleChange}
-                value={password}
-                required
-              />
+        <label htmlFor="password">Password</label>
+        <input
+          autoComplete="off"
+          type="password"
+          id="password"
+          name="password"
+          onChange={handleChange}
+          value={password}
+          required
+        />
 
-              <label htmlFor="password-confirm">Password Confirm</label>
-              <input
-                placeholder="Repeat Password"
-                autoComplete="off"
-                type="password"
-                id="password-confirm"
-                className="signUp-Input-Box"
-                name="password-confirm"
-                onChange={handleChange}
-                value={passwordConfirm}
-                required
-              />
-              <div class="clearfix">
-              <button type="submit" class="signupbtn">
-                Sign Up
-              </button>
-            </div>
-              <p>
-                Already have an account with us?{" "}
-                <Link to="/login">Log in!</Link>
-              </p>
-            </div>
-          </form>
-          {!!errorText && <p>{errorText}</p>}
-        </div>
-      </div>
+        <label htmlFor="password-confirm">Password Confirm</label>
+        <input
+          autoComplete="off"
+          type="password"
+          id="password-confirm"
+          name="password-confirm"
+          onChange={handleChange}
+          value={passwordConfirm}
+          required
+        />
+
+        {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
+        <label htmlFor="password-confirm">Password Confirm</label>
+        <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
+      */}
+
+        <button>Sign Up Now!</button>
+      </form>
+      {!!errorText && <p>{errorText}</p>}
+      <p>
+        Already have an account with us? <Link to="/login">Log in!</Link>
+      </p>
     </>
   );
 }
