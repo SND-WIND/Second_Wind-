@@ -9,112 +9,47 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState("");
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // // const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   // Perform validation checks
-  //   if (username === '') {
-  //     alert('Please enter a username');
-  //     return;
-  //   }
-
-  //   if (password === '') {
-  //     alert('Please enter a password');
-  //     return;
-  //   }
-
-  //   // Validation passed, proceed with login logic
-  //   // Replace this code with your actual login logic
-  //   console.log('Username:', username);
-  //   console.log('Password:', password);
-
-  //   // Clear form fields after successful login
-  //   setUsername('');
-  //   setPassword('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText("");
     const formData = new FormData(event.target);
-    const [user, error] = await logUserIn(
-      Object.fromEntries(formData.entries())
-    );
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    const [user, error] = await logUserIn(username, password);
     if (error) return setErrorText(error.statusText);
     setCurrentUser(user);
-    navigate(`/`);
+    navigate("/");
   };
 
   if (currentUser) return <Navigate to="/" />;
 
   return (
     <>
-      <div className="login-Form1">
-        <div id="logo-black">
-          <img src={logo} alt="" />
-        </div>
-        <h1 className="loginH2">Login</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              id="login-username"
-              autoComplete="username"
-              name="username"
-              placeholder="Username"
-              size="35"
-              // value={username}
-              onChange={(event) => setUsername(event.target.value)}
-            />
+      <div className="login-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="logo-container">
+            <img src={logo} alt="Logo" className="logo" />
           </div>
-          <div>
-            <input
-              type="password"
-              autoComplete="current-password"
-              name="password"
-              id="login-password"
-              placeholder="Password"
-              size="35"
-              // value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
+          <div className="input-container">
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" name="username" />
           </div>
-          <button type="submit" id="login-submit" size="35">
-            Submit
-          </button>
-          <div className="login-createAccount">
-            Dont have an account?
-            <Link to="/sign-up">
-              <div className="login-createlink" href="">
-                Create account
-              </div>
-            </Link>
+          <div className="input-container">
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" />
           </div>
+          <div className="button-container">
+            <button type="submit">Login</button>
+          </div>
+          <p>
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </p>
+          {!!errorText && <p>{errorText}</p>}
         </form>
-        {!!errorText && <p>{errorText}</p>}
       </div>
+      <div className="login-image">image</div>
     </>
   );
-}
-
-{
-  /* <h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
-      <input type="text" autoComplete="username"  name="username" />
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          autoComplete="current-password"
-          id="password"
-          name="password"
-        />
-
-      <button>Log in!</button>
-    </form>
-    { !!errorText && <p>{errorText}</p> } */
 }
