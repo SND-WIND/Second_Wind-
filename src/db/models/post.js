@@ -8,11 +8,12 @@ class Post {
     this.image_url = image_url;
   }
 
-  static async list() {
+  static async list({ user_id }) {
     const query = `SELECT posts.*, users.username, users.profile_image
     FROM posts
-    JOIN users ON user_id = users.id;`;
-    const { rows } = await knex.raw(query);
+    JOIN users ON user_id = users.id
+    WHERE user_id <> ?;`;
+    const { rows } = await knex.raw(query, [user_id]);
     return rows;
   }
 

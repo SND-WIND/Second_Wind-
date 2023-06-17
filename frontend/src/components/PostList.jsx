@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useHref } from "react-router-dom";
 import Post from "./Post";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
@@ -6,12 +7,20 @@ import { getUserPosts } from "../adapters/user-adapter";
 function PostList() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
+  const { id } = useParams();
+  const href = useHref();
 
   useEffect(() => {
     async function fetchPosts() {
-      const data = await getAllPosts();
-      console.log(data);
-      setPosts(data);
+      if (href === "/") {
+        const data = await getAllPosts();
+        console.log("all", data);
+        setPosts(data);
+      } else if (href === `/users/${id}`) {
+        const data = await getUserPosts(id);
+        console.log("users", data);
+        setPosts(data);
+      }
     }
     fetchPosts();
   }, [page]);
