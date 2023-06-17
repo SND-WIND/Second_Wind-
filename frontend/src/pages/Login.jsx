@@ -41,7 +41,7 @@ export default function LoginPage() {
               placeholder="Username"
               size="35"
               // value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              // onChange={(event) => setUsername(event.target.value)}
             />
           </div>
           <div>
@@ -53,7 +53,7 @@ export default function LoginPage() {
               placeholder="Password"
               size="35"
               // value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              // onChange={(event) => setPassword(event.target.value)}
             />
           </div>
           <button type="submit" id="login-submit" size="35">

@@ -8,9 +8,10 @@ const checkAuthentication = require("./middleware/check-authentication");
 const Router = express.Router();
 Router.use(addModels);
 
-
 Router.get("/users", userController.list);
 Router.get("/posts", postController.list);
+
+Router.get("/users/:id/posts", postController.listUserPosts);
 
 Router.post("/users", userController.create);
 Router.post("/posts", postController.create);

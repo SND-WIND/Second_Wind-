@@ -9,11 +9,22 @@ class Post {
   }
 
   static async list() {
-    const result = await knex.raw("SELECT * FROM posts");
-    return result.rows;
-    // const query = "SELECT * FROM posts";
-    // const { rows } = await knex.raw(query);
-    // return rows.map((user) => new User(user));
+    const query = `SELECT posts.*, users.username, users.profile_image
+    FROM posts
+    JOIN users ON user_id = users.id;`;
+    const { rows } = await knex.raw(query);
+    return rows;
+  }
+
+  static async listUserPost({ user_id }) {
+    // const posts = await knex("posts").where("user_id", user_id).returning("*");
+    // return posts;
+    const query = `SELECT posts.*, users.username, users.profile_image
+    FROM posts
+    JOIN users ON user_id = users.id
+    WHERE user_id = ?;`;
+    const { rows } = await knex.raw(query, [user_id]);
+    return rows;
   }
 
   static async find(id) {
@@ -33,20 +44,13 @@ class Post {
 
   static async create({ user_id, caption, image_url }) {
     try {
-      // const result = await knex.raw(
-      //   `
-      //    INSERT INTO posts (user_id, caption, image_url)
-      //    VALUES (?, ?, ?) RETURNING *`,
-      //   [user_id, caption, image_url]
-      // );
-      // return result.rows[0];
-      console.log("model", user_id, caption, image_url);
-      const [post] = await knex("posts").insert({
-        user_id,
-        caption,
-        image_url,
-      });
-      console.log(post);
+      const [post] = await knex("posts")
+        .insert({
+          user_id,
+          caption,
+          image_url,
+        })
+        .returning("*");
       return post;
     } catch (err) {
       console.error(err);
