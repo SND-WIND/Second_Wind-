@@ -7,7 +7,7 @@ import CurrentUserContext from "../contexts/current-user-context";
 export default function SettingsPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const handleClick = async (e) => {
+  const handleLogout = async (e) => {
     console.log("clicked");
     const [data, error] = await logUserOut();
   };

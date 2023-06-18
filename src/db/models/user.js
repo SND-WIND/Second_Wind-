@@ -35,6 +35,13 @@ class User {
     return new User(user);
   }
 
+  static async delete(id) {
+    const deletedPosts = await knex("posts").delete("*").where("user_id", id);
+    console.log(deletedPosts);
+    const deletedUser = await knex("users").delete("*").where("id", id);
+    console.log(deletedUser);
+  }
+
   static async deleteAll() {
     return knex.raw("TRUNCATE users;");
   }
