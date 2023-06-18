@@ -31,6 +31,15 @@
   padding: 0;
   font: inherit;
 }
+body {
+  overflow-x: hidden;
+  
+}
+
+#root{
+  width: 100%;
+  
+}
 
 /*Removes default text styling on anchor tags*/
 a {
@@ -122,17 +131,26 @@ picture {
   max-width: 100%;
   display: block;
 }
+.logo-image-container{ 
+display: inline-block;
+  
+  
+}
 
-#signUp-logo-purple {
+
+.signup-logo{
+  display: inline;
   width: 200px;
-  margin-right: 500px;
-  margin-bottom: 550px;
+  margin:0px;
+  padding:0px;
 }
 
 .signUp-container {
+  display: inline-block;
   height: 100vh;
   width: 100%;
   display: flex;
+  justify-content: right;
 }
 
 .signUp-Form {
@@ -157,15 +175,65 @@ picture {
   align-items: center;
 }
 
-.signUP-Image-Right {
-  width: 50vw;
-  background-color: black;
+
+
+.container {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
+.main {
+  text-align: center;
+  vertical-align: center;
+}
 
+i {
+  display: block;
+  font-size: 3em;
+}
+.header-two-boxes-container{
+  
+  width: 100%;
+  margin: auto;
+
+}
+.account-box {
+  padding: 2em;
+  width: 30em;
+  background: #A674FE;
+  text-align: left; /* Set the text alignment to left */
+  color: white;
+  margin: 4em;
+  border-radius: 15px;
+  
+}
+.account-text{
+  padding: 10px;
+}
+.account-header {
+  font-size: 2em;
+  padding: 10px;
+
+}
+
+
+.signup-header {
+  font-size: 3em;
+  text-align: center;
+  align-items: center;
+}
+
+.account-button {
+  margin-top: 1em;
+  border-radius: 12px;
+  height: 2.5em;
+  font-size: 1.25em;
+  background: white;
+  text-align: center;
+  color: #a674fe;
+  cursor: pointer;
+  
+}
 
 #h1 {
   text-align: center;
@@ -207,7 +275,3 @@ label {
   color: white;
 }
 
-p {
-  text-align: center;
-  margin-top: 10px;
-}
