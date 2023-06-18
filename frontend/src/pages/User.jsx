@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
 import Menu from "../components/Menu";
+import Feed from "../components/Feed";
+import PostList from "../components/PostList";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
@@ -44,6 +46,7 @@ export default function UserPage() {
   return (
     <>
       <Menu />
+      <PostList />
       <h1>{profileUsername}</h1>
       {!!isCurrentUserProfile && (
         <button onClick={handleLogout}>Log Out</button>

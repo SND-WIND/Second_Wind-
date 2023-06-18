@@ -7,10 +7,11 @@ const createPost = async (req, res) => {
 
   const userId = session.userId;
 
-  console.log('controller',caption, imageUrl, userId);
-
-  const post = await Post.create({ user_id: userId, caption, image_url: imageUrl });
-  console.log(post);
+  const post = await Post.create({
+    user_id: userId,
+    caption,
+    image_url: imageUrl,
+  });
 
   res.send(post);
 };

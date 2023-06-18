@@ -17,7 +17,7 @@ export default function LoginPage() {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    const [user, error] = await logUserIn(username, password);
+    const [user, error] = await logUserIn({ username, password });
     if (error) return setErrorText(error.statusText);
     setCurrentUser(user);
     navigate("/");
@@ -28,8 +28,8 @@ export default function LoginPage() {
   return (
     <div className="login-container">
       <div className="login-form">
-      <img src={logo} alt="Logo" className="logo" />
-        <h1>Login.</h1>
+        <img src={logo} alt="Logo" className="logo" />
+        <h1>Login</h1>
         {!!errorText && <p>{errorText}</p>}
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
@@ -41,17 +41,19 @@ export default function LoginPage() {
           <button type="submit">Log in</button>
         </form>
         <p>
-          Don't have an account? <Link to="/sign-up" className="signup-link">Sign up!</Link>
+          Don't have an account?{" "}
+          <Link to="/sign-up" className="signup-link">
+            Sign up!
+          </Link>
         </p>
       </div>
-      <div className="login-image">
-      </div>
+      <div className="login-image"></div>
     </div>
   );
 }
 
-
-{/* <div className="login-container">
+{
+  /* <div className="login-container">
       <img src={logo} alt="Logo" className="logo" />
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="logo-container">
@@ -74,4 +76,5 @@ export default function LoginPage() {
           {!!errorText && <p>{errorText}</p>}
         </form>
       </div>
-      <div className="login-image">image</div> */}
+      <div className="login-image">image</div> */
+}
