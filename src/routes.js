@@ -24,6 +24,7 @@ Router.patch("/posts/:id", postController.update);
 
 Router.post("/users/login", userController.login);
 Router.delete("/users/logout", userController.logout);
+Router.delete("/users/delete", userController.deleteUser);
 Router.delete("/posts/:id", postController.deletePost);
 Router.get("/me", userController.showMe);
 

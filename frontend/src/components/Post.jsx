@@ -42,7 +42,7 @@ function Post({ post, currentUser }) {
   // );
 
   return (
-    <div className="post">
+    <div className="post" data-post-id={post.id}>
       <div className="post-header">
         <div className="profile-pic">
           <img src={post.profile_image} alt="" />

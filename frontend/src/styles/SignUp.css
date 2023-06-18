@@ -1,19 +1,18 @@
-
 :root {
-  --clr-primary: #A674FE;
+  --clr-primary: #a674fe;
   --clr-black: #000000;
   --clr-grey: #080808;
-  --clr-light: #FFFFFF;
+  --clr-light: #ffffff;
 
-  --ff-primary: 'Poppins', sans-serif;
-  
+  --ff-primary: "Poppins", sans-serif;
+
   --fw-regular: 400;
   --fw-medium: 500;
-  --fw-semi-bold: 900; 
+  --fw-semi-bold: 900;
 
   --fs-xxs: 12px;
   --fs-xs: 16px;
-  --fs-s: 20px; 
+  --fs-s: 20px;
   --fs-m: 24px;
   --fs-l: 42px;
   --fs-xl: 90px;
@@ -44,7 +43,7 @@ a {
 p {
   font-family: var(--ff-primary);
   font-size: var(--fs-m);
-  font-weight: var(--fw-regular); 
+  font-weight: var(--fw-regular);
 }
 
 /*Custom styles for H tags*/
@@ -86,11 +85,11 @@ h6 {
 }
 
 /* Button Styles
-
+ 
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -101,19 +100,19 @@ html:focus-within {
 
 html,
 body {
-  height: 100vh;
+  height: 100%;
   font-family: var(ff-primary);
 }
 
 /* Set core body defaults */
 body {
   text-rendering: optimizeSpeed;
-  padding: 0px;
+  padding: 100px;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-   text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
@@ -123,109 +122,92 @@ picture {
   max-width: 100%;
   display: block;
 }
-.login-container {
-  display: flex;
-  height: 100vh;
-  width:100vw;
+
+#signUp-logo-purple {
+  width: 200px;
+  margin-right: 500px;
+  margin-bottom: 550px;
 }
 
-.login-form {
-  width: 40%;
+.signUp-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.signUp-Form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 1rem;
+  width:60%;
+  border: none;
+}
+
+.signUp-Form h1 {
+  color: #ffffff;
+}
+
+.signUp-Form-Left {
+  width: 50vw;
+  background-color: #a674fe;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  background-color: #A674FE;
 }
 
-.login-form form {
-  width: 100%;
-  max-width: 400px;
-  border: none;
-  border-radius: 10px;
-  margin:0;
-}
-
-.login-form h1 {
-  text-align:left;
-  color: #FFFFFF;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-semi-bold);
-  margin-right: 30%;
-}
-
-.login-form p {
-  text-align: center;
-  margin-top: 1rem;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-m);
-  font-weight: var(--fw-regular);
-  color: white;
-  margin-left: 2%;
-}
-
-.login-form a {
-  color: var(--clr-primary);
-}
-
-.login-form label {
-  margin-top: 1rem;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-s);
-  font-weight: var(--fw-regular);
-  color: #FFFFFF;
-}
-
-.login-form input {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.5rem;
-  border: 3px solid white;
-  border-radius: 5px;
-  background-color: transparent;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-  background-color:#FFFFFF;
-  color: #000000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-s);
-  font-weight: var(--fw-regular);
-}
-
-.login-form button:hover {
-  background-color: #000000;
-  color:#FFFFFF
-}
-.signup-link {
-  color: white;
-}
-
-.login-image {
-  width: 60%;
+.signUP-Image-Right {
+  width: 50vw;
+  background-color: black;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color:#000000;
+  justify-content: center;
 }
 
-.login-image img {
-  width: 200px;
-  height: 200px;
-  max-width: 100%;
+
+
+#h1 {
+  text-align: center;
 }
 
-.logo{
-  width: 200px;
-    margin-bottom: 50px;
-    margin-right: 300px;
+label {
+  margin-top: 10px;
+  color: #ffffff;
 }
 
+.signUp-Input-Box {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.clearfix {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signupbtn {
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+}
+
+.signupbtn:hover {
+  background-color: black;
+  color: white;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+}
