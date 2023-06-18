@@ -19,7 +19,7 @@ export default function SignUpPage() {
   const [accountType, setAccountType] = useState("");
   const [showForm, setShowForm] = useState(false);
 
-   const handleAccountTypeClick = (event) => {
+  const handleAccountTypeClick = (event) => {
     setAccountType(event.target.value);
     setShowForm(true);
   };
@@ -57,22 +57,23 @@ export default function SignUpPage() {
 
 
 
- 
+
   return (
     <>
+
       <div className="logo-image-container">
-        <img src={logo} alt="Logo"  className="signup-logo" />
+        <img src={logo} alt="Logo" className="signup-logo" />
       </div>
       {!showForm && (
-      <div className="header-two-boxes-container" style={{ minHeight: showForm ? "auto" : "600px" }}>
-        <h1 className="signup-header">Sign Up</h1>
-        <main className="container"> 
-          <AccountBox type="Personal" showForm={() => setShowForm(true)} text="Experience the power of Second Wind by signing up for a personal account. Join a supportive online community where you can share your thoughts, connect with others who understand your journey, and access valuable resources for successful reintegration. " />
-          <AccountBox type="Organization" showForm={() => setShowForm(true)} text="Join Second Wind as an organization and contribute to the successful reintegration of individuals impacted by the criminal justice system. By signing up for an organization account, you can connect and share valuable resources, job listings, and educational materials. " />
+        <div className="header-two-boxes-container" style={{ minHeight: showForm ? "auto" : "600px" }}>
+          <h1 className="signup-header">Sign Up</h1>
+          <main className="container">
+            <AccountBox type="Personal" showForm={() => setShowForm(true)} text="Experience the power of Second Wind by signing up for a personal account. Join a supportive online community where you can share your thoughts, connect with others who understand your journey, and access valuable resources for successful reintegration. " />
+            <AccountBox type="Organization" showForm={() => setShowForm(true)} text="Join Second Wind as an organization and contribute to the successful reintegration of individuals impacted by the criminal justice system. By signing up for an organization account, you can connect and share valuable resources, job listings, and educational materials. " />
 
-        </main>
-      </div>
-       )}
+          </main>
+        </div>
+      )}
       {showForm && (
         <div className="signUp-container">
 

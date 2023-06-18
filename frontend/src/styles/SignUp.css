@@ -33,12 +33,10 @@
 }
 body {
   overflow-x: hidden;
-  
 }
 
-#root{
+#root {
   width: 100%;
-  
 }
 
 /*Removes default text styling on anchor tags*/
@@ -131,20 +129,15 @@ picture {
   max-width: 100%;
   display: block;
 }
-.logo-image-container{ 
-display: inline-block;
-
-  
-  
+.logo-image-container {
+  display: inline-block;
 }
 
-
-.signup-logo{
-  
+.signup-logo {
   display: inline;
   width: 200px;
-  margin:0px;
-  padding:0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .signUp-container {
@@ -160,7 +153,7 @@ display: inline-block;
   flex-direction: column;
   align-items: start;
   padding: 1rem;
-  width:60%;
+  width: 60%;
   border: none;
 }
 
@@ -177,8 +170,6 @@ display: inline-block;
   align-items: center;
 }
 
-
-
 .container {
   display: flex;
   justify-content: center;
@@ -193,31 +184,26 @@ i {
   display: block;
   font-size: 3em;
 }
-.header-two-boxes-container{
-  
+.header-two-boxes-container {
   width: 100%;
   margin: auto;
-
 }
 .account-box {
   padding: 2em;
   width: 30em;
-  background: #A674FE;
+  background: #a674fe;
   text-align: left; /* Set the text alignment to left */
   color: white;
   margin: 4em;
   border-radius: 15px;
-  
 }
-.account-text{
+.account-text {
   padding: 10px;
 }
 .account-header {
   font-size: 2em;
   padding: 10px;
-
 }
-
 
 .signup-header {
   font-size: 3em;
@@ -234,7 +220,6 @@ i {
   text-align: center;
   color: #a674fe;
   cursor: pointer;
-  
 }
 
 #h1 {
@@ -276,4 +261,3 @@ label {
   background-color: black;
   color: white;
 }
-
