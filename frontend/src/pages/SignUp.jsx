@@ -48,11 +48,6 @@ export default function SignUpPage() {
     if(name === "sex") setSex(value);
   };
 
-  // const handleAccountTypeClick = (event) => {
-  //   setAccountType(event.target.value);
-  //   setShowForm(true);
-  //};
-
   return (
     <>
      <div className="signUp-container">
