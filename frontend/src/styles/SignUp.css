@@ -133,12 +133,14 @@ picture {
 }
 .logo-image-container{ 
 display: inline-block;
+
   
   
 }
 
 
 .signup-logo{
+  
   display: inline;
   width: 200px;
   margin:0px;
