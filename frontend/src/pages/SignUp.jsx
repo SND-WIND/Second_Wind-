@@ -45,7 +45,7 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if(name === "sex") setSex(value);
+    if (name === "sex") setSex(value);
   };
 
   // const handleAccountTypeClick = (event) => {
@@ -55,86 +55,90 @@ export default function SignUpPage() {
 
   return (
     <>
-     <div className="signUp-container">
-     <div className="signUP-Image-Right">
-     <img src={logo} alt="Logo" id="signUp-logo-purple" className="logo" />
-     </div>
-  <div className="signUp-Form-Left">
-    <form className="signUp-Form" onSubmit={handleSubmit} onChange={handleChange}>
-    <h1>Sign Up</h1>
-      <label htmlFor="email">Email</label>
-      <input
-        autoComplete="off"
-        type="email"
-        placeholder="Enter Email"
-        id="email"
-        className="signUp-Input-Box"
-        name="email"
-        onChange={handleChange}
-        value={email}
-        required
-      />
+      <div className="signUp-container">
+        <div className="signUP-Image-Right">
+          <img src={logo} alt="Logo" id="signUp-logo-purple" className="logo" />
+        </div>
+        <div className="signUp-Form-Left">
+          <form
+            className="signUp-Form"
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+          >
+            <h1>Sign Up</h1>
+            <label htmlFor="email">Email</label>
+            <input
+              autoComplete="off"
+              type="email"
+              placeholder="Enter Email"
+              id="email"
+              className="signUp-Input-Box"
+              name="email"
+              onChange={handleChange}
+              value={email}
+              required
+            />
 
-      <label htmlFor="full-name">Full Name</label>
-      <input
-        placeholder=" Enter Full Name"
-        autoComplete="off"
-        type="text"
-        id="full-name"
-        className="signUp-Input-Box"
-        name="full-name"
-        onChange={handleChange}
-        value={fullName}
-        required
-      />
+            <label htmlFor="full-name">Full Name</label>
+            <input
+              placeholder=" Enter Full Name"
+              autoComplete="off"
+              type="text"
+              id="full-name"
+              className="signUp-Input-Box"
+              name="full-name"
+              onChange={handleChange}
+              value={fullName}
+              required
+            />
 
-      <label htmlFor="username">Username</label>
-      <input
-        placeholder="Enter Username"
-        autoComplete="off"
-        type="text"
-        id="username"
-        className="signUp-Input-Box"
-        name="username"
-        onChange={handleChange}
-        value={username}
-        required
-      />
+            <label htmlFor="username">Username</label>
+            <input
+              placeholder="Enter Username"
+              autoComplete="off"
+              type="text"
+              id="username"
+              className="signUp-Input-Box"
+              name="username"
+              onChange={handleChange}
+              value={username}
+              required
+            />
 
-      <label htmlFor="password">Password</label>
-      <input
-        autoComplete="off"
-        type="password"
-        placeholder="Enter Password"
-        id="password"
-        className="signUp-Input-Box"
-        name="password"
-        onChange={handleChange}
-        value={password}
-        required
-      />
+            <label htmlFor="password">Password</label>
+            <input
+              autoComplete="off"
+              type="password"
+              placeholder="Enter Password"
+              id="password"
+              className="signUp-Input-Box"
+              name="password"
+              onChange={handleChange}
+              value={password}
+              required
+            />
 
-      <label htmlFor="password-confirm">Password Confirm</label>
-      <input
-        autoComplete="off"
-        type="password"
-        placeholder="Re-type Password"
-        id="password-confirm"
-        className="signUp-Input-Box"
-        name="password-confirm"
-        onChange={handleChange}
-        value={passwordConfirm}
-        required
-      />
+            <label htmlFor="password-confirm">Password Confirm</label>
+            <input
+              autoComplete="off"
+              type="password"
+              placeholder="Re-type Password"
+              id="password-confirm"
+              className="signUp-Input-Box"
+              name="password-confirm"
+              onChange={handleChange}
+              value={passwordConfirm}
+              required
+            />
 
-      <button className="signupbtn">Sign Up Now!</button>
-    </form>
-    {!!errorText && <p>{errorText}</p>}
-    <p>
-      Already have an account with us? <Link to="/login">Log in!</Link>
-    </p>
-  </div>
-</div>
+            <button className="signupbtn">Sign Up Now!</button>
+          </form>
+          {!!errorText && <p>{errorText}</p>}
+          <p>
+            Already have an account with us? <Link to="/login">Log in!</Link>
+          </p>
+        </div>
+      </div>
     </>
   );
 }

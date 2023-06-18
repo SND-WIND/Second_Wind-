@@ -27,9 +27,9 @@ export default function UserPage() {
   }, [id]);
 
   const handleLogout = async () => {
-    logUserOut();
+    await logUserOut();
     setCurrentUser(null);
-    navigate("/");
+    navigate("/landing");
   };
 
   if (!currentUser) return <Navigate to="/landing" />;

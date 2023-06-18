@@ -35,10 +35,12 @@ export default function Menu() {
             <img src={jobs} alt="" />
             <h4>Home</h4>
           </div>
-          <div className="menu-item">
-            <img src={bookmarks} alt="" />
-            <h4>Bookmarks</h4>
-          </div>
+          <Link to="/bookmarks">
+            <div className="menu-item">
+              <img src={bookmarks} alt="" />
+              <h4>Bookmarks</h4>
+            </div>
+          </Link>
         </div>
         <div className="profile-settings">
           <Link to={`/users/${currentUser?.id}`}>

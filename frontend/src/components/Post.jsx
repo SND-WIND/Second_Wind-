@@ -6,17 +6,39 @@ function Post({ post, currentUser }) {
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
   };
+
+  const handleLike = async (e) => {
+    
+  }
+
+  const handleComment = async (e) => {
+    
+  }
+
+  const handleBookmark = async (e) => {
+    
+  }
+
+  const handleEdit = async (e) => {
+    
+  }
+
+  const handleDelete = async (e) => {
+    
+  }
+
   // return (
-  //   <div className="post">
+  //   <div className="post" data-post-id={post.id}>
   //     <div className="post-header">
-  //       <div className="profile-pic"></div>
+  //       <div className="profile-pic"><img src={post.profile_image} alt="" /></div>
   //       <div className="post-info">
-  //         <div className="post-author">{post.author}</div>
-  //         <div className="post-date">{post.date}</div>
+  //         <div className="post-author" onClick={handleClick}>{post.username}</div>
+  //         <div className="post-date">{post.created_at}</div>
   //       </div>
   //     </div>
   //     <div className="post-content">
-  //       <p>{post.content}</p>
+  //       <p>{post.caption}</p>
+  //       <img src={post.image_url} alt="" />
   //     </div>
   //     <div className="post-footer">
   //       <div className="post-likes">

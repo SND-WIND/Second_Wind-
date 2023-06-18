@@ -20,6 +20,10 @@ function PostList() {
         const data = await getUserPosts(id);
         console.log("users", data);
         setPosts(data);
+      } else if (href === `/bookmarks`) {
+        const data = await getBookmarks();
+        console.log("bookmarks", data);
+        setPosts(data);
       }
     }
     fetchPosts();
