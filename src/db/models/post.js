@@ -70,7 +70,7 @@ class Post {
   }
 
   static async deleteAll() {
-    return knex.raw("TRUNCATE users;");
+    return knex.raw("TRUNCATE posts;");
   }
 
   static async update(id, caption) {
@@ -82,15 +82,5 @@ class Post {
     return updatedPost;
   }
 }
-
-const testModel = async () => {
-  // const postObj = await Post.create(5, "we outside", "https://example1.com");
-  // const onePost = await Post.find(6);
-  //const allPosts = await Post.list();
-  const removePost = await Post.delete(4);
-  console.log(removePost);
-};
-
-//testModel();
 
 module.exports = Post;
