@@ -23,10 +23,12 @@ export default function Menu() {
               <h4>Home</h4>
             </div>
           </Link>
-          <div className="menu-item">
-            <img src={connect} alt="" />
-            <h4>Connect</h4>
-          </div>
+          <Link to="/connect">
+            <div className="menu-item">
+              <img src={connect} alt="" />
+              <h4>Connect</h4>
+            </div>
+          </Link>
           <div className="menu-item">
             <img src={news} alt="" />
             <h4>Jobs</h4>
