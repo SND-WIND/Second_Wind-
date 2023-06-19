@@ -21,7 +21,7 @@ function Connections({ userId }) {
                     <div key={connection.id} className="card">
                         <img src={"2"} alt={connection.name} className="card-image" />
                         <div className="card-content">
-                            <h2 className="card-title">{connection.fullName}</h2> d
+                            <h2 className="card-title">{connection.name}</h2> 
                             <p className="card-subtitle">{connection.username}</p>
                             <button className="card-button" onClick={() => onConnect(connection)}>
                                 Connect
