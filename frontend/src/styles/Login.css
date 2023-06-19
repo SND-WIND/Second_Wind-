@@ -185,6 +185,10 @@ picture {
   border: 3px solid white;
   border-radius: 5px;
   background-color: transparent;
+  outline: none;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  color: var(--clr-light);
 }
 
 .login-form button {
