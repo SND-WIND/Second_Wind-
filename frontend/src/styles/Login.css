@@ -1,194 +1,231 @@
 
 :root {
-    --clr-primary: #A674FE;
-    --clr-black: #000000;
-    --clr-grey: #080808;
-    --clr-light: #FFFFFF;
+  --clr-primary: #A674FE;
+  --clr-black: #000000;
+  --clr-grey: #080808;
+  --clr-light: #FFFFFF;
+
+  --ff-primary: 'Poppins', sans-serif;
   
-    --ff-primary: 'Poppins', sans-serif;
-    
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semi-bold: 900; 
-  
-    --fs-xxs: 12px;
-    --fs-xs: 16px;
-    --fs-s: 20px; 
-    --fs-m: 24px;
-    --fs-l: 42px;
-    --fs-xl: 90px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 900; 
+
+  --fs-xxs: 12px;
+  --fs-xs: 16px;
+  --fs-s: 20px; 
+  --fs-m: 24px;
+  --fs-l: 42px;
+  --fs-xl: 90px;
 }
-  
+
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 /* Remove default margin */
 * {
-    margin: 0;
-    padding: 0;
-    font: inherit;
+  margin: 0;
+  padding: 0;
+  font: inherit;
 }
-  
+
 /*Removes default text styling on anchor tags*/
 a {
-    text-decoration: none;
-    color: var(--clr-primary);
-    font-family: var(--ff-primary);
+  text-decoration: none;
+  color: var(--clr-primary);
+  font-family: var(--ff-primary);
 }
 
 /*Stypes paragraph tags*/
 p {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-m);
-    font-weight: var(--fw-regular); 
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: var(--fw-regular); 
 }
 
 /*Custom styles for H tags*/
 h1 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xl);
-    font-weight: var(--fw-semi-bold);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semi-bold);
 }
 
 h2 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-l);
-    font-weight: var(--fw-medium);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-l);
+  font-weight: var(--fw-medium);
 }
 
 h3 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-m);
-    font-weight: 500;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: 500;
 }
 
 h4 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-s);
-    font-weight: var(--fw-regular);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
 }
 
 h5 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-regular);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
 }
 
 h6 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-regular);
-    font-style: italic;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  font-style: italic;
 }
 
 /* Button Styles
- 
+
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
-    list-style: none;
+  list-style: none;
 }
-  
+
 /* Set core root defaults */
 html:focus-within {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-  
+
 html,
 body {
-    height: 100vh;
-    font-family: var(ff-primary);
+  height: 100vh;
+  font-family: var(ff-primary);
 }
-  
+
 /* Set core body defaults */
 body {
-    text-rendering: optimizeSpeed;
-    padding: 0px;
+  text-rendering: optimizeSpeed;
+  padding: 0px;
 }
-  
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-     text-decoration-skip-ink: auto;
+   text-decoration-skip-ink: auto;
 }
-  
+
 /* Make images easier to work with */
 img,
 svg,
 picture {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
-
-
-.login-page {
-  display:flex;
-  width: 100vw;
-  height:100vh;
-}
-
 .login-container {
-  background-color: #A674FE;
-  width: 648px;
   display: flex;
-  align-items: center;
+  height: 100vh;
+  width:100vw;
+}
+
+.login-form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-
+  align-items: center;
+  padding: 1rem;
+  background-color: #A674FE;
 }
 
-.login-image {
-  background-image: url('../2.PNG');
-  background-color: #080808;
-  width: 1048px
-
+.login-form form {
+  width: 100%;
+  max-width: 400px;
+  border: none;
+  border-radius: 10px;
+  margin:0;
 }
 
-.loginH2{
-  margin-bottom: 33px;
-  font-weight: bold;
+.login-form h1 {
+  text-align:left;
+  color: #FFFFFF;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semi-bold);
+  margin-right: 30%;
+}
+
+.login-form p {
+  text-align: center;
+  margin-top: 1rem;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: var(--fw-regular);
+  color: white;
+  margin-left: 2%;
+}
+
+.login-form a {
+  color: var(--clr-primary);
+}
+
+.login-form label {
+  margin-top: 1rem;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
   color: #FFFFFF;
 }
 
-#login-username{
-  padding:10px;
-  border-radius: 10px;
-  background-color: transparent;
+.login-form input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
   border: 3px solid white;
-}
-
-#login-password{
-  padding:10px;
-  margin-top: 33px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: transparent;
-  border: 3px solid white;
-  
-
 }
 
-#login-submit{
-  margin-top: 33px;
-  width: 20em;  height: 2.75em;
+.login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color:#FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
 }
 
-#login-submit:hover {
-  background-color: var(--clr-black);
-  color: var(--clr-light);
+.login-form button:hover {
+  background-color: #000000;
+  color:#FFFFFF
+}
+.signup-link {
+  color: white;
 }
 
-
-.login-imageLogo{
-  margin-bottom: 150px;
-  margin-right: 200px;
+.login-image {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#000000;
 }
 
-#logo-black{
+.login-image img {
   width: 200px;
-  margin-bottom: 200px;
-  margin-right:200px;
-  background-color: #A674FE;
+  height: 200px;
+  max-width: 100%;
 }
+
+.logo{
+  width: 200px;
+    margin-bottom: 50px;
+    margin-right: 300px;
+}
+
