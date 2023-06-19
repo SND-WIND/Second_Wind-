@@ -16,3 +16,13 @@ export const logUserOut = async () => {
   await fetchHandler(`${baseUrl}/users/logout`, deleteOptions);
   return true;
 };
+
+///Verify with Ethan
+export const deleteAccount = async () => {
+  await fetchHandler(`${baseUrl}/users/delete`, deleteOptions);
+  return true;
+};
+/*
+API call to the /users/delete endpoint using the fetchHandler utility function. Send DELETE request (${baseUrl}/users/delete) with the deleteOptions configuration.
+*/
+

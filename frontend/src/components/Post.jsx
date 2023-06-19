@@ -1,7 +1,11 @@
-import React from "react";
-import '../styles/Post.css'
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 function Post({ post, currentUser }) {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    navigate(`/users/${post.user_id}`);
+  };
   // return (
   //   <div className="post">
   //     <div className="post-header">
@@ -36,13 +40,24 @@ function Post({ post, currentUser }) {
   //     </div>
   //   </div>
   // );
-  console.log(post);
 
   return (
-    <div>
-      <p>{post.id}</p>
-      <p>{post.caption}</p>
-      <img src={post.image_url} />
+    <div className="post" data-post-id={post.id}>
+      <div className="post-header">
+        <div className="profile-pic">
+          <img src={post.profile_image} alt="" />
+        </div>
+        <div className="post-info">
+          <div className="post-author" onClick={handleClick}>
+            {post.username}
+          </div>
+          <div className="post-date">{post.created_at}</div>
+        </div>
+      </div>
+      <div className="post-content">
+        <p>{post.caption}</p>
+        <img src={post.image_url} alt="" />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,261 @@
+:root {
+  --clr-primary: #a674fe;
+  --clr-black: #000000;
+  --clr-grey: #080808;
+  --clr-light: #ffffff;
+
+  --ff-primary: "Poppins", sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 900;
+
+  --fs-xxs: 12px;
+  --fs-xs: 16px;
+  --fs-s: 20px;
+  --fs-m: 24px;
+  --fs-l: 42px;
+  --fs-xl: 90px;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+}
+
+/*Removes default text styling on anchor tags*/
+a {
+  text-decoration: none;
+  color: var(--clr-primary);
+  font-family: var(--ff-primary);
+}
+
+/*Stypes paragraph tags*/
+p {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: var(--fw-regular);
+}
+
+/*Custom styles for H tags*/
+h1 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semi-bold);
+}
+
+h2 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-l);
+  font-weight: var(--fw-medium);
+}
+
+h3 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: 500;
+}
+
+h4 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
+}
+
+h5 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+}
+
+h6 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  font-style: italic;
+}
+
+/* Button Styles
+ 
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(ff-primary);
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  padding: 100px;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+svg,
+picture {
+  max-width: 100%;
+  display: block;
+}
+.logo-image-container {
+  display: inline-block;
+}
+
+.signup-logo {
+  display: inline;
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.signUp-container {
+  display: inline-block;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.signUp-Form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 1rem;
+  width: 60%;
+  border: none;
+}
+
+.signUp-Form h1 {
+  color: #ffffff;
+}
+
+.signUp-Form-Left {
+  width: 50vw;
+  background-color: #a674fe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  text-align: center;
+  vertical-align: center;
+}
+
+i {
+  display: block;
+  font-size: 3em;
+}
+.header-two-boxes-container {
+  width: 100%;
+  margin: auto;
+}
+.account-box {
+  padding: 2em;
+  width: 30em;
+  background: #a674fe;
+  text-align: left; /* Set the text alignment to left */
+  color: white;
+  margin: 4em;
+  border-radius: 15px;
+}
+.account-text {
+  padding: 10px;
+}
+.account-header {
+  font-size: 2em;
+  padding: 10px;
+}
+
+.signup-header {
+  font-size: 3em;
+  text-align: center;
+  align-items: center;
+}
+
+.account-button {
+  margin-top: 1em;
+  border-radius: 12px;
+  height: 2.5em;
+  font-size: 1.25em;
+  background: white;
+  text-align: center;
+  color: #a674fe;
+  cursor: pointer;
+}
+
+#h1 {
+  text-align: center;
+}
+
+label {
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.signUp-Input-Box {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}
+
+.signupbtn {
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+}
+
+.signupbtn:hover {
+  background-color: black;
+  color: white;
+}
+
+p {
+  text-align: center;
+}

@@ -4,7 +4,11 @@ const listPosts = async (req, res) => {
     db: { Post },
   } = req;
 
-  const posts = await Post.list();
+  const user_id = session.userId;
+
+  if (!user_id) return res.sendStatus(401);
+
+  const posts = await Post.list({ user_id });
 
   res.send(posts);
 };

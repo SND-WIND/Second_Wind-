@@ -14,8 +14,7 @@ function CreatePost() {
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
-    console.log("submission", values);
-    const data = await createPost(values);
+    const [data, error] = await createPost(values);
     console.log(data);
   };
 
