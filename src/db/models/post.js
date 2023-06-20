@@ -35,22 +35,17 @@ class Post {
     } catch (err) {
       console.error(err);
       return null;
-      // const query = "SELECT * FROM users WHERE id = ?";
-      // const {
-      //   rows: [user],
-      // } = await knex.raw(query, [id]);
-      // return user ? new User(user) : null;
     }
   }
 
-  static async create({ user_id, caption, image_url, type }) {
+  static async create({ user_id, caption, image_url, account_type }) {
     try {
       const [post] = await knex("posts")
         .insert({
           user_id,
           caption,
           image_url,
-          type,
+          account_type,
         })
         .returning("*");
       return post;
