@@ -3,6 +3,8 @@ import { useNavigate, Navigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import { logUserOut, deleteAccount } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
+import '../styles/reset.css'
+import '../styles/Settings.css'
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -27,14 +29,16 @@ export default function SettingsPage() {
   if (!currentUser) return <Navigate to="/landing" />;
 
   return (
-    <div>
+    <div className="settings">
       <Menu />
+      <div>
       <button name="logout" id="logout" onClick={handleLogout}>
         Logout
       </button>
       <button name="terminate" id="terminate" onClick={handleTerminate}>
         Terminate Account
       </button>
+      </div>
     </div>
   );
 }
