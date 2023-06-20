@@ -19,6 +19,7 @@ function CreatePost() {
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
+    console.log(values)
     const [data, error] = await createPost(values);
   };
 
@@ -31,8 +32,8 @@ function CreatePost() {
             name="caption"
             id="caption"
             placeholder="What's on your mind?"
-            value={caption}
-            onChange={handleChange}
+            // value={caption}
+            // onChange={handleChange}
             required
           ></textarea>
         </div>
