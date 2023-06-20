@@ -15,7 +15,7 @@
     --fs-s: 20px; 
     --fs-m: 24px;
     --fs-l: 42px;
-    --fs-xl: 90px;
+    --fs-xl: 70px;
 }
   
 /* Box sizing rules */
@@ -42,15 +42,16 @@ a {
 /*Stypes paragraph tags*/
 p {
     font-family: var(--ff-primary);
-    font-size: var(--fs-m);
+    font-size: var(--fs-s);
     font-weight: var(--fw-regular); 
+    line-height: 1.2;
 }
 
 /*Custom styles for H tags*/
 h1 {
     font-family: var(--ff-primary);
     font-size: var(--fs-xl);
-    font-weight: var(--fw-semi-bold);
+    font-weight: var(--fw-medium);
 }
 
 h2 {
@@ -84,12 +85,25 @@ h6 {
     font-style: italic;
 }
 
-/* Button Styles
- 
+/* Button Styles */
+ button {
+    width: auto;
+    padding: 13px 35px;
+
+    font-size: small;
+    font-weight: 500;
+
+    border: 0px solid black;
+    border-radius: 10px;
+ }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
+    list-style: none;
+}
+
+ul{
     list-style: none;
 }
   
@@ -107,7 +121,6 @@ body {
 /* Set core body defaults */
 body {
     text-rendering: optimizeSpeed;
-    padding: 100px;
 }
   
 /* A elements that don't have a class get default styles */
@@ -122,4 +135,3 @@ picture {
     max-width: 100%;
     display: block;
 }
-

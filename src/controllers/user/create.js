@@ -4,7 +4,7 @@ const createUser = async (req, res) => {
     db: { User },
     body: { username, fullName, email, password },
   } = req;
-
+  
   // TODO: check if username is taken, what should you return?
   const user = await User.create({
     username,
