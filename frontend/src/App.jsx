@@ -30,6 +30,8 @@ export default function App() {
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<UserPage />} /> {/* profile page */}
         <Route path='/settings' element={<SettingsPage />} />
+        
+        
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>

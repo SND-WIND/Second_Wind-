@@ -1,0 +1,1 @@
+finish models for the likes table, bookmarks and buisness post
