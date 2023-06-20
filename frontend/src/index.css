@@ -35,7 +35,7 @@
 /*Removes default text styling on anchor tags*/
 a {
     text-decoration: none;
-    color: var(--clr-primary);
+    color: var(--clr-light);
     font-family: var(--ff-primary);
 }
 
@@ -45,6 +45,7 @@ p {
     font-size: var(--fs-s);
     font-weight: var(--fw-regular); 
     line-height: 1.2;
+    text-align: left;
 }
 
 /*Custom styles for H tags*/
@@ -89,13 +90,39 @@ h6 {
  button {
     width: auto;
     padding: 13px 35px;
-
+    font-family: var(--ff-primary);
     font-size: small;
     font-weight: 500;
-
     border: 0px solid black;
     border-radius: 10px;
  }
+
+ form {
+  width: 100%;
+  max-width: 400px;
+  border: none;
+}
+
+label {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--clr-light);
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid var(--clr-light);
+  border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  color: var(--clr-light);
+  padding: 10px;
+  margin-bottom: 30px;
+}
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
@@ -134,4 +161,44 @@ svg,
 picture {
     max-width: 100%;
     display: block;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    background-color: var(--clr-grey);
+    padding: 10px;
+    border-radius: 15px;
+    gap: 30px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding: 25px 53px;
+    height: 100%;
+}
+
+.menu-items{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--clr-light);
+}
+
+.menu-item:hover {
+    background-color: #151515;
+}
+
+.menu-item{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 45px;
+    border-radius: 10px;
+    gap: 30px;
 }

@@ -9,47 +9,7 @@
 body {
     display: flex;
     width: 100vw;
-    background-color: var(--clr-light);
-}
-
-.menu{
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    background-color: var(--clr-grey);
-    padding: 10px;
-    border-radius: 15px;
-    gap: 30px;
-}
-
-.menu-container {
-    display: flex;
-    flex-direction:column;
-    justify-content: space-between;
-    padding: 25px 53px;
-    height: 100%;
-}
-
-.menu-items{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--clr-light);
-}
-
-.menu-item:hover {
-    background-color: #151515;
-}
-
-.menu-item{
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    padding: 10px 45px;
-    border-radius: 10px;
-    gap: 30px;
+    background-color: var(--clr-black);
 }
 
 .profile-settings{
