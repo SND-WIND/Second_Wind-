@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import CurrentUserContext from "../contexts/current-user-context";
 import { createPost } from "../adapters/post-adapter";
 import img_icon from "../SVG/img_icon.svg";
 import emoji from "../SVG/emoji_fill.svg";
@@ -7,45 +8,18 @@ import bold from "../SVG/bold_fill.svg";
 import italic from "../SVG/italic_fill.svg";
 
 function CreatePost() {
-  const [caption, setCaption] = useState("");
-  const [imageUrl, setimageUrl] = useState("");
-
-  const handleChange = (e) => {
-    setCaption(e.target.value);
-  };
-
-  // useEffect(() => {
-  //   const handleKeyPress = (e) => {
-  //     setCaption(e.target.value);
-  //   };
-  //   document.addEventListener("keydown", handleKeyPress);
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyPress);
-  //   };
-  // }, [caption]);
-
-  const handlefetch = async (url, options) => {
-    try {
-      const r = await fetch(url, options);
-      const data = await r.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  }; 
+  const { accountType } = useContext(CurrentUserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await handlefetch("/posts", {
-        caption,
-        imageUrl,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    const formData = new FormData(e.target);
+    const values = {
+      accountType,
+    };
+    for (let [name, value] of formData.entries()) {
+      values[name] = value;
     }
+    const [data, error] = await createPost(values);
   };
 
   return (

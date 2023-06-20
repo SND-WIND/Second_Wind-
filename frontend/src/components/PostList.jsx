@@ -3,6 +3,7 @@ import { useParams, useHref } from "react-router-dom";
 import Post from "./Post";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
+import { getAllBookmarks } from "../adapters/bookmark-adapter";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -19,6 +20,10 @@ function PostList() {
       } else if (href === `/users/${id}`) {
         const data = await getUserPosts(id);
         console.log("users", data);
+        setPosts(data);
+      } else if (href === `/bookmarks`) {
+        const data = await getAllBookmarks();
+        console.log("bookmarks", data);
         setPosts(data);
       }
     }

@@ -2,13 +2,15 @@ import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
+import { createBusiness } from "../adapters/business-adapter";
 import "../styles/SignUp.css";
 import logo from "../SVG/logo_purple.svg";
 import AccountBox from "../components/AccountBox";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, accountType } =
+    useContext(CurrentUserContext);
   const [errorText, setErrorText] = useState("");
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
@@ -16,11 +18,9 @@ export default function SignUpPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [accountType, setAccountType] = useState("");
   const [showForm, setShowForm] = useState(false);
 
   const handleAccountTypeClick = (event) => {
-    setAccountType(event.target.value);
     setShowForm(true);
   };
 
@@ -29,18 +29,29 @@ export default function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText("");
-    if (password !== passwordConfirm)
-      return setErrorText("Passwords do not match");
-    const [user, error] = await createUser({
-      username,
-      fullName,
-      sex,
-      email,
-      password,
-    });
-    if (error) return setErrorText(error.statusText);
+    if (password !== passwordConfirm) setErrorText("Passwords do not match");
+    if (accountType === "Personal") {
+      const [user, error] = await createUser({
+        username,
+        fullName,
+        sex,
+        email,
+        password,
+      });
+      setCurrentUser(user);
+      if (error) return setErrorText(error.statusText);
+    }
+    if (accountType === "Organization") {
+      const [business, error] = await createBusiness({
+        username,
+        companyName: fullName,
+        email,
+        password,
+      });
+      setCurrentUser(business);
+      if (error) return setErrorText(error.statusText);
+    }
 
-    setCurrentUser(user);
     navigate("/");
   };
 

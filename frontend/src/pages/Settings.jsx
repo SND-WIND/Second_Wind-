@@ -8,8 +8,9 @@ export default function SettingsPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const handleLogout = async (e) => {
-    console.log("clicked");
-    const [data, error] = await logUserOut();
+    await logUserOut();
+    setCurrentUser(null);
+    navigate("/landing");
   };
 
   const handleTerminate = async () => {

@@ -27,8 +27,6 @@ export default function App() {
     {/* <SiteHeadingAndNav /> */}
     <main>
       <Routes>
-
-
         <Route path='/' element={<Home />} />
         <Route path='/landing' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />

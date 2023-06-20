@@ -1,7 +1,8 @@
 const express = require("express");
 const userController = require("./controllers/user");
 const businessController = require("./controllers/business");
-const postController = require("./controllers/posts");
+const postController = require("./controllers/post");
+const bookmarkController = require("./controllers/bookmark");
 const commentController = require("./controllers/comment");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
@@ -11,6 +12,7 @@ Router.use(addModels);
 
 Router.get("/users", userController.list);
 Router.get("/posts", postController.list);
+Router.get("/bookmarks", bookmarkController.list);
 Router.get("/comments", commentController.list);
 
 Router.get("/users/:id/posts", postController.listUserPosts);

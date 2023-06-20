@@ -1,5 +1,11 @@
+import { useContext } from "react";
+import CurrentUserContext from "../contexts/current-user-context";
+
 function AccountBox(props) {
-  const handleAccountBoxClick = () => {
+  const { setAccountType } = useContext(CurrentUserContext);
+
+  const handleAccountBoxClick = (e) => {
+    setAccountType(props.type);
     props.showForm();
   };
   return (
@@ -9,7 +15,7 @@ function AccountBox(props) {
 
         {/* fixing this rn with a line break needs to be margined off 
       to create space between two account boxes */}
-        <h3 className="account-header"> {props.type} Account</h3>
+        <h3 className="account-header">{props.type} Account</h3>
         <p className="account-text">{props.text}</p>
         <button className="account-button" onClick={handleAccountBoxClick}>
           {props.type} Signup
