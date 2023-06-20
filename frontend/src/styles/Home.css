@@ -27,6 +27,7 @@ body {
 
 .profile-caption {
   display: flex;
+  width: ;
   gap: 20px;
 }
 
