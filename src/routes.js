@@ -4,6 +4,7 @@ const businessController = require("./controllers/business");
 const postController = require("./controllers/post");
 const bookmarkController = require("./controllers/bookmark");
 const commentController = require("./controllers/comment");
+const likeController = require("./controllers/like");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
 
@@ -15,11 +16,15 @@ Router.get("/posts", postController.list);
 Router.get("/bookmarks", bookmarkController.list);
 Router.get("/comments", commentController.list);
 
+Router.get("/likes/posts/:id", likeController.list);
+Router.get('/posts/:post_id/likes', likeController.list);
+
 Router.get("/users/:id/posts", postController.listUserPosts);
 
 Router.post("/users", userController.create);
 Router.post("/posts", postController.create);
 Router.post("/comments", commentController.create);
+Router.post("/likes", likeController.create);
 
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);
@@ -34,6 +39,7 @@ Router.delete("/users/logout", userController.logout);
 Router.delete("/users/delete", userController.deleteUser);
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
+Router.delete("/likes/:id", likeController.deleteLike);
 Router.get("/me", userController.showMe);
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
