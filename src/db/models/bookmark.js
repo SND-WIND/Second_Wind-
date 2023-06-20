@@ -19,7 +19,7 @@ class Bookmark {
 
   static async find(id) {
     try {
-      const result = await knex.raw(`SELECT * FROM posts WHERE id = ?`, [id]);
+      const result = await knex.raw(`SELECT * FROM bookmarks WHERE id = ?`, [id]);
       return result.rows[0];
     } catch (err) {
       console.error(err);
@@ -34,7 +34,7 @@ class Bookmark {
 
   static async create({ user_id, post_id }) {
     try {
-      const [bookmark] = await knex("posts")
+      const [bookmark] = await knex("bookmarks")
         .insert({
           user_id,
           post_id,

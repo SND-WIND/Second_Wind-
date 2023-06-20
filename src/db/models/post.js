@@ -43,13 +43,14 @@ class Post {
     }
   }
 
-  static async create({ user_id, caption, image_url }) {
+  static async create({ user_id, caption, image_url, type }) {
     try {
       const [post] = await knex("posts")
         .insert({
           user_id,
           caption,
           image_url,
+          type,
         })
         .returning("*");
       return post;

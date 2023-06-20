@@ -6,3 +6,8 @@ export const getAllBookmarks = async () => {
   const [bookmarks] = await fetchHandler(baseUrl);
   return bookmarks || [];
 };
+
+export const createBookmark = async ({ post_id }) => {
+  const [bookmark] = await fetchHandler(baseUrl, getPostOptions({ post_id }));
+  return bookmark;
+};
