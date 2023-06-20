@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CurrentUserContext from "../contexts/current-user-context";
 import { createPost } from "../adapters/post-adapter";
 import img_icon from "../SVG/img_icon.svg";
 import emoji from "../SVG/emoji_fill.svg";
@@ -7,15 +8,18 @@ import bold from "../SVG/bold_fill.svg";
 import italic from "../SVG/italic_fill.svg";
 
 function CreatePost() {
+  const { accountType } = useContext(CurrentUserContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const values = {};
+    const values = {
+      accountType,
+    };
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
     const [data, error] = await createPost(values);
-    console.log(data);
   };
 
   return (

@@ -35,21 +35,17 @@ class Post {
     } catch (err) {
       console.error(err);
       return null;
-      // const query = "SELECT * FROM users WHERE id = ?";
-      // const {
-      //   rows: [user],
-      // } = await knex.raw(query, [id]);
-      // return user ? new User(user) : null;
     }
   }
 
-  static async create({ user_id, caption, image_url }) {
+  static async create({ user_id, caption, image_url, account_type }) {
     try {
       const [post] = await knex("posts")
         .insert({
           user_id,
           caption,
           image_url,
+          account_type,
         })
         .returning("*");
       return post;
@@ -70,7 +66,7 @@ class Post {
   }
 
   static async deleteAll() {
-    return knex.raw("TRUNCATE users;");
+    return knex.raw("TRUNCATE posts;");
   }
 
   static async update(id, caption) {
@@ -82,15 +78,5 @@ class Post {
     return updatedPost;
   }
 }
-
-const testModel = async () => {
-  // const postObj = await Post.create(5, "we outside", "https://example1.com");
-  // const onePost = await Post.find(6);
-  //const allPosts = await Post.list();
-  const removePost = await Post.delete(4);
-  console.log(removePost);
-};
-
-//testModel();
 
 module.exports = Post;
