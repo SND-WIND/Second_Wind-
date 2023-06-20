@@ -22,8 +22,12 @@ class User {
   }
 
   static async find(id) {
-    const [user] = await knex("users").where("id", id);
-    return user ? new User(user) : null;
+    try{
+      const [user] = await knex("users").where("id", id);
+      return user ? new User(user) : null;
+    }catch(err){
+      console.error(err)
+    }
   }
 
   static async findByUsername(username) {

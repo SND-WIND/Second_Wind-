@@ -5,6 +5,9 @@ import { logUserOut, deleteAccount } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import '../styles/reset.css'
 import '../styles/Settings.css'
+import SettingsForm1 from "../components/SettingsForm1";
+import SettingsForm2 from "../components/SettingsForm2";
+import Horizantal from "../components/Horizantal";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -33,6 +36,11 @@ export default function SettingsPage() {
     <div className="settings">
       <Menu />
       <div>
+      <SettingsForm1 />
+      <Horizantal color="pink" />
+      {/*<SettingsForm2 />
+       <div className="settings-forms">
+        </div> */}
       <button name="logout" id="logout" onClick={handleLogout}>
         Logout
       </button>

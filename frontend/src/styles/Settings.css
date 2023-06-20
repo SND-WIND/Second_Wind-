@@ -2,6 +2,21 @@
     display: flex;
     width: 100vw;
     min-height: 100vh;
-    gap: 80px;
+    gap: 450px;
     padding: 10px;
+}
+
+form {
+    background-color: aliceblue;
+}
+
+.settings-forms{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.settings-form-1{
+    display: flex;
+    flex-direction: column;
 }
