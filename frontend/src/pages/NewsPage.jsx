@@ -3,6 +3,7 @@ import Menu from "../components/Menu";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import Messages from "../components/Messages";
+import News from "../components/News";
 
 import "../styles/Home.css";
 
@@ -13,7 +14,7 @@ export default function NewsPage() {
     return (
         <div>
             <Menu />
-            <h1>News</h1>
+            <News />
             <Messages />
         </div>
     );
