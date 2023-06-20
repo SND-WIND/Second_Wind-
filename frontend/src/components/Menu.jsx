@@ -23,22 +23,30 @@ export default function Menu() {
               <h4>Home</h4>
             </div>
           </Link>
-          <div className="menu-item">
-            <img src={connect} alt="" />
-            <h4>Connect</h4>
-          </div>
-          <div className="menu-item">
-            <img src={news} alt="" />
-            <h4>Jobs</h4>
-          </div>
+          <Link to="/connect">
+            <div className="menu-item">
+              <img src={connect} alt="" />
+              <h4>Connect</h4>
+            </div>
+          </Link>
+          <Link to="/news">
+            <div className="menu-item">
+              <img src={news} alt="" />
+              <h4>News</h4>
+            </div>
+          </Link>
+          <Link to="/jobs">
           <div className="menu-item">
             <img src={jobs} alt="" />
-            <h4>Home</h4>
+            <h4>Jobs</h4>
           </div>
+          </Link>
+          <Link to="/bookmarks">
           <div className="menu-item">
             <img src={bookmarks} alt="" />
             <h4>Bookmarks</h4>
           </div>
+          </Link>
         </div>
         <div className="profile-settings">
           <Link to={`/users/${currentUser?.id}`}>
