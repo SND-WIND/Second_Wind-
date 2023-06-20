@@ -13,6 +13,9 @@ import UserPage from './pages/User';
 import LandingPage from './pages/LandingPage';
 import SettingsPage from './pages/Settings';
 import ConnectPage from './pages/ConnectionPage';
+import NewsPage from './pages/NewsPage';
+import JobsPage from './pages/JobsPage';
+import BookmarksPage from './pages/BookmarksPage';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -34,8 +37,11 @@ export default function App() {
         <Route path='/users/:id' element={<UserPage />} /> {/* profile page */}
         <Route path='/settings' element={<SettingsPage />} />
         <Route path='/connect' element={<ConnectPage />} />
+        <Route path='/news' element={<NewsPage/>} />
+        <Route path="/jobs" element={<JobsPage/>} /> 
+        <Route path='/bookmarks' element={<BookmarksPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-    </main>
+    </main> 
   </>;
 }
