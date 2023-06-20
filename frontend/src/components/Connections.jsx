@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import CurrentUserContext from "../contexts/current-user-context";
 import { getAllUsers } from "../adapters/user-adapter";
 
 
-function Connections({ userId }) {
+function Connections() {
     const [connections, setConnections] = useState([]);
 
 

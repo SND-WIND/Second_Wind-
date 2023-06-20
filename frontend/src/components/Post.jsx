@@ -1,45 +1,24 @@
+import React, { useContext } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
+import CurrentUserContext from "../contexts/current-user-context";
 
-function Post({ post, currentUser }) {
+function Post({ post }) {
   const navigate = useNavigate();
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
   };
-  // return (
-  //   <div className="post">
-  //     <div className="post-header">
-  //       <div className="profile-pic"></div>
-  //       <div className="post-info">
-  //         <div className="post-author">{post.author}</div>
-  //         <div className="post-date">{post.date}</div>
-  //       </div>
-  //     </div>
-  //     <div className="post-content">
-  //       <p>{post.content}</p>
-  //     </div>
-  //     <div className="post-footer">
-  //       <div className="post-likes">
-  //         <button onClick={() => likePost(post.id)}>Like</button>
-  //         <span>{post.likes}</span>
-  //       </div>
-  //       <div className="post-comments">
-  //         <button onClick={() => openComments(post.id)}>Comments</button>
-  //         <span>{post.comments.length}</span>
-  //       </div>
-  //       {currentUser === post.author && (
-  //         <div className="options">
-  //           <button onClick={() => editPost(post.id)}>Edit</button>
-  //           <button onClick={() => deletePost(post.id)}>Delete</button>
-  //         </div>
-  //       )}
-  //     </div>
-  //     <div className="add-comment">
-  //       <input type="text" placeholder="Add a comment..." />
-  //       <button onClick={() => addComment(post.id)}>Submit</button>
-  //     </div>
-  //   </div>
-  // );
+
+  const handleLike = async (e) => {};
+
+  const handleComment = async (e) => {};
+
+  const handleBookmark = async (e) => {};
+
+  const handleEdit = async (e) => {};
+
+  const handleDelete = async (e) => {};
 
   return (
     <div className="post" data-post-id={post.id}>
@@ -57,6 +36,26 @@ function Post({ post, currentUser }) {
       <div className="post-content">
         <p>{post.caption}</p>
         <img src={post.image_url} alt="" />
+      </div>
+      <div className="post-footer">
+        <div className="post-likes">
+          <button onClick={handleLike}>Like</button>
+          <span>{post.likes}</span>
+        </div>
+        <div className="post-comments">
+          <button onClick={() => openComments(post.id)}>Comments</button>
+          <span>{/*post.comments.length*/}</span>
+        </div>
+        {currentUser.id === post.user_id && (
+          <div className="options">
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+        )}
+      </div>
+      <div className="add-comment">
+        <input type="text" placeholder="Add a comment..." />
+        <button onClick={handleComment}>Submit</button>
       </div>
     </div>
   );

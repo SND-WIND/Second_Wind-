@@ -3,13 +3,13 @@
  * @returns { Promise<void> }
  */
 exports.up = (knex) => {
-  return knex.schema.createTable("posts", (table) => {
-    table.increments().primary();
+  return knex.schema.createTable("bookmarks", (table) => {
+    table.increments("id").primary();
     table.integer("user_id").notNullable();
+    table.integer("post_id").notNullable();
     table.foreign("user_id").references("id").inTable("users");
-    table.string("account_type").notNullable();
-    table.string("caption");
-    table.string("image_url");
+    table.foreign("post_id").references("id").inTable("posts");
+    table.string("type").notNullable();
     table.timestamps(true, true);
   });
 };
@@ -18,4 +18,4 @@ exports.up = (knex) => {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = (knex) => knex.schema.dropTable("posts");
+exports.down = (knex) => knex.schema.dropTable("bookmarks");
