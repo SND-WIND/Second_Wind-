@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
+import "../styles/Post.css"
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -30,11 +31,11 @@ function Post({ post }) {
           <div className="post-author" onClick={handleClick}>
             {post.username}
           </div>
-          <div className="post-date">{post.created_at}</div>
+          {/* <div className="post-date">{post.created_at}</div> */}
+          <p>{post.caption}</p>
         </div>
       </div>
       <div className="post-content">
-        <p>{post.caption}</p>
         <img src={post.image_url} alt="" />
       </div>
       <div className="post-footer">

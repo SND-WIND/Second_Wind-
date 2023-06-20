@@ -2,8 +2,17 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    background-color: var(--clr-grey);
 }
 
-.post-content {
+.post-header {
+    display: flex;
+}
+
+.post-info {
+    color: var(--clr-light);
+}
+
+.post-footer {
     display: flex;
 }

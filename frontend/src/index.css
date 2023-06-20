@@ -202,3 +202,10 @@ picture {
     border-radius: 10px;
     gap: 30px;
 }
+
+.profile-settings{
+    display: flex;
+    flex-direction: column;
+    color: var(--clr-light);
+    gap: 10px;
+}

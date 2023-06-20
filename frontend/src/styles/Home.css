@@ -12,13 +12,6 @@ body {
     background-color: var(--clr-black);
 }
 
-.profile-settings{
-    display: flex;
-    flex-direction: column;
-    color: var(--clr-light);
-    gap: 10px;
-}
-
 .feed-container {
   width: 45%;
   background-color: var(--clr-black);
@@ -27,8 +20,9 @@ body {
 
 .create-post {
   background-color: var(--clr-grey);
-  padding: 15px;
+  padding: 10px;
   border-radius: 15px;
+  width: 100%;
 }
 
 .profile-caption {
@@ -41,8 +35,8 @@ body {
   margin: 0;
   background-color: #151515;
   border: none;
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .post-btn:hover {
@@ -111,11 +105,11 @@ textarea {
   color: var(--clr-light);
 }
 
-.card {
+/* .card {
   border: "1px solid #ccc";
   width: "200px";
   height: "250px";
   margin: "10px";
   display: "inline-block";
   vertical-align: "top";
-}
+} */

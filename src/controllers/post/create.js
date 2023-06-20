@@ -5,6 +5,8 @@ const createPost = async (req, res) => {
     body: { caption, imageUrl, accountType },
   } = req;
 
+  console.log(caption, imageUrl, accountType);
+
   const userId =
     accountType === "Personal" ? session.userId : session.businessId;
 
