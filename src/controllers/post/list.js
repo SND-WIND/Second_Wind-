@@ -8,7 +8,7 @@ const listPosts = async (req, res) => {
 
   if (!user_id) return res.sendStatus(401);
 
-  const posts = await Post.list({ user_id });
+  const posts = await Post.list();
 
   res.send(posts);
 };

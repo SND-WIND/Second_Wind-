@@ -5,14 +5,13 @@ const createPost = async (req, res) => {
     body: { caption, imageUrl, accountType },
   } = req;
 
-  const userId =
-    accountType === "Personal" ? session.userId : session.businessId;
+  const userId = session.userId;
 
   const post = await Post.create({
     user_id: userId,
     caption,
     image_url: imageUrl,
-    account_type: accountType,
+    account_type: accountType === "user",
   });
 
   res.send(post);

@@ -14,6 +14,8 @@ function Post({ post }) {
 
   const handleComment = async (e) => {};
 
+  const openComments = async (e) => {};
+
   const handleBookmark = async (e) => {};
 
   const handleEdit = async (e) => {};
@@ -43,8 +45,11 @@ function Post({ post }) {
           <span>{post.likes}</span>
         </div>
         <div className="post-comments">
-          <button onClick={() => openComments(post.id)}>Comments</button>
+          <button onClick={openComments}>Comments</button>
           <span>{/*post.comments.length*/}</span>
+        </div>
+        <div className="post-bookmarks">
+          <button onClick={handleBookmark}>Bookmark</button>
         </div>
         {currentUser.id === post.user_id && (
           <div className="options">

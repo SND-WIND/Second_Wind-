@@ -1,5 +1,4 @@
 const knex = require("../knex");
-const { hashPassword, isValidPassword } = require("../../utils/auth-utils");
 
 class Post {
   constructor({ id, caption, image_url }) {
@@ -8,24 +7,49 @@ class Post {
     this.image_url = image_url;
   }
 
-  static async list({ user_id }) {
-    const query = `SELECT posts.*, users.username, users.profile_image
-    FROM posts
-    JOIN users ON user_id = users.id
-    WHERE user_id <> ?;`;
-    const { rows } = await knex.raw(query, [user_id]);
-    return rows;
+  static async list() {
+    try {
+      const query = `SELECT posts.*, 
+      CASE
+        WHEN posts.account_type = true THEN users.username
+        WHEN posts.account_type = false THEN businesses.username
+      END AS username,
+      CASE
+        WHEN posts.account_type = true THEN users.profile_image
+        WHEN posts.account_type = false THEN businesses.profile_image
+      END AS profile_image
+      FROM posts
+      LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
+      LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false;`;
+      const { rows } = await knex.raw(query);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 
-  static async listUserPost({ user_id }) {
-    // const posts = await knex("posts").where("user_id", user_id).returning("*");
-    // return posts;
-    const query = `SELECT posts.*, users.username, users.profile_image
-    FROM posts
-    JOIN users ON user_id = users.id
-    WHERE user_id = ?;`;
-    const { rows } = await knex.raw(query, [user_id]);
-    return rows;
+  static async listUserPost({ user_id, account_type }) {
+    try {
+      const query = `SELECT posts.*, 
+      CASE
+        WHEN posts.account_type = true THEN users.username
+        WHEN posts.account_type = false THEN businesses.username
+      END AS username,
+      CASE
+        WHEN posts.account_type = true THEN users.profile_image
+        WHEN posts.account_type = false THEN businesses.profile_image
+      END AS profile_image
+      FROM posts
+      LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
+      LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
+      WHERE posts.user_id = ? AND posts.account_type = ?;`;
+      const { rows } = await knex.raw(query, [user_id, account_type]);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 
   static async find(id) {
@@ -71,11 +95,16 @@ class Post {
 
   static async update(id, caption) {
     // dynamic queries are easier if you add more properties
-    const [updatedPost] = await knex("posts")
-      .where({ id })
-      .update({ caption })
-      .returning("*");
-    return updatedPost;
+    try {
+      const [updatedPost] = await knex("posts")
+        .where({ id })
+        .update({ caption })
+        .returning("*");
+      return updatedPost;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 }
 

@@ -12,6 +12,7 @@ const loginUser = async (req, res) => {
   if (!isPasswordValid) return res.sendStatus(401);
 
   session.userId = user.id;
+  session.userType = "user";
   res.send(user);
 };
 

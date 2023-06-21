@@ -34,7 +34,23 @@ Router.delete("/users/logout", userController.logout);
 Router.delete("/users/delete", userController.deleteUser);
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
-Router.get("/me", userController.showMe);
+// Router.get("/me", userController.showMe);
+Router.get("/me", async (req, res) => {
+  const {
+    session,
+    db: { User, Business },
+  } = req;
+  const { userId, userType } = session;
+  // console.log(userId, userType);
+  if (!userType) return res.sendStatus(401);
+  else if (userType === "user") {
+    const user = await User.find(userId);
+    res.send(user);
+  } else if (userId === "business") {
+    const business = await Business.find(userId);
+    res.send(business);
+  }
+});
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
   res.send({ msg: "The secret is: there is no secret." });

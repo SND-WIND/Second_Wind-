@@ -5,7 +5,8 @@ function AccountBox(props) {
   const { setAccountType } = useContext(CurrentUserContext);
 
   const handleAccountBoxClick = (e) => {
-    setAccountType(props.type);
+    const type = props.type === "Personal" ? "user" : "business";
+    setAccountType(type);
     props.showForm();
   };
   return (
