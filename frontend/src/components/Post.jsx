@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import LikeIcon from "../SVG/thumb_up_line.svg"
@@ -9,19 +9,45 @@ function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
 
+  const [likes, setLikes] = useState([]);
+
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
   };
+  useEffect(() => {
+    const fetchLikes = async () => {
+      const res = await fetch(`/api/posts/${post.id}/likes`);
+      if (res.ok) {
+        const data = await res.json();
+        setLikes(data);
+      }
+    };
+    fetchLikes();
+  }, [post.id]);
 
-  const handleLike = async (e) => {};
 
-  const handleComment = async (e) => {};
+  const handleLike = async (e) => {
+    const res = await fetch(`/api/posts/${post.id}/like`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+    }
+  };
 
-  const handleBookmark = async (e) => {};
+  const handleComment = async (e) => { };
 
-  const handleEdit = async (e) => {};
+  const handleBookmark = async (e) => {
 
-  const handleDelete = async (e) => {};
+  };
+
+  const handleEdit = async (e) => { };
+
+  const handleDelete = async (e) => { };
 
   return (
     <div className="post-container" data-post-id={post.id}>
