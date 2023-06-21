@@ -1,29 +1,22 @@
 .logo-image-container {
   padding: 2rem;
-
-  display: inline-block;
 }
 
 .signup-logo {
-  display: inline;
   width: 200px;
-  margin: 0px;
-  padding: 0px;
+  align-self: self-start;
 }
 
 .signUp-container {
-  display: inline-block;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
-  justify-content: right;
 }
 
 .signUp-Form {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 1rem;
   width: 60%;
   border: none;
 }
@@ -32,13 +25,17 @@
   color: #ffffff;
 }
 
-.signUp-Form-Left {
-  width: 50vw;
+.signUp-Form-Right {
+  width: 50%;
   background-color: #a674fe;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.sign-up-img-personal {
+  width: 50%;
 }
 
 .container {
@@ -47,79 +44,92 @@
 }
 
 .main {
-  text-align: center;
-  vertical-align: center;
+  gap: 30px;
 }
 
-i {
-  display: block;
-  font-size: 3em;
-}
 .header-two-boxes-container {
   width: 100%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+  gap: 30px;
 }
+
 .account-box {
+  display: flex;
+  flex-direction: column;
   padding: 2em;
   width: 30em;
-  background: #a674fe;
-  text-align: left; /* Set the text alignment to left */
-  color: white;
-  margin: 4em;
+  background: var(--clr-primary);
+  /* text-align: left; Set the text alignment to left */
+  color: var(--clr-light);
   border-radius: 15px;
+  gap: 20px;
 }
-.account-text {
-  padding: 10px;
-}
-.account-header {
-  font-size: 2em;
-  padding: 10px;
+
+.signup-logo-container {
+  display: flex;
+
 }
 
 .signup-header {
+  color: var(--clr-light);
+}
+
+.account-text {
+  font-size: var(--fs-xs);
+}
+
+.sign-up-icon {
+  width: 100px;
+}
+
+/* .signup-header {
   font-size: 3em;
   text-align: center;
   align-items: center;
-}
+} */
 
 .account-button {
-  margin-top: 1em;
-  border-radius: 12px;
-  height: 2.5em;
-  font-size: 1.25em;
-  background: white;
-  text-align: center;
-  color: #a674fe;
-  cursor: pointer;
+  color: var(--clr-primary);
 }
 
-#h1 {
+.account-button:hover {
+  color: var(--clr-light);
+  background-color: var(--clr-black);
+}
+
+
+/* #h1 {
   text-align: center;
 }
 
 label {
   margin-top: 10px;
   color: #ffffff;
-}
+} */
 
 .signUp-Input-Box {
-  background-color: transparent;
+  /* background-color: transparent;
   border: 3px solid white;
   width: 100%;
   padding: 12px;
   border-radius: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
-  box-sizing: border-box;
+  box-sizing: border-box; */
+  margin-bottom: 15px;
 }
 
 .signupbtn {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke;
   color: black;
   border: none;
   cursor: pointer;
+  padding: 15px; */
   width: 100%;
-  padding: 15px;
 }
 
 .signupbtn:hover {
@@ -127,6 +137,10 @@ label {
   color: white;
 }
 
-p {
+/* p {
   text-align: center;
+} */
+
+h5 {
+  color: var(--clr-light) ;
 }

@@ -67,14 +67,12 @@ export default function SignUpPage() {
 
   return (
     <>
-      <div className="logo-image-container">
-        <img src={logo} alt="Logo" className="signup-logo" />
-      </div>
       {!showForm && (
         <div
           className="header-two-boxes-container"
           style={{ minHeight: showForm ? "auto" : "600px" }}
         >
+          <img src={logo} alt="Logo" className="signup-logo" />
           <h1 className="signup-header">Sign Up</h1>
           <main className="container">
             <AccountBox
@@ -92,7 +90,10 @@ export default function SignUpPage() {
       )}
       {showForm && (
         <div className="signUp-container">
-          <div className="signUp-Form-Left">
+          <div className="sign-up-img-personal">
+            <img src="" alt="" />
+          </div>
+          <div className="signUp-Form-Right">
             <form
               className="signUp-Form"
               onSubmit={handleSubmit}
@@ -163,13 +164,15 @@ export default function SignUpPage() {
                 value={passwordConfirm}
                 required
               />
-
               <button className="signupbtn">Sign Up Now!</button>
+              <h5>
+                Already have an account with us?{" "}
+                <Link to="/sign-up" className="signup-link">
+                  Login
+                </Link>
+              </h5>
             </form>
             {!!errorText && <p>{errorText}</p>}
-            <p>
-              Already have an account with us? <Link to="/login">Log in!</Link>
-            </p>
           </div>
         </div>
       )}

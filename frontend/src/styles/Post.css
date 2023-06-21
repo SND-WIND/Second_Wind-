@@ -1,9 +1,0 @@
-.post{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.post-content {
-    display: flex;
-}

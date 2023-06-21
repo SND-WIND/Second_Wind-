@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../SVG/logo_purple.svg";
 
 function HeroSectionLeft() {
@@ -17,7 +18,9 @@ function HeroSectionLeft() {
           with essential resources like jobs, housing healthcare and many more
           to rebuild their lives.
         </p>
-        <button id="sign-up-btn">Sign Up</button>
+        <Link to="/sign-up">
+          <button id="sign-up-btn">Sign Up</button>
+        </Link>
       </div>
     </div>
   );
