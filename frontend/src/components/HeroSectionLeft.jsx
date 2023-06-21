@@ -4,6 +4,7 @@ import logo from "../SVG/logo_purple.svg";
 function HeroSectionLeft() {
   return (
     <div className="hero-section-left">
+      
       <img
         src={logo}
         alt=""

@@ -6,7 +6,8 @@ const Horizantal = ({color}) => {
     style={{
         color: color,
         backgroundColor: color,
-        height: 5
+        height: 2,
+        margin: "10px 70px"
     }}
 />
   )
