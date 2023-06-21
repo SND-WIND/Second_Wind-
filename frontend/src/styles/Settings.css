@@ -2,15 +2,15 @@
     display: flex;
     width: 100vw;
     min-height: 100vh;
-    gap: 450px;
+    gap: 600px;
     padding: 10px;
 }
 
 form {
-    background-color: aliceblue;
+    color: white;
 }
 
-.settings-forms{
+.settings-form{
     display: flex;
     flex-direction: column;
     

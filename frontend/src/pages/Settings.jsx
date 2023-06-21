@@ -3,11 +3,9 @@ import { useNavigate, Navigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import { logUserOut, deleteAccount } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
-import '../styles/reset.css'
 import '../styles/Settings.css'
 import SettingsForm1 from "../components/SettingsForm1";
-import SettingsForm2 from "../components/SettingsForm2";
-import Horizantal from "../components/Horizantal";
+// import SettingsForm2 from "../components/SettingsForm2";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -35,18 +33,17 @@ export default function SettingsPage() {
   return (
     <div className="settings">
       <Menu />
-      <div>
+      <div className="settings-form">
       <SettingsForm1 />
-      <Horizantal color="pink" />
-      {/*<SettingsForm2 />
-       <div className="settings-forms">
-        </div> */}
+        <div>
+{/* once I link stuff up the styling will be applied */}
       <button name="logout" id="logout" onClick={handleLogout}>
         Logout
       </button>
       <button name="terminate" id="terminate" onClick={handleTerminate}>
         Terminate Account
       </button>
+        </div>
       </div>
     </div>
   );
