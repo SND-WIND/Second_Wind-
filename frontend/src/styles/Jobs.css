@@ -1,0 +1,61 @@
+.jobs-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 80px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.jobs-search-container{
+    width: 100%;
+    padding: 10px;
+}
+
+.jobs-search-form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.search-bar{
+    width: 400px;
+}
+
+.job-feed {
+  width: 45%;
+  background-color: var(--clr-grey);
+  padding: 10px;
+}
+
+.job-container {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--clr-grey);
+    color: var(--clr-light);
+}
+
+.company-pic{
+    max-width: 65px;
+    max-height: 65px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.job-options {
+    display: flex;
+    gap: 20px;
+}
+
+.job-description {
+    font-size: var(--fs-xs);
+}

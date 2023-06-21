@@ -27,7 +27,6 @@ body {
 
 .profile-caption {
   display: flex;
-  width: ;
   gap: 20px;
 }
 
@@ -98,6 +97,36 @@ textarea {
   font-size: var(--fs-xs);
   font-style: italic;
 }
+
+.post-footer{
+  display: flex;
+  gap: 10px;
+}
+
+.post-likes {
+  color: var(--clr-light);
+}
+
+.post-comments {
+  color: var(--clr-light);
+}
+
+.post-bookmarks {
+  color: var(--clr-light);
+}
+
+.lcb {
+  display: flex;
+}
+
+.user-profile{
+  display: flex;
+  color: var(--clr-light);
+  align-items: center;
+  gap: 15px;
+}
+
+
 
 .messages-container {
   display: flex;

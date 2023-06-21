@@ -110,6 +110,18 @@ label {
   color: var(--clr-light);
 }
 
+textarea {
+  width: 100%;
+  color: var(--clr-light);
+  background-color: #151515;
+  border: none;
+  padding: 15px;
+  outline: none;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-style: italic;
+}
+
 input {
   width: 100%;
   height: 50px;
@@ -118,10 +130,16 @@ input {
   background-color: transparent;
   outline: none;
   font-family: var(--ff-primary);
-  font-size: var(--fs-s);
+  font-size: var(--fs-xs);
   color: var(--clr-light);
   padding: 10px;
   margin-bottom: 30px;
+}
+
+::placeholder {
+  color: var(--clr-light);
+  opacity: 0.4;
+  font-size: var(--fs-xs);
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -167,6 +185,7 @@ picture {
     display: flex;
     flex-direction: column;
     width: 27%;
+    height: 100vh;
     background-color: var(--clr-grey);
     padding: 10px;
     border-radius: 15px;
