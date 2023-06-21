@@ -33,7 +33,7 @@ class Job {
     }
   }
 
-  static async create({ business_id, description, location, salary, role, account_type }) {
+  static async create({ business_id, description, location, salary, role}) {
     try {
       const [job] = await knex("jobs")
         .insert({
@@ -42,7 +42,6 @@ class Job {
           location,
           salary,
           role,
-          account_type, 
         })
         .returning("*");
       return job;
