@@ -1,7 +1,7 @@
 import React from "react";
 import CreatePost from "./CreatePost";
 import PostList from "../components/PostList"
-import "../styles/Feed.css"
+import  "../styles/Feed.css"
 
 function Feed() {
     return (
