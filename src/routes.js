@@ -5,6 +5,7 @@ const postController = require("./controllers/post");
 const bookmarkController = require("./controllers/bookmark");
 const commentController = require("./controllers/comment");
 const likeController = require("./controllers/like");
+const jobController = require("./controllers/job");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
 
@@ -15,23 +16,30 @@ Router.get("/users", userController.list);
 Router.get("/posts", postController.list);
 Router.get("/bookmarks", bookmarkController.list);
 Router.get("/comments", commentController.list);
+Router.get("/jobs", jobController.list);
+
 
 Router.get('/posts/:post_id/likes', likeController.list);
 
 Router.get("/users/:id/posts", postController.listUserPosts);
+//get only jobs from certain business
+Router.get("/business/:id/jobs", jobController.listBusinessPosts);
 
 Router.post("/users", userController.create);
 Router.post("/posts", postController.create);
 Router.post("/comments", commentController.create);
 Router.post("/likes", likeController.create);
+Router.post("/jobs", jobController.create);
 
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);
 Router.get("/comments/:id", commentController.find);
+Router.get("jobs", jobController.find);
 // We can use middleware slotted in between the route and the controller as well
 Router.patch("/users/:id", checkAuthentication, userController.update);
 Router.patch("/posts/:id", postController.update);
 Router.patch("/comments/:id", commentController.update);
+Router.patch("/jobs/:id", jobController.update);
 
 Router.post("/users/login", userController.login);
 Router.delete("/users/logout", userController.logout);
@@ -39,6 +47,7 @@ Router.delete("/users/delete", userController.deleteUser);
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
 Router.delete("/likes/:id", likeController.deleteLike);
+Router.delete("/jobs/:id", jobController.deleteJob);
 Router.get("/me", userController.showMe);
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {

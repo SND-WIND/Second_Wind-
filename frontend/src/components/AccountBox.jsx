@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import CurrentUserContext from "../contexts/current-user-context";
+import personal from "../SVG/user_4_fill.svg";
+import business from "../SVG/building_6_fill.svg";
 
 function AccountBox(props) {
-  const { setAccountType } = useContext(CurrentUserContext);
+  const { accountType, setAccountType } = useContext(CurrentUserContext);
 
   const handleAccountBoxClick = (e) => {
     setAccountType(props.type);
     props.showForm();
   };
   return (
-    <>
       <div className="account-box">
-        <i className="fa-regular fa-comments"></i>
+        <img src={ (accountType == "Organization") ? personal : business} alt="" className="sign-up-icon" />
 
         {/* fixing this rn with a line break needs to be margined off 
       to create space between two account boxes */}
@@ -21,7 +22,6 @@ function AccountBox(props) {
           {props.type} Signup
         </button>
       </div>
-    </>
   );
 }
 

@@ -43,18 +43,18 @@ class Like {
   }
 }
 
-// const testModel = async () => {
-//   // const user_id = 5;
-//    //const post_id = 7;
-//    //const LikeObj = await Like.create({ user_id, post_id});
+const testModel = async () => {
+// const user_id = 5;
+//const post_id = 7;
+//const LikeObj = await Like.create({ user_id, post_id});
 //   // const onePost = await Post.find(6);
 //   //const allPosts = await Post.list();
 // //   const removeLike = await Like.delete(7);
 // //   console.log('like removed', removeLike);
-//   console.log('likes', await Like.listLikesForPost(7));
-// //   console.log("LikeObj", LikeObj);
-// };
+  console.log('likes', await Like.listLikesForPost(7));
+  //console.log("LikeObj", LikeObj);
+ };
 
-//testModel();
+testModel();
 
 module.exports = Like; 

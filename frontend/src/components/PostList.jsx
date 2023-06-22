@@ -13,7 +13,7 @@ function PostList() {
 
   useEffect(() => {
     async function fetchPosts() {
-      if (href === "/") {
+      if (href === "/") { 
         const data = await getAllPosts();
         console.log("all", data);
         setPosts(data);

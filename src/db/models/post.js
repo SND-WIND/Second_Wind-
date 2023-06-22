@@ -38,7 +38,7 @@ class Post {
     }
   }
 
-  static async create({ user_id, caption, image_url, account_type }) {
+  static async create( user_id, caption, image_url, account_type ) {
     try {
       const [post] = await knex("posts")
         .insert({

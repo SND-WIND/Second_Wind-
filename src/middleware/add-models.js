@@ -4,6 +4,7 @@ const Post = require("../db/models/post");
 const Bookmark = require("../db/models/bookmark");
 const Comment = require('../db/models/comment');
 const Like = require('../db/models/like');
+const Job = require('../db/models/job');
 
 const addModels = (req, res, next) => {
   req.db = {
@@ -13,6 +14,7 @@ const addModels = (req, res, next) => {
     Bookmark,
     Comment,
     Like,
+    Job,
   };
   next();
 };
