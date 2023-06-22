@@ -181,8 +181,6 @@ picture {
     display: block;
 }
 
-<<<<<<< HEAD
-=======
 .menu{
     display: flex;
     flex-direction: column;
@@ -230,4 +228,3 @@ picture {
     color: var(--clr-light);
     gap: 10px;
 }
->>>>>>> main

@@ -15,10 +15,10 @@ const LandingPage3 = () => {
       </div>
       <div className="landing3-resource-right">
         <div className="right-boxes">
-        <div class="one">one</div>
-          <div class="two">two</div>
-          <div class="three">three</div>
-          <div class="four">four</div>
+        <div className="one">one</div>
+          <div className="two">two</div>
+          <div className="three">three</div>
+          <div className="four">four</div>
         </div>
       </div>
     </div>
