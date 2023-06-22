@@ -5,5 +5,18 @@
   gap: 80px;
   padding: 10px;
   justify-content: space-between;
-  background-color: var(--clr-black);
+}
+
+.card-subtitle, .card-text {
+  color: var(--clr-light);
+}
+.card-image{
+  width:3em;
+  height: 4em;
+}
+.card{
+  background-color: blueviolet;
+  border-radius: 10px;
+  padding: 10px;
+  margin:10px;
 }
