@@ -66,7 +66,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <>
+    <div className="sign-up-container">
       {!showForm && (
         <div
           className="header-two-boxes-container"
@@ -176,6 +176,6 @@ export default function SignUpPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

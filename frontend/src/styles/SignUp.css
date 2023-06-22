@@ -22,12 +22,12 @@
 }
 
 .signUp-Form h1 {
-  color: #ffffff;
+  color: var(--clr-light);
 }
 
 .signUp-Form-Right {
   width: 50%;
-  background-color: #a674fe;
+  background-color: var(--clr-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,8 +43,12 @@
   justify-content: center;
 }
 
-.main {
+.container {
   gap: 30px;
+}
+
+.sign-up-container {
+  width: 100vw;
 }
 
 .header-two-boxes-container {
@@ -54,7 +58,7 @@
   justify-content: center;
   align-items: center;
   padding: 80px;
-  gap: 30px;
+  background-color: var(--clr-black);
 }
 
 .account-box {
@@ -71,11 +75,11 @@
 
 .signup-logo-container {
   display: flex;
-
 }
 
 .signup-header {
   color: var(--clr-light);
+  margin-bottom: 30px;
 }
 
 .account-text {
@@ -86,12 +90,6 @@
   width: 100px;
 }
 
-/* .signup-header {
-  font-size: 3em;
-  text-align: center;
-  align-items: center;
-} */
-
 .account-button {
   color: var(--clr-primary);
 }
@@ -101,34 +99,11 @@
   background-color: var(--clr-black);
 }
 
-
-/* #h1 {
-  text-align: center;
-}
-
-label {
-  margin-top: 10px;
-  color: #ffffff;
-} */
-
 .signUp-Input-Box {
-  /* background-color: transparent;
-  border: 3px solid white;
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  box-sizing: border-box; */
   margin-bottom: 15px;
 }
 
 .signupbtn {
-  /* background-color: whitesmoke;
-  color: black;
-  border: none;
-  cursor: pointer;
-  padding: 15px; */
   width: 100%;
 }
 
@@ -136,10 +111,6 @@ label {
   background-color: black;
   color: white;
 }
-
-/* p {
-  text-align: center;
-} */
 
 h5 {
   color: var(--clr-light) ;

@@ -4,12 +4,8 @@
   min-height: 100vh;
   gap: 80px;
   padding: 10px;
-}
+  background-color: var(--clr-black);
 
-body {
-    display: flex;
-    width: 100vw;
-    background-color: var(--clr-black);
 }
 
 .feed-container {
@@ -22,12 +18,6 @@ body {
   background-color: var(--clr-grey);
   padding: 10px;
   border-radius: 15px;
-  width: 100%;
-}
-
-.profile-caption {
-  display: flex;
-  gap: 20px;
 }
 
 .post-form {
@@ -37,6 +27,12 @@ body {
   border: none;
   border-radius: 10px;
   padding: 10px;
+}
+
+.profile-caption {
+  display: flex;
+  width: 100%;
+  gap: 20px;
 }
 
 .post-btn:hover {
