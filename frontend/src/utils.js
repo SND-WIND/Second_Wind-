@@ -1,4 +1,4 @@
-const basicFetchOptions = {
+export const basicFetchOptions = {
   method: 'GET',
   credentials: 'include',
 };

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
+import { createLike, getLikes } from "../adapters/likes-adapter";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -11,29 +12,21 @@ function Post({ post }) {
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
   };
+  
   useEffect(() => {
-    const fetchLikes = async () => {
-      const res = await fetch(`/api/posts/${post.id}/likes`);
-      if (res.ok) {
-        const data = await res.json();
-        setLikes(data);
-      }
-    };
-    fetchLikes();
-  }, [post.id]);
+    
+    setLikes();
+    
+  }, [post]);
 
 
-  const handleLike = async (e) => {
-    const res = await fetch(`/api/posts/${post.id}/like`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      console.log(data);
-    }
+  const handleLike = async (post, id) => {
+    console.log("post", post, id)
+    await createLike(post, id);
+    
+    let res = await getLikes(post)
+    console.log(res)
+    
   };
 
   const handleComment = async (e) => { };
@@ -65,8 +58,8 @@ function Post({ post }) {
       </div>
       <div className="post-footer">
         <div className="post-likes">
-          <button onClick={handleLike}>
-            Likes {/* {likes.length} {likes.length === 1 ? "like" : "likes"} */}
+          <button onClick={() => handleLike(post.id, currentUser.id)}>
+            {likes}Likes {likes.length} {likes.length === 1 ? "like" : "likes"}
           </button>
 
         </div>
