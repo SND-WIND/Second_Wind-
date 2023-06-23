@@ -1,4 +1,4 @@
-//const Like = require('../models/like');
+// const Like = require('../models/like');
 async function listLikes(req, res) {
     //const { post_id } = req.params;
     const { 

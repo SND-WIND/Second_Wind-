@@ -7,56 +7,9 @@
 }
 
 body {
-  display: flex;
-  width: 100vw;
-  background-color: var(--clr-black);
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  width: 27%;
-  background-color: var(--clr-grey);
-  padding: 10px;
-  border-radius: 15px;
-  gap: 30px;
-}
-
-.menu-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 25px 53px;
-  height: 100%;
-}
-
-.menu-items {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: flex-start;
-  gap: 10px;
-  color: var(--clr-light);
-}
-
-.menu-item:hover {
-  background-color: #151515;
-}
-
-.menu-item {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  padding: 10px 45px;
-  border-radius: 10px;
-  gap: 30px;
-}
-
-.profile-settings {
-  display: flex;
-  flex-direction: column;
-  color: var(--clr-light);
-  gap: 10px;
+    display: flex;
+    width: 100vw;
+    background-color: var(--clr-black);
 }
 
 .feed-container {
@@ -67,8 +20,9 @@ body {
 
 .create-post {
   background-color: var(--clr-grey);
-  padding: 15px;
+  padding: 10px;
   border-radius: 15px;
+  width: 100%;
 }
 
 .profile-caption {
@@ -81,8 +35,8 @@ body {
   margin: 0;
   background-color: #151515;
   border: none;
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .post-btn:hover {
@@ -144,6 +98,36 @@ textarea {
   font-style: italic;
 }
 
+.post-footer{
+  display: flex;
+  gap: 10px;
+}
+
+.post-likes {
+  color: var(--clr-light);
+}
+
+.post-comments {
+  color: var(--clr-light);
+}
+
+.post-bookmarks {
+  color: var(--clr-light);
+}
+
+.lcb {
+  display: flex;
+}
+
+.user-profile{
+  display: flex;
+  color: var(--clr-light);
+  align-items: center;
+  gap: 15px;
+}
+
+
+
 .messages-container {
   display: flex;
   width: 27%;
@@ -151,11 +135,11 @@ textarea {
   color: var(--clr-light);
 }
 
-.card {
+/* .card {
   border: "1px solid #ccc";
   width: "200px";
   height: "250px";
   margin: "10px";
   display: "inline-block";
   vertical-align: "top";
-}
+} */
