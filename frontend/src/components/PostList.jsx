@@ -43,7 +43,7 @@ function PostList() {
   }, []);
 
   return (
-    <div>
+    <div className="post-list">
       {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}

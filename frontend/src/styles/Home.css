@@ -20,6 +20,18 @@
   border-radius: 15px;
 }
 
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #151515;
+}
+
 .post-form {
   width: 100%;
   margin: 0;
@@ -27,6 +39,11 @@
   border: none;
   border-radius: 10px;
   padding: 10px;
+}
+
+.name-options {
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile-caption {

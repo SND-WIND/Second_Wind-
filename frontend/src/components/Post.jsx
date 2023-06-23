@@ -1,46 +1,51 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import {
+  useNavigate,
+  Navigate,
+  Link,
+  useHref,
+  useParams,
+} from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
-import LikeIcon from "../SVG/thumb_up_line.svg"
-import CommentIcon from "../SVG/comment_fill.svg"
-import BookmarkIcon from "../SVG/bookmark_fill.svg"
+import LikeIcon from "../SVG/thumb_up_line.svg";
+import CommentIcon from "../SVG/comment_fill.svg";
+import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import { createLike, getLikes } from "../adapters/likes-adapter";
+import optionsIcon from "../SVG/options_icon.svg";
 
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
-
+  const { id } = useParams();
+  const href = useHref();
   const [likes, setLikes] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
   };
-  
+
   useEffect(() => {
-    
     setLikes();
-    
   }, [post]);
 
-
   const handleLike = async (post, id) => {
-    console.log("post", post, id)
+    console.log("post", post, id);
     await createLike(post, id);
-    
-    let res = await getLikes(post)
-    console.log(res)
-    
+
+    let res = await getLikes(post);
+    console.log(res);
   };
 
-  const handleComment = async (e) => { };
+  const handleComment = async (e) => {};
 
-  const handleBookmark = async (e) => {
+  const handleBookmark = async (e) => {};
 
-  };
+  const handleEdit = async (e) => {};
 
-  const handleEdit = async (e) => { };
-
-  const handleDelete = async (e) => { };
+  const handleDelete = async (e) => {};
 
   return (
     <div className="post-container" data-post-id={post.id}>
@@ -49,10 +54,28 @@ function Post({ post }) {
           <img src={post.profile_image} alt="" />
         </div>
         <div className="post-content">
-          <h4 className="post-author" onClick={handleClick}>
-            {post.username}
-          </h4>
-          {/* <div className="post-date">{post.created_at}</div> */}
+          <div className="name-options">
+            <h4 className="post-author" onClick={handleClick}>
+              {post.username}
+            </h4>
+            {href === `/users/${id}` && (
+              <div>
+                <img src={optionsIcon} alt="" width="15px" />
+                <div isOpen={modal} toggle={toggle}>
+                  <div toggle={toggle}>Update Post</div>
+                  <textarea></textarea>
+                  <div>
+                    {/* <Button onClick={toggle}>
+                      Update Post
+                    </Button>{" "}
+                    <Button onClick={toggle}>
+                      Delete Post
+                    </Button> */}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <p className="post-caption">{post.caption}</p>
           <div className="post-image">
             <img src={post.image_url} alt="" />
