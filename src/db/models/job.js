@@ -33,7 +33,7 @@ class Job {
     }
   }
 
-  static async create({ business_id, description, location, salary, role}) {
+  static async create( business_id, description, location, salary, role) {
     try {
       const [job] = await knex("jobs")
         .insert({
@@ -75,4 +75,23 @@ class Job {
   }
 }
 
+const testModel = async () => {
+    // const user_id = 5;
+    //const post_id = 7;
+    //const LikeObj = await Like.create({ user_id, post_id});
+    //   // const onePost = await Post.find(6);
+    //   //const allPosts = await Post.list();
+       //const removeJob = await Job.delete(43);
+    // //   console.log('like removed', removeLike);
+    // const business_id = 9;
+    // const description = 'description test 1';
+    // const location = 'Staten Island';
+    // const salary = 65000;
+    // const role = 'Head Chef';
+    //console.log(await Job.delete(43))
+      //console.log('Job', await Job.create(business_id, description, location, salary, role));
+      //console.log("LikeObj", LikeObj);
+     };
+    
+ //testModel();
 module.exports = Job;

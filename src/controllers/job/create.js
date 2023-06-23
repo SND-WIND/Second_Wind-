@@ -5,7 +5,7 @@ const createJob = async (req, res) => {
       body: { description, location, salary, role},
     } = req;
   
-    const userId = session.userId 
+    const userId = session.user_id;
   
     const job = await Job.create({
       user_id: userId,
