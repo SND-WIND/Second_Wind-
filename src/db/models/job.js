@@ -36,8 +36,6 @@ class Job {
       return null;
     }
   }
-
-  static async create( business_id, description, location, salary, role) {
   static async create( business_id, description, location, salary, role) {
     try {
       const [job] = await knex("jobs")
