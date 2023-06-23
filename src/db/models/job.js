@@ -1,5 +1,6 @@
 const knex = require("../knex");
 
+
 class Job {
   constructor({ id, description, location, salary, role }) {
     this.id = id;
@@ -9,10 +10,12 @@ class Job {
     this.role = role;
   }
 
+
   static async list() {
     const result = await knex.raw("SELECT * FROM jobs");
     return result.rows;
   }
+
 
   static async listBusinessPost({ business_id }) {
     const query = `SELECT jobs.*, businesses.username, businesses.profile_image
@@ -22,6 +25,7 @@ class Job {
     const { rows } = await knex.raw(query, [business_id]);
     return rows;
   }
+
 
   static async find(id) {
     try {
@@ -33,7 +37,8 @@ class Job {
     }
   }
 
-  static async create({ business_id, description, location, salary, role }) {
+
+  static async create( business_id, description, location, salary, role) {
     try {
       const [job] = await knex("jobs")
         .insert({
@@ -61,9 +66,11 @@ class Job {
     }
   }
 
+
   static async deleteAll() {
     return knex.raw("TRUNCATE jobs;");
   }
+
 
   static async update(id, description, location, salary, role) {
     // dynamic queries are easier if you add more properties
@@ -75,4 +82,24 @@ class Job {
   }
 }
 
+
+const testModel = async () => {
+    // const user_id = 5;
+    //const post_id = 7;
+    //const LikeObj = await Like.create({ user_id, post_id});
+    //   // const onePost = await Post.find(6);
+    //   //const allPosts = await Post.list();
+       //const removeJob = await Job.delete(43);
+    // //   console.log('like removed', removeLike);
+    // const business_id = 9;
+    // const description = 'description test 1';
+    // const location = 'Staten Island';
+    // const salary = 65000;
+    // const role = 'Head Chef';
+    //console.log(await Job.delete(43))
+      //console.log('Job', await Job.create(business_id, description, location, salary, role));
+      //console.log("LikeObj", LikeObj);
+     };
+   
+ //testModel();
 module.exports = Job;
