@@ -7,7 +7,7 @@ const createPost = async (req, res) => {
 
   const userId =
     accountType === "Personal" ? session.userId : session.businessId;
-
+    accountType ? accountType : (accountType = "Personal");
   const post = await Post.create({
     user_id: userId,
     caption,
