@@ -8,8 +8,7 @@ exports.up = (knex) => {
     table.integer("post_id").notNullable();
     table.foreign("post_id").references("id").inTable("posts");
     table.integer("user_id").notNullable();
-    table.foreign("user_id").references("id").inTable("users");
-    table.string("type").notNullable();
+    table.boolean("account_type").notNullable();
     table.timestamps(true, true);
   });
 };

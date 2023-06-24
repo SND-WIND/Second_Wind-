@@ -1,22 +1,22 @@
 const createPost = async (req, res) => {
-  let {
+  const {
     session,
     db: { Post },
-    body: { caption, imageUrl, accountType },
+    body: { caption, imageUrl },
   } = req;
 
-  const userId =
-    accountType === "Personal" ? session.userId : session.businessId;
-    accountType ? accountType : (accountType = "Personal");
+  const { userId, userType } = session;
+  if (!userId || !userType) return res.sendStatus(401);
+
   const post = await Post.create({
     user_id: userId,
     caption,
     image_url: imageUrl,
-    account_type: accountType,
+    account_type: userType === "user",
   });
+  if (!post) return res.sendStatus(404);
 
   res.send(post);
 };
 
 module.exports = createPost;
-
