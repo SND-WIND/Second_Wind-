@@ -12,6 +12,7 @@ import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import { createLike, getLikes } from "../adapters/likes-adapter";
 import optionsIcon from "../SVG/options_icon.svg";
+import UpdatePostModal from "../components/UpdatePostModal"
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -19,9 +20,9 @@ function Post({ post }) {
   const { id } = useParams();
   const href = useHref();
   const [likes, setLikes] = useState([]);
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  // const toggle = () => setModal(!modal);
 
   const handleClick = (e) => {
     navigate(`/users/${post.user_id}`);
@@ -60,19 +61,8 @@ function Post({ post }) {
             </h4>
             {href === `/users/${id}` && (
               <div>
-                <img src={optionsIcon} alt="" width="15px" />
-                <div isOpen={modal} toggle={toggle}>
-                  <div toggle={toggle}>Update Post</div>
-                  <textarea></textarea>
-                  <div>
-                    {/* <Button onClick={toggle}>
-                      Update Post
-                    </Button>{" "}
-                    <Button onClick={toggle}>
-                      Delete Post
-                    </Button> */}
-                  </div>
-                </div>
+                {/* <img src={optionsIcon} alt="" width="15px" /> */}
+                <UpdatePostModal/>
               </div>
             )}
           </div>
