@@ -3,7 +3,7 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
-import { createComment } from "../adapters/comment-adapter";
+import { createComment, getAllComments } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
@@ -18,13 +18,8 @@ function Post({ post }) {
   const [commentTextValue, setCommentTextValue] = useState("");
 
   const handleClick = (e) => {
-    console.log(post);
-    if (post.account_type) {
-      // navigate(`/users/${post.user_id}`);
-    } else {
-      // navigate(`/businesses/${post.business_id}`);
-    }
-    navigate(`/users/${post.user_id}`);
+    if (post.account_type) navigate(`/users/${post.user_id}`);
+    else navigate(`/businesses/${post.business_id}`);
   };
 
   // useEffect(() => {
@@ -32,11 +27,6 @@ function Post({ post }) {
   // }, [post]);
 
   const handleLike = async (e) => {
-    // console.log("post", post, id);
-    // await createLike(post, id);
-
-    // let res = await getLikes(post);
-    // console.log(res);
     if (likeId) {
       const data = await deleteLike({ like_id: likeId });
       console.log(data);
@@ -62,7 +52,9 @@ function Post({ post }) {
     setCommentTextValue(e.target.value);
 
   const openComments = async (e) => {
-    console.log(e);
+    const data = await getAllComments({ post_id: post.id });
+    console.log(data);
+    setComments(data);
   };
 
   const handleBookmark = async (e) => {

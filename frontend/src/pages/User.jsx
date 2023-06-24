@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, Navigate, useParams } from "react-router-dom";
+import { useNavigate, Navigate, useParams, useHref } from "react-router-dom";
 import Menu from "../components/Menu";
 import Feed from "../components/Feed";
 import PostList from "../components/PostList";
@@ -10,11 +10,27 @@ import UpdateUsernameForm from "../components/UpdateUsernameForm";
 
 export default function UserPage() {
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, accountType } =
+    useContext(CurrentUserContext);
   const [userProfile, setUserProfile] = useState(null);
   const [errorText, setErrorText] = useState(null);
   const { id } = useParams();
-  const isCurrentUserProfile = currentUser && currentUser.id === Number(id);
+  const href = useHref();
+
+  const checkCurrentUser = () => {
+    const page = href.split("/")[1];
+    if (
+      (page === "users" && accountType === "user") ||
+      (page === "businesses" && accountType === "business")
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isCurrentUserProfile =
+    currentUser && currentUser.id === Number(id) && checkCurrentUser();
 
   useEffect(() => {
     const loadUser = async () => {
