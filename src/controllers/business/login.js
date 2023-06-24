@@ -11,7 +11,8 @@ const loginBusiness = async (req, res) => {
     const isPasswordValid = await business.isValidPassword(password);
     if (!isPasswordValid) return res.sendStatus(401);
   
-    session.businessId = business.id;
+    session.userId = business.id;
+    session.userType = "business";
     res.send(business);
   };
   

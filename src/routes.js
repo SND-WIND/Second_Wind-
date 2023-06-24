@@ -18,8 +18,7 @@ Router.get("/bookmarks", bookmarkController.list);
 Router.get("/comments", commentController.list);
 Router.get("/jobs", jobController.list);
 
-
-Router.get('/posts/:post_id/likes', likeController.list);
+Router.get("/posts/:id/likes", likeController.list);
 
 Router.get("/users/:id/posts", postController.listUserPosts);
 //get only jobs from certain business
@@ -30,6 +29,7 @@ Router.post("/posts", postController.create);
 Router.post("/comments", commentController.create);
 Router.post("/likes", likeController.create);
 Router.post("/jobs", jobController.create);
+Router.post("/bookmarks", bookmarkController.create);
 
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);
@@ -44,11 +44,28 @@ Router.patch("/jobs/:id", jobController.update);
 Router.post("/users/login", userController.login);
 Router.delete("/users/logout", userController.logout);
 Router.delete("/users/delete", userController.deleteUser);
+
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
+Router.delete("/bookmarks/:id", bookmarkController.deleteBookmark);
 Router.delete("/likes/:id", likeController.deleteLike);
 Router.delete("/jobs/:id", jobController.deleteJob);
-Router.get("/me", userController.showMe);
+
+Router.get("/me", async (req, res) => {
+  const {
+    session,
+    db: { User, Business },
+  } = req;
+  const { userId, userType } = session;
+  if (!userType) return res.sendStatus(401);
+  else if (userType === "user") {
+    const user = await User.find(userId);
+    res.send(user);
+  } else if (userId === "business") {
+    const business = await Business.find(userId);
+    res.send(business);
+  }
+});
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
   res.send({ msg: "The secret is: there is no secret." });

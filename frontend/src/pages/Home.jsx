@@ -10,7 +10,7 @@ export default function Home() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   if (!currentUser) return <Navigate to="/landing" />;
-  console.log(currentUser);
+
   return (
     <div className="home">
       <Menu />
