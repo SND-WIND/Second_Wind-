@@ -11,7 +11,7 @@ export default function BookmarksPage() {
 
   if (!currentUser) return <Navigate to="/landing" />;
     return (
-        <div>
+        <div className="page-container">
             <Menu />
             <h1>Bookmarks!</h1>
             <Messages />
