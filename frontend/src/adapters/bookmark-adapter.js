@@ -12,7 +12,10 @@ export const createBookmark = async ({ post_id }) => {
   return bookmark;
 };
 
-export const deleteBookmark = async ({ post_id }) => {
-  const [bookmark] = await fetchHandler(baseUrl, deleteOptions({ post_id }));
+export const deleteBookmark = async ({ bookmark_id }) => {
+  const [bookmark] = await fetchHandler(
+    `${baseUrl}/${bookmark_id}`,
+    deleteOptions
+  );
   return bookmark;
 };

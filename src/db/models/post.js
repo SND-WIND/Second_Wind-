@@ -21,7 +21,8 @@ class Post {
         CASE
           WHEN bookmarks.post_id IS NOT NULL THEN true
           ELSE false
-        END AS bookmarked
+        END AS bookmarked,
+        bookmarks.id AS bookmark_id
         FROM posts
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
         LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false

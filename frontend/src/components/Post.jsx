@@ -13,7 +13,7 @@ function Post({ post }) {
 
   const [likes, setLikes] = useState([]);
   const [comments, setComments] = useState([]);
-  const [bookmarkId, setBookmarkId] = useState(null);
+  const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
 
   const handleClick = (e) => {
     console.log(post);
@@ -24,21 +24,17 @@ function Post({ post }) {
     }
     navigate(`/users/${post.user_id}`);
   };
-  
+
   useEffect(() => {
-    
     setLikes();
-    
   }, [post]);
 
-
   const handleLike = async (post, id) => {
-    console.log("post", post, id)
+    console.log("post", post, id);
     await createLike(post, id);
-    
-    let res = await getLikes(post)
-    console.log(res)
-    
+
+    let res = await getLikes(post);
+    console.log(res);
   };
 
   const handleComment = async (e) => {
@@ -50,12 +46,21 @@ function Post({ post }) {
   };
 
   const handleBookmark = async (e) => {
-    const data = post.bookmarked
-      ? await deleteBookmark({ post_id: post.id })
-      : await createBookmark({ post_id: post.id });
-    // const data = await createBookmark({ post_id: post.id });
+    // const data = post.bookmarked
+    //   ? await deleteBookmark({ bookmark_id: bookmarkId })
+    //   : await createBookmark({ post_id: post.id });
+    // // const data = await createBookmark({ post_id: post.id });
     // setBookmarkId(data.id);
-    console.log(data);
+    // console.log(data);
+    if (bookmarkId) {
+      const data = await deleteBookmark({ bookmark_id: bookmarkId });
+      console.log(data);
+      setBookmarkId(null);
+    } else {
+      const data = await createBookmark({ post_id: post.id });
+      console.log(data);
+      setBookmarkId(data.id);
+    }
   };
 
   const handleEdit = async (e) => {

@@ -5,7 +5,7 @@ const createPost = async (req, res) => {
     body: { caption, imageUrl, accountType },
   } = req;
 
-  const { userId, userType } = session.userId;
+  const { userId, userType } = session;
 
   const post = await Post.create({
     user_id: userId,
@@ -18,4 +18,3 @@ const createPost = async (req, res) => {
 };
 
 module.exports = createPost;
-

@@ -46,6 +46,7 @@ Router.delete("/users/logout", userController.logout);
 Router.delete("/users/delete", userController.deleteUser);
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
+Router.delete("/bookmarks/:id", bookmarkController.deleteBookmark);
 // Router.get("/me", userController.showMe);
 Router.get("/me", async (req, res) => {
   const {
@@ -53,11 +54,9 @@ Router.get("/me", async (req, res) => {
     db: { User, Business },
   } = req;
   const { userId, userType } = session;
-  // console.log(userId, userType);
   if (!userType) return res.sendStatus(401);
   else if (userType === "user") {
     const user = await User.find(userId);
-    console.log(user);
     res.send(user);
   } else if (userId === "business") {
     const business = await Business.find(userId);
