@@ -13,7 +13,7 @@ import settings from "../SVG/settings_4_fill.svg";
 export default function Menu() {
   const { currentUser } = useContext(CurrentUserContext);
   return (
-    <div className="menu">
+    <div className="menu left-item" >
       <div className="menu-container">
         <img src={logo} alt="" width="200px" />
         <div className="menu-items">
