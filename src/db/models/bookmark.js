@@ -5,7 +5,6 @@ class Bookmark {
     this.id = id;
     this.caption = caption;
     this.image_url = image_url;
-    this.bookmarked = true;
   }
 
   static async list({ user_id, account_type }) {
@@ -19,13 +18,15 @@ class Bookmark {
           WHEN posts.account_type = true THEN users.profile_image
           WHEN posts.account_type = false THEN businesses.profile_image
         END AS profile_image,
-        likes.id AS like_id
+        likes.id AS like_id,
+        COUNT(likes.id) AS like_count
         FROM bookmarks
         JOIN posts ON bookmarks.post_id = posts.id
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
         LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
         LEFT JOIN likes ON likes.post_id = posts.id AND likes.user_id = ? AND likes.account_type = ?
-        WHERE bookmarks.user_id = ? AND bookmarks.account_type = ?;`;
+        WHERE bookmarks.user_id = ? AND bookmarks.account_type = ?
+        GROUP BY posts.id, users.username, businesses.username, users.profile_image, businesses.profile_image, bookmarks.id, likes.id;`;
       const { rows } = await knex.raw(query, [
         user_id,
         account_type,

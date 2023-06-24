@@ -98,7 +98,7 @@ function Post({ post }) {
             <img src={LikeIcon} alt="" className="like-icon" />
             <h5>Like</h5>
           </div>
-          <span>{post.likes}</span>
+          <span>{post.like_count}</span>
         </div>
 
         <div className="post-comments">
