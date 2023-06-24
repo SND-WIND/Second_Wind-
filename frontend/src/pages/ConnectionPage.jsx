@@ -4,15 +4,14 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import Messages from "../components/Messages";
 import Connections from "../components/Connections";
-import "../styles/Home.css";
-import "../styles/reset.css";
+import "../styles/Connection.css";
 
 export default function ConnectPage() {
     const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   if (!currentUser) return <Navigate to="/landing" />;
     return (
-        <div>
+        <div className="connect-container">
             <Menu />
             <Connections />
             <Messages />

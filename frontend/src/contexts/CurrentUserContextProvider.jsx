@@ -10,7 +10,7 @@ export default function CurrentUserContextProvider({ children }) {
     async function getCurrentUser() {
       const user = await checkForLoggedInUser();
       console.log(user);
-      setAccountType(user.type);
+      setAccountType(user.accountType);
     }
     getCurrentUser();
   }, []);

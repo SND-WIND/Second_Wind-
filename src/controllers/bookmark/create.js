@@ -5,10 +5,11 @@ const createBookmarks = async (req, res) => {
     body: { post_id },
   } = req;
 
-  const userId = session.userId;
+  const { userId, userType } = session;
 
   const bookmark = await Bookmark.create({
     user_id: userId,
+    account_type: userType === "user",
     post_id,
   });
 

@@ -18,7 +18,7 @@ export default function LoginPage() {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    setAccountType("Personal"); // will change this later
+    setAccountType("user"); // will change this later
 
     const [user, error] = await logUserIn({ username, password });
     if (error) return setErrorText(error.statusText);
@@ -30,27 +30,31 @@ export default function LoginPage() {
 
   return (
     <div className="login-container">
-      <div className="login-form">
+      <div className="login">
         <img src={logo} alt="Logo" className="logo" />
-        <h1>Login</h1>
         {!!errorText && <p>{errorText}</p>}
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h1>Login</h1>
           <label htmlFor="username">Username</label>
           <input type="text" id="username" name="username" required />
 
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />
 
-          <button type="submit">Log in</button>
+          <button className="login-btn" type="submit">
+            Log in
+          </button>
+          <h5>
+            Don't have an account?{" "}
+            <Link to="/sign-up" className="signup-link">
+              Create Account
+            </Link>
+          </h5>
         </form>
-        <p>
-          Don't have an account?{" "}
-          <Link to="/sign-up" className="signup-link">
-            Sign up!
-          </Link>
-        </p>
       </div>
-      <div className="login-image"></div>
+      <div className="login-img-section">
+        <div className="login-image"></div>
+      </div>
     </div>
   );
 }

@@ -6,7 +6,6 @@ exports.up = (knex) => {
   return knex.schema.createTable("posts", (table) => {
     table.increments().primary();
     table.integer("user_id").notNullable();
-    // table.foreign("user_id").references("id").inTable("users");
     table.boolean("account_type").notNullable();
     table.string("caption");
     table.string("image_url");

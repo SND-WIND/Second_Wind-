@@ -4,11 +4,13 @@ const { hashPassword, isValidPassword } = require("../../utils/auth-utils");
 class User {
   #passwordHash = null;
 
-  constructor({ id, username, password }) {
+  constructor({ id, username, full_name, email, password }) {
     this.id = id;
     this.username = username;
-    this.type = "user";
+    this.fullName = full_name;
+    this.email = email;
     this.#passwordHash = password;
+    this.accountType = "user";
   }
 
   static async list() {

@@ -1,0 +1,8 @@
+.connect-container {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 80px;
+  padding: 10px;
+  justify-content: space-between;
+}

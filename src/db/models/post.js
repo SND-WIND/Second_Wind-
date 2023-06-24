@@ -7,21 +7,26 @@ class Post {
     this.image_url = image_url;
   }
 
-  static async list() {
+  static async list({ user_id, account_type }) {
     try {
-      const query = `SELECT posts.*, 
-      CASE
-        WHEN posts.account_type = true THEN users.username
-        WHEN posts.account_type = false THEN businesses.username
-      END AS username,
-      CASE
-        WHEN posts.account_type = true THEN users.profile_image
-        WHEN posts.account_type = false THEN businesses.profile_image
-      END AS profile_image
-      FROM posts
-      LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
-      LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false;`;
-      const { rows } = await knex.raw(query);
+      const query = `SELECT posts.*,
+        CASE
+          WHEN posts.account_type = true THEN users.username
+          WHEN posts.account_type = false THEN businesses.username
+        END AS username,
+        CASE
+          WHEN posts.account_type = true THEN users.profile_image
+          WHEN posts.account_type = false THEN businesses.profile_image
+        END AS profile_image,
+        CASE
+          WHEN bookmarks.post_id IS NOT NULL THEN true
+          ELSE false
+        END AS bookmarked
+        FROM posts
+        LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
+        LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
+        LEFT JOIN bookmarks ON bookmarks.post_id = posts.id AND bookmarks.user_id = ? AND bookmarks.account_type = ?;`;
+      const { rows } = await knex.raw(query, [user_id, account_type]);
       return rows;
     } catch (err) {
       console.error(err);
