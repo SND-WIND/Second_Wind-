@@ -18,11 +18,7 @@ class Bookmark {
         CASE
           WHEN posts.account_type = true THEN users.profile_image
           WHEN posts.account_type = false THEN businesses.profile_image
-        END AS profile_image,
-        CASE
-          WHEN bookmarks.id IS NOT NULL THEN true
-          ELSE false
-        END AS bookmarked
+        END AS profile_image
         FROM bookmarks
         JOIN posts ON bookmarks.post_id = posts.id
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true

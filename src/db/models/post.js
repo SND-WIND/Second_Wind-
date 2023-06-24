@@ -18,10 +18,6 @@ class Post {
           WHEN posts.account_type = true THEN users.profile_image
           WHEN posts.account_type = false THEN businesses.profile_image
         END AS profile_image,
-        CASE
-          WHEN bookmarks.post_id IS NOT NULL THEN true
-          ELSE false
-        END AS bookmarked,
         bookmarks.id AS bookmark_id
         FROM posts
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
@@ -45,12 +41,19 @@ class Post {
       CASE
         WHEN posts.account_type = true THEN users.profile_image
         WHEN posts.account_type = false THEN businesses.profile_image
-      END AS profile_image
+      END AS profile_image,
+      bookmarks.id AS bookmark_id
       FROM posts
       LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
       LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
+      LEFT JOIN bookmarks ON bookmarks.post_id = posts.id AND bookmarks.user_id = ? AND bookmarks.account_type = ?
       WHERE posts.user_id = ? AND posts.account_type = ?;`;
-      const { rows } = await knex.raw(query, [user_id, account_type]);
+      const { rows } = await knex.raw(query, [
+        user_id,
+        account_type,
+        user_id,
+        account_type,
+      ]);
       return rows;
     } catch (err) {
       console.error(err);
