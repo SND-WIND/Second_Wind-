@@ -18,13 +18,20 @@ class Bookmark {
         CASE
           WHEN posts.account_type = true THEN users.profile_image
           WHEN posts.account_type = false THEN businesses.profile_image
-        END AS profile_image
+        END AS profile_image,
+        likes.id AS like_id
         FROM bookmarks
         JOIN posts ON bookmarks.post_id = posts.id
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
         LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
+        LEFT JOIN likes ON likes.post_id = posts.id AND likes.user_id = ? AND likes.account_type = ?
         WHERE bookmarks.user_id = ? AND bookmarks.account_type = ?;`;
-      const { rows } = await knex.raw(query, [user_id, account_type]);
+      const { rows } = await knex.raw(query, [
+        user_id,
+        account_type,
+        user_id,
+        account_type,
+      ]);
       return rows;
     } catch (err) {
       console.error(err);

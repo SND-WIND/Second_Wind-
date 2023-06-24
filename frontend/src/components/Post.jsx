@@ -5,13 +5,13 @@ import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
-import { createLike, getLikes } from "../adapters/likes-adapter";
+import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
 
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
 
-  const [likes, setLikes] = useState([]);
+  const [likeId, setLikeId] = useState(post.like_id);
   const [comments, setComments] = useState([]);
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
 
@@ -25,16 +25,25 @@ function Post({ post }) {
     navigate(`/users/${post.user_id}`);
   };
 
-  useEffect(() => {
-    setLikes();
-  }, [post]);
+  // useEffect(() => {
+  //   setLikes();
+  // }, [post]);
 
-  const handleLike = async (post, id) => {
-    console.log("post", post, id);
-    await createLike(post, id);
+  const handleLike = async (e) => {
+    // console.log("post", post, id);
+    // await createLike(post, id);
 
-    let res = await getLikes(post);
-    console.log(res);
+    // let res = await getLikes(post);
+    // console.log(res);
+    if (likeId) {
+      const data = await deleteLike({ like_id: likeId });
+      console.log(data);
+      setLikeId(null);
+    } else {
+      const data = await createLike({ post_id: post.id });
+      console.log(data);
+      setLikeId(data.id);
+    }
   };
 
   const handleComment = async (e) => {
@@ -46,12 +55,6 @@ function Post({ post }) {
   };
 
   const handleBookmark = async (e) => {
-    // const data = post.bookmarked
-    //   ? await deleteBookmark({ bookmark_id: bookmarkId })
-    //   : await createBookmark({ post_id: post.id });
-    // // const data = await createBookmark({ post_id: post.id });
-    // setBookmarkId(data.id);
-    // console.log(data);
     if (bookmarkId) {
       const data = await deleteBookmark({ bookmark_id: bookmarkId });
       console.log(data);

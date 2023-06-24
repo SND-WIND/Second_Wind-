@@ -16,16 +16,16 @@ class Like {
       .first();
   }
 
-  static async create({ user_id, post_id }) {
+  static async create({ user_id, post_id, account_type }) {
     try {
-      const result = await knex.raw(
-        `
-         INSERT INTO likes (user_id, post_id)
-         VALUES (?, ?) RETURNING *`,
-        [user_id, post_id]
-      );
-      console.log("model", user_id, post_id);
-      return result.rows[0];
+      const [like] = await knex("likes")
+        .insert({
+          user_id,
+          post_id,
+          account_type,
+        })
+        .returning("*");
+      return like;
     } catch (err) {
       console.error(err);
       return null;

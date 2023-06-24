@@ -44,10 +44,13 @@ Router.patch("/jobs/:id", jobController.update);
 Router.post("/users/login", userController.login);
 Router.delete("/users/logout", userController.logout);
 Router.delete("/users/delete", userController.deleteUser);
+
 Router.delete("/posts/:id", postController.deletePost);
 Router.delete("/comments/:id", commentController.deleteComment);
 Router.delete("/bookmarks/:id", bookmarkController.deleteBookmark);
-// Router.get("/me", userController.showMe);
+Router.delete("/likes/:id", likeController.deleteLike);
+Router.delete("/jobs/:id", jobController.deleteJob);
+
 Router.get("/me", async (req, res) => {
   const {
     session,
@@ -63,8 +66,6 @@ Router.get("/me", async (req, res) => {
     res.send(business);
   }
 });
-Router.delete("/likes/:id", likeController.deleteLike);
-Router.delete("/jobs/:id", jobController.deleteJob);
 
 Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
   res.send({ msg: "The secret is: there is no secret." });

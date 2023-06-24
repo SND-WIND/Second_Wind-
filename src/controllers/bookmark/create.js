@@ -1,4 +1,4 @@
-const createBookmarks = async (req, res) => {
+const createBookmark = async (req, res) => {
   const {
     session,
     db: { Bookmark },
@@ -6,14 +6,16 @@ const createBookmarks = async (req, res) => {
   } = req;
 
   const { userId, userType } = session;
+  if (!userId || !userType) return res.sendStatus(401);
 
   const bookmark = await Bookmark.create({
     user_id: userId,
     account_type: userType === "user",
     post_id,
   });
+  if (!bookmark) return res.status(404);
 
-  res.send(bookmark);
+  res.status(201).send(bookmark);
 };
 
-module.exports = createBookmarks;
+module.exports = createBookmark;
