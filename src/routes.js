@@ -34,7 +34,7 @@ Router.post("/bookmarks", bookmarkController.create);
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);
 Router.get("/comments/:id", commentController.find);
-Router.get("jobs", jobController.find);
+Router.get("/jobs/:id", jobController.find);
 // We can use middleware slotted in between the route and the controller as well
 Router.patch("/users/:id", checkAuthentication, userController.update);
 Router.patch("/posts/:id", postController.update);

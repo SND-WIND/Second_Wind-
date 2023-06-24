@@ -228,3 +228,27 @@ picture {
     color: var(--clr-light);
     gap: 10px;
 }
+
+.page-container {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    gap: 80px;
+    padding: 10px;
+    justify-content: center;
+    color:var(--clr-light);
+  }
+
+  /* .left-item {
+    position: fixed;
+    left: 0;
+  }
+  
+  .right-item {
+    position: fixed;
+    right: 0;
+  }
+
+  .middle-item {
+    margin: 0 auto;
+  } */

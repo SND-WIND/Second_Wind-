@@ -18,7 +18,7 @@ export default function News() {
     }, []);
 
     return (
-        <div>
+        <div className="middle-item">
             <h1>News</h1>
             {articles.map((article) => (
                 <div key={article.url}>

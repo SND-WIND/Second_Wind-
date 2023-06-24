@@ -5,6 +5,7 @@ import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
+import { createLike, getLikes } from "../adapters/likes-adapter";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -23,30 +24,21 @@ function Post({ post }) {
     }
     navigate(`/users/${post.user_id}`);
   };
+  
+  useEffect(() => {
+    
+    setLikes();
+    
+  }, [post]);
 
-  // useEffect(() => {
-  //   const fetchLikes = async () => {
-  //     const res = await fetch(`/api/posts/${post.id}/likes`);
-  //     if (res.ok) {
-  //       const data = await res.json();
-  //       setLikes(data);
-  //     }
-  //   };
-  //   fetchLikes();
-  // }, [post.id]);
 
-  const handleLike = async (e) => {
-    // const res = await fetch(`/api/posts/${post.id}/like`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // if (res.ok) {
-    //   const data = await res.json();
-    //   console.log(data);
-    // }
-    console.log(e);
+  const handleLike = async (post, id) => {
+    console.log("post", post, id)
+    await createLike(post, id);
+    
+    let res = await getLikes(post)
+    console.log(res)
+    
   };
 
   const handleComment = async (e) => {
