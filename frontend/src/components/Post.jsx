@@ -2,18 +2,20 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
+import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
+import { createComment } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
-import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
 
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
 
   const [likeId, setLikeId] = useState(post.like_id);
-  const [comments, setComments] = useState([]);
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
+  const [comments, setComments] = useState([]);
+  const [commentTextValue, setCommentTextValue] = useState("");
 
   const handleClick = (e) => {
     console.log(post);
@@ -47,8 +49,17 @@ function Post({ post }) {
   };
 
   const handleComment = async (e) => {
-    console.log(e);
+    e.preventDefault();
+    console.log(commentTextValue);
+    const [data] = await createComment({
+      comment: commentTextValue,
+      post_id: post.id,
+    });
+    console.log(data);
   };
+
+  const handleCommentTextChange = async (e) =>
+    setCommentTextValue(e.target.value);
 
   const openComments = async (e) => {
     console.log(e);
@@ -102,11 +113,11 @@ function Post({ post }) {
         </div>
 
         <div className="post-comments">
-          <div className="lcb" onClick={() => openComments(post.id)}>
+          <div className="lcb" onClick={openComments}>
             <img src={CommentIcon} alt="" className="like-icon" />
             <h5>Comment</h5>
           </div>
-          <span>{/*post.comments.length*/}</span>
+          <span>{/*post.comment_count*/}</span>
         </div>
 
         <div className="post-bookmarks">
@@ -132,7 +143,11 @@ function Post({ post }) {
           </div>
           <h5>{post.username}</h5>
         </div>
-        <textarea type="text" placeholder="Add a comment..." />
+        <textarea
+          type="text"
+          placeholder="Add a comment..."
+          onChange={handleCommentTextChange}
+        />
         <button onClick={handleComment}>Submit</button>
       </form>
     </div>
