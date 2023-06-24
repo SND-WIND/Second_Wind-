@@ -1,13 +1,4 @@
-.connect-container {
-  display: flex;
-  width: 100vw;
-  min-height: 100vh;
-  gap: 80px;
-  padding: 10px;
-  justify-content: space-between;
-  background-color: var(--clr-black);
-  color: var(--clr-light);
-}
+
 
 .card-subtitle, .card-text {
   color: var(--clr-light);

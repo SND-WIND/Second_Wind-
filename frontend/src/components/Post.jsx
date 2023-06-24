@@ -7,46 +7,89 @@ import {
   useParams,
 } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
+import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
+import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
+import { createComment } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
-import { createLike, getLikes } from "../adapters/likes-adapter";
-import optionsIcon from "../SVG/options_icon.svg";
-import UpdatePostModal from "../components/UpdatePostModal"
 
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
-  const { id } = useParams();
-  const href = useHref();
-  const [likes, setLikes] = useState([]);
-  // const [modal, setModal] = useState(false);
 
-  // const toggle = () => setModal(!modal);
+  const [likeId, setLikeId] = useState(post.like_id);
+  const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
+  const [comments, setComments] = useState([]);
+  const [commentTextValue, setCommentTextValue] = useState("");
 
   const handleClick = (e) => {
+    console.log(post);
+    if (post.account_type) {
+      // navigate(`/users/${post.user_id}`);
+    } else {
+      // navigate(`/businesses/${post.business_id}`);
+    }
     navigate(`/users/${post.user_id}`);
   };
 
-  useEffect(() => {
-    setLikes();
-  }, [post]);
+  // useEffect(() => {
+  //   setLikes();
+  // }, [post]);
 
-  const handleLike = async (post, id) => {
-    console.log("post", post, id);
-    await createLike(post, id);
+  const handleLike = async (e) => {
+    // console.log("post", post, id);
+    // await createLike(post, id);
 
-    let res = await getLikes(post);
-    console.log(res);
+    // let res = await getLikes(post);
+    // console.log(res);
+    if (likeId) {
+      const data = await deleteLike({ like_id: likeId });
+      console.log(data);
+      setLikeId(null);
+    } else {
+      const data = await createLike({ post_id: post.id });
+      console.log(data);
+      setLikeId(data.id);
+    }
   };
 
-  const handleComment = async (e) => {};
+  const handleComment = async (e) => {
+    e.preventDefault();
+    console.log(commentTextValue);
+    const [data] = await createComment({
+      comment: commentTextValue,
+      post_id: post.id,
+    });
+    console.log(data);
+  };
 
-  const handleBookmark = async (e) => {};
+  const handleCommentTextChange = async (e) =>
+    setCommentTextValue(e.target.value);
 
-  const handleEdit = async (e) => {};
+  const openComments = async (e) => {
+    console.log(e);
+  };
 
-  const handleDelete = async (e) => {};
+  const handleBookmark = async (e) => {
+    if (bookmarkId) {
+      const data = await deleteBookmark({ bookmark_id: bookmarkId });
+      console.log(data);
+      setBookmarkId(null);
+    } else {
+      const data = await createBookmark({ post_id: post.id });
+      console.log(data);
+      setBookmarkId(data.id);
+    }
+  };
+
+  const handleEdit = async (e) => {
+    console.log(e);
+  };
+
+  const handleDelete = async (e) => {
+    console.log(e);
+  };
 
   return (
     <div className="post-container" data-post-id={post.id}>
@@ -77,23 +120,23 @@ function Post({ post }) {
         <div className="post-likes lcb">
           <div onClick={handleLike} className="lcb">
             <img src={LikeIcon} alt="" className="like-icon" />
-            <h5>Likes</h5>
+            <h5>Like</h5>
           </div>
-          <span>{post.likes}</span>
+          <span>{post.like_count}</span>
         </div>
 
         <div className="post-comments">
-          <div className="lcb" onClick={() => openComments(post.id)}>
+          <div className="lcb" onClick={openComments}>
             <img src={CommentIcon} alt="" className="like-icon" />
             <h5>Comment</h5>
           </div>
-          <span>{/*post.comments.length*/}</span>
+          <span>{/*post.comment_count*/}</span>
         </div>
 
         <div className="post-bookmarks">
           <div onClick={handleBookmark} className="lcb">
             <img src={BookmarkIcon} alt="" className="bookmark-icon" />
-            <h5>Bookmarks</h5>
+            <h5>Bookmark</h5>
           </div>
           <span>{post.likes}</span>
         </div>
@@ -113,7 +156,11 @@ function Post({ post }) {
           </div>
           <h5>{post.username}</h5>
         </div>
-        <textarea type="text" placeholder="Add a comment..." />
+        <textarea
+          type="text"
+          placeholder="Add a comment..."
+          onChange={handleCommentTextChange}
+        />
         <button onClick={handleComment}>Submit</button>
       </form>
     </div>

@@ -30,7 +30,7 @@ export default function SignUpPage() {
     event.preventDefault();
     setErrorText("");
     if (password !== passwordConfirm) setErrorText("Passwords do not match");
-    if (accountType === "Personal") {
+    if (accountType === "user") {
       const [user, error] = await createUser({
         username,
         fullName,
@@ -41,7 +41,7 @@ export default function SignUpPage() {
       setCurrentUser(user);
       if (error) return setErrorText(error.statusText);
     }
-    if (accountType === "Organization") {
+    if (accountType === "business") {
       const [business, error] = await createBusiness({
         username,
         companyName: fullName,

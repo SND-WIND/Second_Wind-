@@ -3,6 +3,7 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import Menu from "../components/Menu";
 import PostList from "../components/PostList";
+import Messages from "../components/Messages";
 
 export default function BookmarksPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -13,6 +14,7 @@ export default function BookmarksPage() {
     <>
       <Menu />
       <PostList />
+      <Messages />
     </>
   );
 }
