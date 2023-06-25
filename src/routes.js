@@ -15,7 +15,7 @@ Router.use(addModels);
 Router.get("/users", userController.list);
 Router.get("/posts", postController.list);
 Router.get("/bookmarks", bookmarkController.list);
-Router.get("/comments", commentController.list);
+Router.post("/comments/list", commentController.list);
 Router.get("/jobs", jobController.list);
 
 Router.get("/posts/:id/likes", likeController.list);
@@ -61,7 +61,7 @@ Router.get("/me", async (req, res) => {
   else if (userType === "user") {
     const user = await User.find(userId);
     res.send(user);
-  } else if (userId === "business") {
+  } else if (userType === "business") {
     const business = await Business.find(userId);
     res.send(business);
   }

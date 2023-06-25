@@ -6,9 +6,15 @@ class Comment {
     this.comment = comment;
   }
 
-  static async list() {
-    const result = await knex.raw("SELECT * FROM comments");
-    return result.rows;
+  static async list({ post_id }) {
+    try {
+      const query = "SELECT * FROM comments WHERE post_id = ?";
+      const { rows } = await knex.raw(query, [post_id]);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 
   static async find(id) {

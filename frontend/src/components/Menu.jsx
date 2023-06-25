@@ -12,8 +12,10 @@ import settings from "../SVG/settings_4_fill.svg";
 
 export default function Menu() {
   const { currentUser } = useContext(CurrentUserContext);
+  const profilePage =
+    currentUser.accountType === "user" ? "users" : "businesses";
   return (
-    <div className="menu left-item" >
+    <div className="menu left-item">
       <div className="menu-container">
         <img src={logo} alt="" width="200px" />
         <div className="menu-items">
@@ -36,20 +38,20 @@ export default function Menu() {
             </div>
           </Link>
           <Link to="/jobs">
-          <div className="menu-item">
-            <img src={jobs} alt="" />
-            <h4>Jobs</h4>
-          </div>
+            <div className="menu-item">
+              <img src={jobs} alt="" />
+              <h4>Jobs</h4>
+            </div>
           </Link>
           <Link to="/bookmarks">
-          <div className="menu-item">
-            <img src={bookmarks} alt="" />
-            <h4>Bookmarks</h4>
-          </div>
+            <div className="menu-item">
+              <img src={bookmarks} alt="" />
+              <h4>Bookmarks</h4>
+            </div>
           </Link>
         </div>
         <div className="profile-settings">
-          <Link to={`/users/${currentUser?.id}`}>
+          <Link to={`/${profilePage}/${currentUser?.id}`}>
             <div className="menu-item">
               <img src={profile} alt="" />
               <h4>Profile</h4>

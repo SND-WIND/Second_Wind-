@@ -4,12 +4,8 @@
   min-height: 100vh;
   gap: 80px;
   padding: 10px;
-}
+  background-color: var(--clr-black);
 
-body {
-    display: flex;
-    width: 100vw;
-    background-color: var(--clr-black);
 }
 
 .feed-container {
@@ -22,12 +18,18 @@ body {
   background-color: var(--clr-grey);
   padding: 10px;
   border-radius: 15px;
-  width: 100%;
 }
 
-.profile-caption {
+.post-list {
   display: flex;
+  flex-direction: column;
   gap: 20px;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #151515;
 }
 
 .post-form {
@@ -37,6 +39,17 @@ body {
   border: none;
   border-radius: 10px;
   padding: 10px;
+}
+
+.name-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-caption {
+  display: flex;
+  width: 100%;
+  gap: 20px;
 }
 
 .post-btn:hover {
@@ -143,3 +156,39 @@ textarea {
   display: "inline-block";
   vertical-align: "top";
 } */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Greyish overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  margin-right: 10px;
+}
+

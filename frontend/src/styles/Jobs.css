@@ -5,6 +5,7 @@
   gap: 80px;
   padding: 10px;
   justify-content: space-between;
+  background-color: var(--clr-black);
 }
 
 .jobs-search-container{

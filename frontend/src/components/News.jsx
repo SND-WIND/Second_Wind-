@@ -14,21 +14,28 @@ export default function News() {
         )
             .then((response) => response.json())
             .then((data) => setArticles(data.articles));
-            
     }, []);
-
+            console.log(articles);
     return (
-        <div className="middle-item">
-            <h1>News</h1>
-            {articles.map((article) => (
-                <div key={article.url}>
-                    <h2>{article.title}</h2>
-                    <img src={article.urlToImage} alt={article.title} />
-                    <p>{article.description}</p>
-                    <a href={article.url}>Read more</a>
-                </div>
-            ))}
-        </div>
+      <div className="middle-item">
+        <h1>News</h1>
+        {articles.map((article) => (
+          <div key={article.url} className="blog-card">
+            <div className="blog-info">
+              <h3>{article.title}</h3>
+              <h5>{article.author}</h5>
+              <p className="blog-description">{article.description}</p>
+              <a className="read-btn" href={article.url}>Read more</a>
+            </div>
+            <div
+              style={{ backgroundImage: `url(${article.urlToImage})` }}
+              src={article.urlToImage}
+              className="card-img"
+              alt={article.title}
+            ></div>
+          </div>
+        ))}
+      </div>
     );
 
 

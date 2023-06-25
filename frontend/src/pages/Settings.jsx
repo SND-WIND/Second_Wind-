@@ -3,9 +3,8 @@ import { useNavigate, Navigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import { logUserOut, deleteAccount } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
-import '../styles/Settings.css'
-import MyToggle from "../components/MyToggle";
-
+import SettingsToggle from "../components/SettingsToggle";
+import "../styles/Settings.css";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -32,21 +31,17 @@ export default function SettingsPage() {
 
   return (
     <div className="settings-page">
-    <div className="settings">
       <Menu />
-      <div className="settings-form">
-      <MyToggle />
-        <div  className='settings-button'>
-{/* once I link stuff up the styling will be applied */}
-      <button name="logout" id="logout" onClick={handleLogout}>
-        Logout
-      </button>
-      <button name="terminate" id="terminate" onClick={handleTerminate}>
-        Terminate Account
-      </button>
-        </div>
-      </div>
-    </div>
+      <SettingsToggle />
+      {/* <div className="settings-button">
+            once I link stuff up the styling will be applied
+            <button name="logout" id="logout" onClick={handleLogout}>
+              Logout
+            </button>
+            <button name="terminate" id="terminate" onClick={handleTerminate}>
+              Terminate Account
+            </button>
+          </div> */}
     </div>
   );
 }

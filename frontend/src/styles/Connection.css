@@ -3,10 +3,12 @@
 .card-subtitle, .card-text {
   color: var(--clr-light);
 }
+
 .card-image{
   width:3em;
   height: 4em;
 }
+
 .card{
   background-color: blueviolet;
   border-radius: 10px;

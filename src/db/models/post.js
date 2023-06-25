@@ -20,7 +20,11 @@ class Post {
         END AS profile_image,
         bookmarks.id AS bookmark_id,
         likes.id AS like_id,
-        COUNT(likes.id) AS like_count
+        (
+          SELECT COUNT(*)
+          FROM likes
+          WHERE likes.post_id = posts.id
+        ) AS like_count
         FROM posts
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
         LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
@@ -53,13 +57,17 @@ class Post {
       END AS profile_image,
       bookmarks.id AS bookmark_id,
       likes.id AS like_id,
-      COUNT(likes.id) AS like_count
+      (
+        SELECT COUNT(*)
+        FROM likes
+        WHERE likes.post_id = posts.id
+      ) AS like_count
       FROM posts
       LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
       LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
       LEFT JOIN bookmarks ON bookmarks.post_id = posts.id AND bookmarks.user_id = ? AND bookmarks.account_type = ?
       LEFT JOIN likes ON likes.post_id = posts.id AND likes.user_id = ? AND likes.account_type = ?
-      WHERE posts.user_id = ? AND posts.account_type = ?;
+      WHERE posts.user_id = ? AND posts.account_type = ?
       GROUP BY posts.id, users.username, businesses.username, users.profile_image, businesses.profile_image, bookmarks.id, likes.id;`;
       const { rows } = await knex.raw(query, [
         user_id,

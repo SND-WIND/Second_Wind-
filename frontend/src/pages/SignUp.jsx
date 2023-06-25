@@ -3,9 +3,9 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
 import { createBusiness } from "../adapters/business-adapter";
-import "../styles/SignUp.css";
-import logo from "../SVG/logo_purple.svg";
 import AccountBox from "../components/AccountBox";
+import logo from "../SVG/logo_purple.svg";
+import "../styles/SignUp.css";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <>
+    <div className="sign-up-container">
       {!showForm && (
         <div
           className="header-two-boxes-container"
@@ -176,6 +176,6 @@ export default function SignUpPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

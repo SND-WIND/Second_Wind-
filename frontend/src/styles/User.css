@@ -1,0 +1,30 @@
+.profile-container {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 80px;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: var(--clr-black);
+}
+
+.cover-img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-picture {
+  position: relative;
+  top: -100px;
+  left: 30px;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.profile-username {
+  color: var(--clr-light);
+}
