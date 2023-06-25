@@ -8,7 +8,8 @@ import "../styles/Login.css";
 export default function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState("");
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, setAccountType } =
+    useContext(CurrentUserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,6 +17,8 @@ export default function LoginPage() {
     const formData = new FormData(event.target);
     const username = formData.get("username");
     const password = formData.get("password");
+
+    setAccountType("user"); // will change this later
 
     const [user, error] = await logUserIn({ username, password });
     if (error) return setErrorText(error.statusText);

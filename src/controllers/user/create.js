@@ -16,6 +16,7 @@ const createUser = async (req, res) => {
   if (!user) return res.sendStatus(404);
 
   session.userId = user.id;
+  session.userType = "user";
   user.type = "user";
 
   res.send(user);

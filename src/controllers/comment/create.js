@@ -5,12 +5,17 @@ const createComment = async (req, res) => {
     body: { post_id, comment },
   } = req;
 
-  const userId = session.userId;
+  const { userId, userType } = session;
+  if (!userId || !userType) return res.sendStatus(401);
 
-  console.log('controller', userId, post_id, comment );
+  const createdComment = await Comment.create({
+    user_id: userId,
+    account_type: userType === "user",
+    post_id,
+    comment,
+  });
 
-  const createdComment = await Comment.create({ user_id: userId, post_id, comment });
-  console.log(createdComment);
+  if (!createdComment) return res.status(404);
 
   res.send(createdComment);
 };

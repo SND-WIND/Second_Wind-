@@ -12,7 +12,7 @@ export default function NewsPage() {
 
   if (!currentUser) return <Navigate to="/landing" />;
     return (
-        <div>
+        <div className="page-container">
             <Menu />
             <News />
             <Messages />

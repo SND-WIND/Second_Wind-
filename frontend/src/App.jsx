@@ -15,7 +15,7 @@ import SettingsPage from './pages/Settings';
 import ConnectPage from './pages/ConnectionPage';
 import NewsPage from './pages/NewsPage';
 import JobsPage from './pages/JobsPage';
-import BookmarksPage from './pages/BookmarksPage';
+import BookmarksPage from './pages/Bookmarks';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
