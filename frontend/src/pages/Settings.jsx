@@ -4,8 +4,8 @@ import Menu from "../components/Menu";
 import { logUserOut, deleteAccount } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import '../styles/Settings.css'
-import SettingsForm1 from "../components/SettingsForm1";
-// import SettingsForm2 from "../components/SettingsForm2";
+import MyToggle from "../components/MyToggle";
+
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -31,11 +31,12 @@ export default function SettingsPage() {
   if (!currentUser) return <Navigate to="/landing" />;
 
   return (
+    <div className="settings-page">
     <div className="settings">
       <Menu />
       <div className="settings-form">
-      <SettingsForm1 />
-        <div>
+      <MyToggle />
+        <div  className='settings-button'>
 {/* once I link stuff up the styling will be applied */}
       <button name="logout" id="logout" onClick={handleLogout}>
         Logout
@@ -45,6 +46,7 @@ export default function SettingsPage() {
       </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

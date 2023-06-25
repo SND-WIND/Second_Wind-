@@ -1,22 +1,23 @@
+
+
+
 .settings{
-    display: flex;
+    display:flex;
+    justify-content: space-between;
     width: 100vw;
     min-height: 100vh;
-    gap: 600px;
-    padding: 10px;
-}
-
-form {
-    color: white;
 }
 
 .settings-form{
     display: flex;
-    flex-direction: column;
-    
 }
 
-.settings-form-1{
+.settings-form-class{
+
+}
+
+.settings-button{
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
