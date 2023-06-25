@@ -7,9 +7,7 @@ const SettingsToggle = () => {
   const [activeForm, setActiveForm] = useState("user");
 
   const toggleForm = (formName) => {
-    // setActiveForm(activeForm === "form1" ? "form2" : "form1");
     setActiveForm(formName)
-    console.log(formName)
   };
   
 

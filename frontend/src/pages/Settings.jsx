@@ -15,17 +15,17 @@ export default function SettingsPage() {
     navigate("/landing");
   };
 
-  const handleTerminate = async () => {
-    if (window.confirm("Are you sure you want to leave us?")) {
-      try {
-        await deleteAccount();
-        setCurrentUser(null);
-        navigate("/landing");
-      } catch (error) {
-        console.error("Failed to terminate account:", error);
-      }
-    }
-  };
+  // const handleTerminate = async () => {
+  //   if (window.confirm("Are you sure you want to leave us?")) {
+  //     try {
+  //       await deleteAccount();
+  //       setCurrentUser(null);
+  //       navigate("/landing");
+  //     } catch (error) {
+  //       console.error("Failed to terminate account:", error);
+  //     }
+  //   }
+  // };
 
   if (!currentUser) return <Navigate to="/landing" />;
 

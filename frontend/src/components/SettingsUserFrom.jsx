@@ -10,11 +10,11 @@ const SettingsUserForm = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    // const { name, value } = e.target;
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   [name]: value,
+    // }));
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +33,7 @@ const SettingsUserForm = () => {
           name="Full Name"
           className="settings-form-class"
           placeholder="Full Name"
-          value={formData.fullName}
+        //   value={formData.fullName}
           onChange={handleChange}
         />
       </label>
@@ -45,7 +45,7 @@ const SettingsUserForm = () => {
           name="Location"
           className="settings-form-class"
           placeholder="City, State"
-          value={formData.location}
+        //   value={formData.location}
           onChange={handleChange}
         />
       </label>
@@ -57,7 +57,7 @@ const SettingsUserForm = () => {
           name="Sex"
           className="settings-form-class"
           placeholder="Male, Female or Others"
-          value={formData.sex}
+        //   value={formData.sex}
           onChange={handleChange}
         />
       </label>
@@ -69,7 +69,7 @@ const SettingsUserForm = () => {
           name="Age"
           className="settings-form-class"
           placeholder="Enter your age"
-          value={formData.age}
+        //   value={formData.age}
           onChange={handleChange}
         />
       </label>
@@ -81,7 +81,7 @@ const SettingsUserForm = () => {
           name="Status"
           className="settings-form-class"
           placeholder="Formerly Incarcerated"
-          value={formData.status}
+        //   value={formData.status}
           onChange={handleChange}
         />
       </label>
