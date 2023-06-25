@@ -15,7 +15,7 @@ Router.use(addModels);
 Router.get("/users", userController.list);
 Router.get("/posts", postController.list);
 Router.get("/bookmarks", bookmarkController.list);
-Router.post("/comments", commentController.list);
+Router.post("/comments/list", commentController.list);
 Router.get("/jobs", jobController.list);
 
 Router.get("/posts/:id/likes", likeController.list);

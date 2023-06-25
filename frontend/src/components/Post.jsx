@@ -1,10 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import {
-  useNavigate,
-  Navigate,
-  Link,
-  
-} from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
