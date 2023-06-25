@@ -150,6 +150,8 @@ ol[role='list'] {
 
 ul{
     list-style: none;
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
 }
   
 /* Set core root defaults */
