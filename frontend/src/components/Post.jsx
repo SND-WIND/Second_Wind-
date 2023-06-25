@@ -3,8 +3,7 @@ import {
   useNavigate,
   Navigate,
   Link,
-  useHref,
-  useParams,
+  
 } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
@@ -17,7 +16,6 @@ import BookmarkIcon from "../SVG/bookmark_fill.svg";
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
-
   const [likeId, setLikeId] = useState(post.like_id);
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
@@ -102,12 +100,12 @@ function Post({ post }) {
             <h4 className="post-author" onClick={handleClick}>
               {post.username}
             </h4>
-            {href === `/users/${id}` && (
+            {/* {href === `/users/${id}` && (
               <div>
-                {/* <img src={optionsIcon} alt="" width="15px" /> */}
+                <img src={optionsIcon} alt="" width="15px" />
                 <UpdatePostModal/>
               </div>
-            )}
+            )} */}
           </div>
           <p className="post-caption">{post.caption}</p>
           <div className="post-image">
