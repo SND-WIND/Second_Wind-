@@ -4,6 +4,7 @@ import CurrentUserContext from "../contexts/current-user-context";
 import Menu from "../components/Menu";
 import PostList from "../components/PostList";
 import Messages from "../components/Messages";
+import "../styles/Bookmark.css"
 
 export default function BookmarksPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -11,10 +12,10 @@ export default function BookmarksPage() {
   if (!currentUser) return <Navigate to="/landing" />;
 
   return (
-    <>
+    <div className="bookmark-page">
       <Menu />
       <PostList />
       <Messages />
-    </>
+    </div>
   );
 }

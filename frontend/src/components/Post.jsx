@@ -1,5 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import {
+  useNavigate,
+  Navigate,
+  Link,
+  
+} from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
@@ -11,7 +16,6 @@ import BookmarkIcon from "../SVG/bookmark_fill.svg";
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
-
   const [likeId, setLikeId] = useState(post.like_id);
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
@@ -84,10 +88,17 @@ function Post({ post }) {
           <img src={post.profile_image} alt="" />
         </div>
         <div className="post-content">
-          <h4 className="post-author" onClick={handleClick}>
-            {post.username}
-          </h4>
-          {/* <div className="post-date">{post.created_at}</div> */}
+          <div className="name-options">
+            <h4 className="post-author" onClick={handleClick}>
+              {post.username}
+            </h4>
+            {/* {href === `/users/${id}` && (
+              <div>
+                <img src={optionsIcon} alt="" width="15px" />
+                <UpdatePostModal/>
+              </div>
+            )} */}
+          </div>
           <p className="post-caption">{post.caption}</p>
           <div className="post-image">
             <img src={post.image_url} alt="" />
@@ -120,12 +131,12 @@ function Post({ post }) {
           <span>{post.likes}</span>
         </div>
 
-        {currentUser.id === post.user_id && (
+        {/* {currentUser.id === post.user_id && (
           <div className="options">
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
           </div>
-        )}
+        )} */}
       </div>
 
       <form className="add-comment">

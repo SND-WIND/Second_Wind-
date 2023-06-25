@@ -21,6 +21,10 @@ function PostList() {
         const data = await getUserPosts(id);
         console.log("users", data);
         setPosts(data);
+      } else if (href === `/businesses/${id}`) {
+        const data = await getUserPosts(id);
+        console.log("businesses", data);
+        setPosts(data);
       } else if (href === `/bookmarks`) {
         const data = await getAllBookmarks();
         console.log("bookmarks", data);
@@ -43,7 +47,7 @@ function PostList() {
   }, []);
 
   return (
-    <div>
+    <div className="post-list">
       {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
