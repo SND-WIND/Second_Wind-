@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import optionsIcon from "../SVG/options_icon.svg";
+import updatePost from "../adapters/post-adapter";
 
 const Modal = () => {
   const [postText, setPostText] = useState("");
@@ -11,34 +12,28 @@ const Modal = () => {
     setPostText(event.target.value);
   };
 
-  const handlefetch = async (url, options) => {
-    try {
-      const r = await fetch(url, options);
-      const data = await r.json();
-      // return data;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  };
+  // const handlefetch = async (url, options) => {
+  //   try {
+  //     const r = await fetch(url, options);
+  //     const data = await r.json();
+  //     // return data;
+  //   } catch (err) {
+  //     console.log(err);
+  //     return null;
+  //   }
+  // };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`Updating post: ${postText}`);
     const formData = new FormData(e.target);
     const values = {};
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
-    console.log("submission", values);
-    handlefetch(`http://127.0.0.1:3000/posts/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    const [data, error] = await updatePost(values);
+    console.log(data);
   };
+
 
   const handleDeletePost = () => {
     // Logic for deleting the post

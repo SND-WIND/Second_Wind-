@@ -141,12 +141,12 @@ function Post({ post }) {
           <span>{post.likes}</span>
         </div>
 
-        {currentUser.id === post.user_id && (
+        {/* {currentUser.id === post.user_id && (
           <div className="options">
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
           </div>
-        )}
+        )} */}
       </div>
 
       <form className="add-comment">

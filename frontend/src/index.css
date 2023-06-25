@@ -59,6 +59,7 @@ h2 {
     font-family: var(--ff-primary);
     font-size: var(--fs-l);
     font-weight: var(--fw-medium);
+    line-height: 1.2;
 }
 
 h3 {
@@ -165,6 +166,7 @@ body {
 /* Set core body defaults */
 body {
     text-rendering: optimizeSpeed;
+    background-color: var(--clr-black);
 }
   
 /* A elements that don't have a class get default styles */
