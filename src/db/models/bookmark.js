@@ -19,7 +19,11 @@ class Bookmark {
           WHEN posts.account_type = false THEN businesses.profile_image
         END AS profile_image,
         likes.id AS like_id,
-        COUNT(likes.id) AS like_count
+        (
+          SELECT COUNT(*)
+          FROM likes
+          WHERE likes.post_id = posts.id
+        ) AS like_count
         FROM bookmarks
         JOIN posts ON bookmarks.post_id = posts.id
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true

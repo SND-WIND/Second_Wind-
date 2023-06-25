@@ -20,7 +20,11 @@ class Post {
         END AS profile_image,
         bookmarks.id AS bookmark_id,
         likes.id AS like_id,
-        COUNT(likes.id) AS like_count
+        (
+          SELECT COUNT(*)
+          FROM likes
+          WHERE likes.post_id = posts.id
+        ) AS like_count
         FROM posts
         LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
         LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
@@ -53,7 +57,11 @@ class Post {
       END AS profile_image,
       bookmarks.id AS bookmark_id,
       likes.id AS like_id,
-      COUNT(likes.id) AS like_count
+      (
+        SELECT COUNT(*)
+        FROM likes
+        WHERE likes.post_id = posts.id
+      ) AS like_count
       FROM posts
       LEFT JOIN users ON users.id = posts.user_id AND posts.account_type = true
       LEFT JOIN businesses ON businesses.id = posts.user_id AND posts.account_type = false
