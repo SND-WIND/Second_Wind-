@@ -65,7 +65,7 @@ export default function UserPage() {
     <div className="profile-container">
       <Menu />
       <UserProfile />
-      <PostList />
+      {/* <PostList /> */}
       {/* <h1>{profileUsername}</h1> */}
       {/* {!!isCurrentUserProfile && (
         <button onClick={handleLogout}>Log Out</button>

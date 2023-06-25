@@ -4,13 +4,12 @@ const listPosts = async (req, res) => {
     db: { Post },
   } = req;
 
-  const { userId, accountType } = session;
+  const { userId, userType } = session;
 
-  if (!userId && !accountType) return res.sendStatus(401);
-
+  if (!userId && !userType) return res.sendStatus(401);
   const posts = await Post.list({
     user_id: userId,
-    account_type: accountType === "user",
+    account_type: userType === "user",
   });
 
   res.send(posts);
