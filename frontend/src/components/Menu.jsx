@@ -9,8 +9,8 @@ import jobs from "../SVG/briefcase_fill.svg";
 import bookmarks from "../SVG/bookmark_fill.svg";
 import profile from "../SVG/user_4_fill.svg";
 import settings from "../SVG/settings_4_fill.svg";
-import { Button } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function Menu() {
   const { currentUser } = useContext(CurrentUserContext);
@@ -73,20 +73,21 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/settings">
-            <Button variant="text" color="primary" >
+            <Button variant="text" color="primary">
               <div className="menu-item">
                 <img src={settings} alt="" />
                 <h4>Settings</h4>
               </div>
             </Button>
           </Link>
-          <Button variant="contained"  color="primary">
-            <div className="menu-item">
-            <img  alt="" />
-              <h4>Logout</h4>
-
-            </div>
-          </Button>
+          <Link to="/landing">
+            <Button variant="contained" color="primary">
+              <div className="menu-item">
+                <LogoutIcon />
+                <h4>Logout</h4>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
