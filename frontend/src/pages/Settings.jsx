@@ -33,15 +33,14 @@ export default function SettingsPage() {
     <div className="settings-page">
       <Menu />
       <SettingsToggle />
-      {/* <div className="settings-button">
-            once I link stuff up the styling will be applied
+      <div className="settings-button">
             <button name="logout" id="logout" onClick={handleLogout}>
               Logout
             </button>
-            <button name="terminate" id="terminate" onClick={handleTerminate}>
+            {/* <button name="terminate" id="terminate" onClick={handleTerminate}>
               Terminate Account
-            </button>
-          </div> */}
+            </button> */}
+          </div>
     </div>
   );
 }
