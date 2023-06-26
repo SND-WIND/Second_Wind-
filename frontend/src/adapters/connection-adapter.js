@@ -3,13 +3,19 @@ import { fetchHandler, getPostOptions, deleteOptions } from "../utils";
 const baseUrl = "/api/connections";
 
 export const createConnection = async ({ user_id, account_type }) => {
-  const [like] = await fetchHandler(baseUrl, getPostOptions({ user_id, account_type }));
-  return like;
+  const [connection] = await fetchHandler(
+    baseUrl,
+    getPostOptions({ user_id, account_type })
+  );
+  return connection;
 };
 
-export const deleteConnection = async ({ like_id }) => {
-  const [like] = await fetchHandler(`${baseUrl}/${like_id}`, deleteOptions);
-  return like;
+export const deleteConnection = async ({ connection_id }) => {
+  const [connection] = await fetchHandler(
+    `${baseUrl}/${connection_id}`,
+    deleteOptions
+  );
+  return connection;
 };
 
 export const getConnections = async () =>
