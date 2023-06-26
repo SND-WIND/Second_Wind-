@@ -3,7 +3,7 @@ import { Button,Dialog,DialogContent,DialogActions,TextField,DialogTitle } from 
 import JobsPage from "../pages/JobsPage";
 
 
-export default function Job() {
+export default function Job({job}) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,7 +27,6 @@ export default function Job() {
 
 
 
-export default function Job({job}) {
   console.log(job)
   return (
     <div className="job-container">
