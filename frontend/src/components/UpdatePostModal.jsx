@@ -34,6 +34,7 @@ const Modal = () => {
     console.log(data);
   };
 
+
   const handleDeletePost = () => {
     // Logic for deleting the post
     console.log("Deleting post");
@@ -52,7 +53,7 @@ const Modal = () => {
   };
 
   return (
-    <div>
+    <div className="job-modal">
       <button onClick={handleOpenModal}>
         <img src={optionsIcon} alt="" width="15px" />
       </button>
@@ -62,7 +63,6 @@ const Modal = () => {
             <h2>Update Post</h2>
             <form>
               <textarea
-                name="caption"
                 value={postText}
                 onChange={handleTextChange}
                 placeholder="Enter your post caption here..."
