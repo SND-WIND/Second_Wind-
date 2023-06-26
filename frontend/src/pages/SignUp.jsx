@@ -15,7 +15,6 @@ export default function SignUpPage() {
   const [errorText, setErrorText] = useState("");
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
-  const [sex, setSex] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -35,13 +34,13 @@ export default function SignUpPage() {
       const [user, error] = await createUser({
         username,
         fullName,
-        sex,
         email,
         password,
       });
       setCurrentUser(user);
       if (error) return setErrorText(error.statusText);
     }
+
     if (accountType === "business") {
       const [business, error] = await createBusiness({
         username,
@@ -53,7 +52,7 @@ export default function SignUpPage() {
       if (error) return setErrorText(error.statusText);
     }
 
-    navigate("/");
+    navigate("/additional-info");
   };
 
   const handleChange = (event) => {
@@ -63,7 +62,6 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if (name === "sex") setSex(value);
   };
 
   return (

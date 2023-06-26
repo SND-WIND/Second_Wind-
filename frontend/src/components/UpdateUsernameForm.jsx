@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { updateUsername } from "../adapters/user-adapter";
+import { updateUserInfo } from "../adapters/user-adapter";
 
 export default function UpdateUsernameForm({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const [user, error] = await updateUsername(Object.fromEntries(formData.entries()));
+    const [user, error] = await updateUserInfo(Object.fromEntries(formData.entries()));
     // If our user isn't who they say they are
     // (an auth error on update) log them out
     if (error?.status > 400 && error?.status < 500) {

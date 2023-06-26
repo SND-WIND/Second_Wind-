@@ -16,6 +16,7 @@ import ConnectPage from './pages/ConnectionPage';
 import NewsPage from './pages/NewsPage';
 import JobsPage from './pages/JobsPage';
 import BookmarksPage from './pages/Bookmarks';
+import AdditionalInfo from './components/AdditionalInfo';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -44,9 +45,6 @@ export default function App() {
     checkForLoggedInUser().then(setCurrentUser);
   }, [setCurrentUser]);
 
-
-
-
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -59,6 +57,7 @@ export default function App() {
             <Route path='/landing' element={<LandingPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/sign-up' element={<SignUpPage />} />
+            <Route path="/additional-info" element={<AdditionalInfo />} />
             <Route path='/users' element={<UsersPage />} />
             <Route path='/users/:id' element={<UserPage />} />
             <Route path='/businesses/:id' element={<UserPage />} />
