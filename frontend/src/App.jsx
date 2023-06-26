@@ -25,7 +25,17 @@ const theme = createTheme({
     primary: {
       main: '#A674FE', //main color purple
     },
-
+    secondary: {
+      main: '#F9F9F9', //secondary color white
+    },
+    black: {
+      main: '#000000', //black
+    },
+  },
+  typography: {
+  
+    fontFamily: 'Poppins',
+    textTransform: 'none',
   },
 });
 

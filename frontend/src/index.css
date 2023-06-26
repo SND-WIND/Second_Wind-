@@ -1,104 +1,107 @@
 :root {
-    --clr-primary: #A674FE;
-    --clr-black: #000000;
-    --clr-grey: #080808;
-    --clr-light: #FFFFFF;
-  
-    --ff-primary: 'Poppins', sans-serif;
-    
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semi-bold: 900; 
-  
-    --fs-xxs: 12px;
-    --fs-xs: 16px;
-    --fs-s: 20px; 
-    --fs-m: 24px;
-    --fs-l: 42px;
-    --fs-xl: 70px;
+  --clr-primary: #a674fe;
+  --clr-black: #000000;
+  --clr-grey: #080808;
+  --clr-light: #ffffff;
+
+  --ff-primary: "Poppins", sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 900;
+
+  --fs-xxs: 12px;
+  --fs-xs: 16px;
+  --fs-s: 20px;
+  --fs-m: 24px;
+  --fs-l: 42px;
+  --fs-xl: 70px;
 }
-  
+
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 /* Remove default margin */
 * {
-    margin: 0;
-    padding: 0;
-    font: inherit;
+  font-family: var(--ff-primary) !important;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+
+  text-transform: none !important;
 }
-  
+
 /*Removes default text styling on anchor tags*/
 a {
-    text-decoration: none;
-    color: var(--clr-light);
-    font-family: var(--ff-primary);
+  text-decoration: none;
+  color: var(--clr-light);
+  font-family: var(--ff-primary);
 }
 
 /*Stypes paragraph tags*/
 p {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-s);
-    font-weight: var(--fw-regular); 
-    line-height: 1.2;
-    text-align: left;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
+  line-height: 1.2;
+  text-align: left;
 }
 
 /*Custom styles for H tags*/
 h1 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xl);
-    font-weight: var(--fw-medium);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
 }
 
 h2 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-l);
-    font-weight: var(--fw-medium);
-    line-height: 1.2;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-l);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
 }
 
 h3 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-m);
-    font-weight: 500;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-m);
+  font-weight: 500;
 }
 
 h4 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-s);
-    font-weight: var(--fw-regular);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-regular);
 }
 
 h5 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-regular);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
 }
 
 h6 {
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-regular);
-    font-style: italic;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  font-style: italic;
 }
 
 /* Button Styles */
- button {
-    width: auto;
-    padding: 13px 35px;
-    font-family: var(--ff-primary);
-    font-size: small;
-    font-weight: 500;
-    border: 0px solid black;
-    border-radius: 10px;
- }
+button {
+  width: auto;
+  padding: 13px 35px;
+  font-family: var(--ff-primary);
+  font-size: small;
+  font-weight: 500;
+  border: 0px solid black;
+  border-radius: 10px;
+}
 
- form {
+form {
   width: 100%;
   border: none;
 }
@@ -143,104 +146,111 @@ input {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-    list-style: none;
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
 }
 
-ul{
-    list-style: none;
-    font-family: var(--ff-primary);
-    font-weight: var(--fw-regular);
+ul {
+  list-style: none;
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
 }
-  
+
 /* Set core root defaults */
 html:focus-within {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-  
+
 html,
 body {
-    height: 100%;
-    font-family: var(ff-primary);
+  height: 100%;
+  font-family: var(ff-primary);
 }
-  
+
 /* Set core body defaults */
 body {
-    text-rendering: optimizeSpeed;
-    background-color: var(--clr-black);
+  text-rendering: optimizeSpeed;
+  background-color: var(--clr-black);
 }
-  
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-     text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
-  
+
 /* Make images easier to work with */
 img,
 svg,
 picture {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
-.menu{
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    height: 100vh;
-    background-color: var(--clr-grey);
-    padding: 10px;
-    border-radius: 15px;
-    gap: 30px;
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  height: 100vh;
+  background-color: var(--clr-grey);
+  padding: 10px;
+  border-radius: 15px;
+  gap: 30px;
 }
 
 .menu-container {
-    display: flex;
-    flex-direction:column;
-    justify-content: space-between;
-    padding: 25px 53px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px 53px;
+  height: 100%;
 }
 
-.menu-items{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--clr-light);
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--clr-light);
+  font-family: var(ff-primary);
 }
 
-
-
-.menu-item{
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    padding: 10px 45px;
-    border-radius: 10px;
-    gap: 30px;
+.btn {
+  text-transform: none !important;
 }
 
-.profile-settings{
-    display: flex;
-    flex-direction: column;
-    color: var(--clr-light);
-    gap: 10px;
+.case-fix {
+  text-decoration: none !important;
+}
+
+.menu-item {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px 45px;
+  border-radius: 10px;
+  gap: 30px;
+}
+
+.profile-settings {
+  display: flex;
+  flex-direction: column;
+  color: var(--clr-light);
+  gap: 10px;
 }
 
 .page-container {
-    display: flex;
-    width: 100vw;
-    min-height: 100vh;
-    gap: 80px;
-    padding: 10px;
-    justify-content: center;
-    color:var(--clr-light);
-  }
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 80px;
+  padding: 10px;
+  justify-content: center;
+  color: var(--clr-light);
+}
 
-  /* .left-item {
+/* .left-item {
     position: fixed;
     left: 0;
   }

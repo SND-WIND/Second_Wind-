@@ -4,6 +4,7 @@ import { logUserIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import logo from "../SVG/logo_black.svg";
 import "../styles/Login.css";
+import { Button } from "@mui/material";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -41,9 +42,9 @@ export default function LoginPage() {
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />
 
-          <button className="login-btn" type="submit">
+          <Button variant="contained" color="black" className="login-btn btn" type="submit">
             Log in
-          </button>
+          </Button>
           <h5>
             Don't have an account?{" "}
             <Link to="/sign-up" className="signup-link">
