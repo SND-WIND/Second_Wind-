@@ -1,38 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { updateUserInfo } from "../adapters/user-adapter";
+import CurrentUserContext from "../contexts/current-user-context";
 
 const SettingsSecurityForm = () => {
-  const [formData, setFormData] = useState({
-    "email": "",
-    "username": "",
-    "password": "",
-    "reTypePassword": "",
-  });
+  const { currentUser, setCurrentUser, accountType } =
+    useContext(CurrentUserContext);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [reTypePassword, setReTypePassword] = useState("");
+  const [errorText, setErrorText] = useState("");
+  //   const [formData, setFormData] = useState({
+  //     email: "",
+  //     username: "",
+  //     password: "",
+  //     reTypePassword: "",
+  //   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+
+    if (name == "email") setEmail(value);
+    else if (name == "username") setUsername(value);
+    else if (name == "password") setPassword(value);
+    else if (name == "re-type_Password") setReTypePassword(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission or validation logic here
-    console.log(formData);
+    const formData = new FormData(e.target);
+    const values = { id: currentUser.id };
+    for (let [name, value] of formData.entries()) {
+      if (value) values[name] = value;
+    }
+    if (password !== reTypePassword) {
+      return setErrorText("Passwords do not match");
+    }
+    const [data, error] = await updateUserInfo(values);
   };
 
   return (
     <form onSubmit={handleSubmit} className="settings-forms">
-        <h2>Security</h2>
+      <h2>Security</h2>
       <label className="form-label">
         Email
         <input
           type="text"
-          name="Email"
+          name="email"
           className="settings-form-class"
           placeholder="Enter your email"
-          value={formData.email}
+          // value={email}
           onChange={handleChange}
         />
       </label>
@@ -41,10 +58,10 @@ const SettingsSecurityForm = () => {
         Username
         <input
           type="text"
-          name="Username"
+          name="username"
           className="settings-form-class"
           placeholder="Username"
-          value={formData.username}
+          // value={username}
           onChange={handleChange}
         />
       </label>
@@ -53,10 +70,10 @@ const SettingsSecurityForm = () => {
         Password
         <input
           type="text"
-          name="Password"
+          name="password"
           className="settings-form-class"
           placeholder="Type your password"
-          value={formData.password}
+          // value={password}
           onChange={handleChange}
         />
       </label>
@@ -65,15 +82,17 @@ const SettingsSecurityForm = () => {
         Re-type Password
         <input
           type="text"
-          name="Re-Type Password"
+          name="re-type_Password"
           className="settings-form-class"
           placeholder="Re-type your password"
-          value={formData.reTypePassword}
+          // value={reTypePassword}
           onChange={handleChange}
         />
       </label>
 
-      <button type="submit">Submit</button>
+      <button className="settings-submit-btn" type="submit">
+        Submit
+      </button>
     </form>
   );
 };

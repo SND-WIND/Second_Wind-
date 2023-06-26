@@ -357,3 +357,19 @@ gap: 100px;
     display: flex;
     gap: 20px;
 }
+
+.btn {
+  width: 100%;
+  font-size: 1.5em !important;
+  color: white !important;
+  border-radius:10px !important;
+  
+}
+
+.btn:hover {
+  background-color: var(--clr-light);
+  color: var(--clr-black) !important;
+}
+
+
+

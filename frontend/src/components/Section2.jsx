@@ -12,8 +12,10 @@ const Section2 = () => {
           Get the resources you need to get back to your society{" "}
         </h2>
         <p className="section2-description">
-          Lorem ipsum dolor sit amet consectetur. Suspendisse suspendisse tempor
-          et ipsum sit egestas nunc. Diam in cum a in.{" "}
+          SecondWind: Your Compass in Reentry. 
+          From employment opportunities to personal development tools, SecondWind stands as your guide, helping you reintegrate with confidence. 
+          
+          With SecondWind, transition with triumph. Your journey starts here.{" "}
         </p>
       </div>
       <div className="right-boxes">

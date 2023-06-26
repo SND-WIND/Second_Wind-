@@ -91,12 +91,12 @@
 }
 
 .account-button {
-  color: var(--clr-primary);
+  color: var(--clr-black);
 }
 
 .account-button:hover {
-  color: var(--clr-light);
-  background-color: var(--clr-black);
+  color:var(--clr-primary);
+  background-color: var(--clr-light) !important;
 }
 
 .signUp-Input-Box {
@@ -105,11 +105,12 @@
 
 .signupbtn {
   width: 100%;
+  color: white !important;
 }
 
 .signupbtn:hover {
-  background-color: black;
-  color: white;
+  background-color: var(--clr-light);
+  color: var(--clr-black) !important;
 }
 
 h5 {

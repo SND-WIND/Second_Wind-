@@ -6,6 +6,7 @@ import { createBusiness } from "../adapters/business-adapter";
 import AccountBox from "../components/AccountBox";
 import logo from "../SVG/logo_purple.svg";
 import "../styles/SignUp.css";
+import { Button } from "@mui/material";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ export default function SignUpPage() {
   const [errorText, setErrorText] = useState("");
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
-  const [sex, setSex] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -34,13 +34,13 @@ export default function SignUpPage() {
       const [user, error] = await createUser({
         username,
         fullName,
-        sex,
         email,
         password,
       });
       setCurrentUser(user);
       if (error) return setErrorText(error.statusText);
     }
+
     if (accountType === "business") {
       const [business, error] = await createBusiness({
         username,
@@ -52,7 +52,7 @@ export default function SignUpPage() {
       if (error) return setErrorText(error.statusText);
     }
 
-    navigate("/");
+    navigate("/additional-info");
   };
 
   const handleChange = (event) => {
@@ -62,7 +62,6 @@ export default function SignUpPage() {
     if (name === "username") setUsername(value);
     if (name === "password") setPassword(value);
     if (name === "password-confirm") setPasswordConfirm(value);
-    if (name === "sex") setSex(value);
   };
 
   return (
@@ -164,10 +163,10 @@ export default function SignUpPage() {
                 value={passwordConfirm}
                 required
               />
-              <button className="signupbtn">Sign Up Now!</button>
+              <Button variant="contained" color="black" className="signupbtn btn">Sign Up Now!</Button>
               <h5>
                 Already have an account with us?{" "}
-                <Link to="/sign-up" className="signup-link">
+                <Link to="/login" className="signup-link">
                   Login
                 </Link>
               </h5>

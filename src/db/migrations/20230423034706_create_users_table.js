@@ -15,6 +15,7 @@ exports.up = (knex) =>
     table.string("status");
     table.string("bio");
     table.string("profile_image");
+    table.string("cover_image");
     table.timestamps(true, true);
   });
 
