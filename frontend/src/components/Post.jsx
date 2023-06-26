@@ -15,7 +15,7 @@ function Post({ post }) {
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
-
+console.log(post)
   const handleClick = (e) => {
     if (post.account_type) navigate(`/users/${post.user_id}`);
     else navigate(`/businesses/${post.business_id}`);
@@ -66,14 +66,6 @@ function Post({ post }) {
       console.log(data);
       setBookmarkId(data.id);
     }
-  };
-
-  const handleEdit = async (e) => {
-    console.log(e);
-  };
-
-  const handleDelete = async (e) => {
-    console.log(e);
   };
 
   return (
