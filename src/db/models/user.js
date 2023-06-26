@@ -49,11 +49,13 @@ class User {
     return knex.raw("TRUNCATE users;");
   }
 
-  update = async (username) => {
+  update = async (username, password, full_name, email) => {
     // dynamic queries are easier if you add more properties
+    const passwordHash = await hashPassword(password);
+    
     const [updatedUser] = await knex("users")
       .where({ id: this.id })
-      .update({ username })
+      .update({ username, password: passwordHash, full_name, email })
       .returning("*");
     return updatedUser ? new User(updatedUser) : null;
   };
