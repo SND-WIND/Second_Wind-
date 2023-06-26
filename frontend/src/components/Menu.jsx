@@ -93,12 +93,14 @@ export default function Menu() {
               </div>
             </Button>
           </Link>
-          <Button onClick={handleLogout} variant="contained"  color="primary">
-            <div className="menu-item">
-            <img  alt="" />
-              <h4  >Logout</h4>
-            </div>
-          </Button>
+          <Link to="/landing">
+            <Button variant="contained"  onClick={handleLogout}  color="primary">
+              <div className="menu-item">
+                <LogoutIcon />
+                <h4>Logout</h4>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

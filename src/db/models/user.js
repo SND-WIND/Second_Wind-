@@ -96,7 +96,7 @@ class User {
         .returning("*");
       return new User(user);
     } catch (err) {
-      console.error(err.detail);
+      console.error(err);
       return null;
     }
   }
