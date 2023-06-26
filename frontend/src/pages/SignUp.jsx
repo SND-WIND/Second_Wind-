@@ -6,6 +6,7 @@ import { createBusiness } from "../adapters/business-adapter";
 import AccountBox from "../components/AccountBox";
 import logo from "../SVG/logo_purple.svg";
 import "../styles/SignUp.css";
+import { Button } from "@mui/material";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -164,10 +165,10 @@ export default function SignUpPage() {
                 value={passwordConfirm}
                 required
               />
-              <button className="signupbtn">Sign Up Now!</button>
+              <Button variant="contained" color="black" className="signupbtn btn">Sign Up Now!</Button>
               <h5>
                 Already have an account with us?{" "}
-                <Link to="/sign-up" className="signup-link">
+                <Link to="/login" className="signup-link">
                   Login
                 </Link>
               </h5>

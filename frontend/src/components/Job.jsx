@@ -1,6 +1,31 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState } from "react";
+import { Button,Dialog,DialogContent,DialogActions,TextField,DialogTitle } from '@mui/material';
+
+
 
 export default function Job() {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleApply = () => {
+    // Perform your apply logic here
+    console.log("Name:", name);
+    console.log("Email:", email);
+
+    // Close the dialog
+    handleClose();
+  };
+
+
   return (
     <div className="job-container">
       <div className="company-pic">
@@ -23,27 +48,58 @@ export default function Job() {
         </div>
 
         <div className="job-options">
-          <button>Apply Now</button>
+          <div>
+            <Button variant="contained" color="primary" onClick={handleOpen}>
+              Apply Now
+            </Button>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle>Apply for the Job</DialogTitle>
+              <DialogContent>
+                <TextField
+                  label="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  fullWidth
+                  margin="normal"
+                />
+                <TextField
+                  label="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                  margin="normal"
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                  Cancel
+                </Button>
+                <Button onClick={handleApply} color="primary">
+                  Submit
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </div>
           <button>Bookmark</button>
         </div>
 
-          <p className="job-description">
-            From making valuable connections between people and businesses to
-            building premium services that deliver high-value experiences, the
-            monetization organization at Meta empowers people and businesses to
-            succeed in the global economy. As Meta focuses on building the next
-            evolution of social experiences, the monetization team plays a
-            crucial role in shaping the communication pathways and financial
-            tools that all sized businesses, especially small to medium ones,
-            need to thrive in the new digital economic environment. And we
-            achieve that from end-to-end product and technology innovation.As a
-            Software Engineer on the monetization team at Meta, you can help
-            build cutting-edge full-stack technologies that will transform the
-            way people and businesses connect and communicate. You’ll help
-            develop industry-leading solutions that power next-generation,
-            large-scale platforms and AI services to help connect billions of
-            people around the world.
-          </p>
+        <p className="job-description">
+          From making valuable connections between people and businesses to
+          building premium services that deliver high-value experiences, the
+          monetization organization at Meta empowers people and businesses to
+          succeed in the global economy. As Meta focuses on building the next
+          evolution of social experiences, the monetization team plays a
+          crucial role in shaping the communication pathways and financial
+          tools that all sized businesses, especially small to medium ones,
+          need to thrive in the new digital economic environment. And we
+          achieve that from end-to-end product and technology innovation.As a
+          Software Engineer on the monetization team at Meta, you can help
+          build cutting-edge full-stack technologies that will transform the
+          way people and businesses connect and communicate. You’ll help
+          develop industry-leading solutions that power next-generation,
+          large-scale platforms and AI services to help connect billions of
+          people around the world.
+        </p>
       </div>
     </div>
   );

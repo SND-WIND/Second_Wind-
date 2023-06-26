@@ -2,6 +2,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../contexts/current-user-context";
 import personal from "../SVG/user_4_fill.svg";
 import business from "../SVG/building_6_fill.svg";
+import { Button } from '@mui/material';
 
 function AccountBox(props) {
   const { accountType, setAccountType } = useContext(CurrentUserContext);
@@ -19,9 +20,9 @@ function AccountBox(props) {
       to create space between two account boxes */}
         <h3 className="account-header">{props.type} Account</h3>
         <p className="account-text">{props.text}</p>
-        <button className="account-button" onClick={handleAccountBoxClick}>
+        <Button  variant="contained" color="black" className="account-button btn" onClick={handleAccountBoxClick}>
           {props.type} Signup
-        </button>
+        </Button>
       </div>
   );
 }
