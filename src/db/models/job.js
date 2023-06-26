@@ -1,8 +1,7 @@
 const knex = require("../knex");
 
-
 class Job {
-  constructor({ id, description, location, salary, position  }) {
+  constructor({ id, description, location, salary, position }) {
     this.id = id;
     this.description = description;
     this.location = location;
@@ -12,22 +11,22 @@ class Job {
     this.link = link;
   }
 
-
   static async list() {
-    const result = await knex.raw("SELECT * FROM jobs");
+    const result =
+      await knex.raw(`SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
+    FROM jobs
+    JOIN businesses ON businesses.id = jobs.business_id;`);
     return result.rows;
   }
-
 
   static async listBusinessPost({ business_id }) {
     const query = `SELECT jobs.*, businesses.username, businesses.profile_image
     FROM jobs
-    JOIN businesses ON business_id = users.id
+    JOIN businesses ON business_id = jobs.business_id
     WHERE business_id <> ?;`;
     const { rows } = await knex.raw(query, [business_id]);
     return rows;
   }
-
 
   static async find(id) {
     try {
@@ -38,7 +37,15 @@ class Job {
       return null;
     }
   }
-  static async create( business_id, description, location, salary, position, job_type, link) {
+  static async create(
+    business_id,
+    description,
+    location,
+    salary,
+    position,
+    job_type,
+    link
+  ) {
     try {
       const [job] = await knex("jobs")
         .insert({
@@ -68,11 +75,9 @@ class Job {
     }
   }
 
-
   static async deleteAll() {
     return knex.raw("TRUNCATE jobs;");
   }
-
 
   static async update(id, description, location, salary, role) {
     // dynamic queries are easier if you add more properties
@@ -84,44 +89,43 @@ class Job {
   }
 }
 
+//const testModel = async () => {
+// const user_id = 5;
+//const post_id = 7;
+//const LikeObj = await Like.create({ user_id, post_id});
+//   // const onePost = await Post.find(6);
+//   //const allPosts = await Post.list();
+//const removeJob = await Job.delete(43);
+// //   console.log('like removed', removeLike);
+// const business_id = 9;
+// const description = 'description test 1';
+// const location = 'Staten Island';
+// const salary = 65000;
+// const role = 'Head Chef';
+//console.log(await Job.delete(43))
+//console.log('Job', await Job.create(business_id, description, location, salary, role));
+//console.log("LikeObj", LikeObj);
+//    };
+
+//testModel();
 
 //const testModel = async () => {
-    // const user_id = 5;
-    //const post_id = 7;
-    //const LikeObj = await Like.create({ user_id, post_id});
-    //   // const onePost = await Post.find(6);
-    //   //const allPosts = await Post.list();
-       //const removeJob = await Job.delete(43);
-    // //   console.log('like removed', removeLike);
-    // const business_id = 9;
-    // const description = 'description test 1';
-    // const location = 'Staten Island';
-    // const salary = 65000;
-    // const role = 'Head Chef';
-    //console.log(await Job.delete(43))
-      //console.log('Job', await Job.create(business_id, description, location, salary, role));
-      //console.log("LikeObj", LikeObj);
- //    };
-    
- //testModel();
+// const user_id = 5;
+//const post_id = 7;
+//const LikeObj = await Like.create({ user_id, post_id});
+//   // const onePost = await Post.find(6);
+//   //const allPosts = await Post.list();
+//const removeJob = await Job.delete(43);
+// //   console.log('like removed', removeLike);
+// const business_id = 9;
+// const description = 'description test 1';
+// const location = 'Staten Island';
+// const salary = 65000;
+// const role = 'Head Chef';
+//console.log(await Job.delete(43))
+//console.log('Job', await Job.create(business_id, description, location, salary, role));
+//console.log("LikeObj", LikeObj);
+//  };
 
-//const testModel = async () => {
-    // const user_id = 5;
-    //const post_id = 7;
-    //const LikeObj = await Like.create({ user_id, post_id});
-    //   // const onePost = await Post.find(6);
-    //   //const allPosts = await Post.list();
-       //const removeJob = await Job.delete(43);
-    // //   console.log('like removed', removeLike);
-    // const business_id = 9;
-    // const description = 'description test 1';
-    // const location = 'Staten Island';
-    // const salary = 65000;
-    // const role = 'Head Chef';
-    //console.log(await Job.delete(43))
-      //console.log('Job', await Job.create(business_id, description, location, salary, role));
-      //console.log("LikeObj", LikeObj);
-   //  };
-    
- //testModel();
+//testModel();
 module.exports = Job;

@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import rightArrow from "../SVG/right_arrow_white.svg";
 import leftArrow from "../SVG/left_arrow_white.svg"
-
+import { Button } from "@mui/material";
 function HeroSectionRight () {
     return (
       <div className="hero-section-right">
         <div className="nav">
           <Link to="/sign-up">
-            <button className="nav-items">Become a partner</button>
+            <Button autoCapitalize="none" variant="contained" color="black" className="nav-items btn">Join Now!</Button>
           </Link>
           <Link to="/login">
-            <button className="nav-items">Log In</button>
+            <Button  autoCapitalize="none" variant="contained" color="black" className="nav-items btn">Log In</Button>
           </Link>
         </div>
         <div className="carousel-wrapper">

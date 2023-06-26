@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import logo from "../SVG/logo_purple.svg";
@@ -9,11 +10,28 @@ import jobs from "../SVG/briefcase_fill.svg";
 import bookmarks from "../SVG/bookmark_fill.svg";
 import profile from "../SVG/user_4_fill.svg";
 import settings from "../SVG/settings_4_fill.svg";
+<<<<<<< HEAD
 import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+=======
+import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logUserOut } from "../adapters/auth-adapter";
+
+
+>>>>>>> main
 
 export default function Menu() {
-  const { currentUser } = useContext(CurrentUserContext);
+  
+  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const handleLogout = async (e) => {
+    await logUserOut();
+    setCurrentUser(null);
+    navigate("/landing");
+  };
+
+
   const profilePage =
     currentUser.accountType === "user" ? "users" : "businesses";
   return (
@@ -22,7 +40,7 @@ export default function Menu() {
         <img src={logo} alt="" width="200px" />
         <div className="menu-items">
           <Link to="/">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" >
               <div className="menu-item">
                 <img src={home} alt="" />
                 <h4>Home</h4>
@@ -31,7 +49,7 @@ export default function Menu() {
           </Link>
 
           <Link to="/connect">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={connect} alt="" />
                 <h4>Connect</h4>
@@ -39,7 +57,7 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/news">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={news} alt="" />
                 <h4>News</h4>
@@ -47,7 +65,7 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/jobs">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={jobs} alt="" />
                 <h4>Jobs</h4>
@@ -80,6 +98,7 @@ export default function Menu() {
               </div>
             </Button>
           </Link>
+<<<<<<< HEAD
           <Link to="/landing">
             <Button variant="contained" color="primary">
               <div className="menu-item">
@@ -88,6 +107,14 @@ export default function Menu() {
               </div>
             </Button>
           </Link>
+=======
+          <Button onClick={handleLogout} variant="contained"  color="primary">
+            <div className="menu-item">
+            <img  alt="" />
+              <h4  >Logout</h4>
+            </div>
+          </Button>
+>>>>>>> main
         </div>
       </div>
     </div>

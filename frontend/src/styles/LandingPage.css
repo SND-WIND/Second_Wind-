@@ -358,6 +358,7 @@ gap: 100px;
     gap: 20px;
 }
 
+<<<<<<< HEAD
 /* ////////////landing-container/////////////// */
 .original-landing-page-container {
   height: 100vh;
@@ -481,4 +482,20 @@ p {
     color: #fff;
   }
 
+=======
+.btn {
+  width: 100%;
+  font-size: 1.5em !important;
+  color: white !important;
+  border-radius:10px !important;
+  
+}
+
+.btn:hover {
+  background-color: var(--clr-light);
+  color: var(--clr-black) !important;
+}
+
+
+>>>>>>> main
 

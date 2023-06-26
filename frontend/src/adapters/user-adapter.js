@@ -2,10 +2,34 @@ import { fetchHandler, getPostOptions, getPatchOptions } from "../utils";
 
 const baseUrl = "/api/users";
 
-export const createUser = async ({ username, fullName, email, password }) =>
+export const createUser = async ({
+  username,
+  fullName,
+  email,
+  password,
+  location,
+  sex,
+  age,
+  status,
+  bio,
+  profile_image,
+  cover_image,
+}) =>
   fetchHandler(
     baseUrl,
-    getPostOptions({ username, fullName, email, password })
+    getPostOptions({
+      username,
+      fullName,
+      email,
+      password,
+      location,
+      sex,
+      age,
+      status,
+      bio,
+      profile_image,
+      cover_image,
+    })
   );
 
 // eating errors here for simplicity
@@ -21,5 +45,36 @@ export const getUserPosts = async (id) => {
   return posts || [];
 };
 
-export const updateUsername = async ({ id, username }) =>
-  fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ id, username }));
+// export const updateUsername = async ({ id, username }) =>
+//   fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ id, username }));
+
+export const updateUserInfo = async ({
+  id,
+  username,
+  fullName,
+  email,
+  password,
+  location,
+  sex,
+  age,
+  status,
+  bio,
+  profile_image,
+  cover_image,
+}) =>
+  fetchHandler(
+    `${baseUrl}/${id}`,
+    getPatchOptions({
+      username,
+      fullName,
+      email,
+      password,
+      location,
+      sex,
+      age,
+      status,
+      bio,
+      profile_image,
+      cover_image,
+    })
+  );

@@ -42,6 +42,10 @@
 }
 
 
+.settings-submit-btn {
+    background-color: var(--clr-primary);
+}
+
 .terminate-wrapper {
     display: flex;
     flex-direction: column;
@@ -61,3 +65,4 @@
     background-color: var(--clr-primary);
     width: 300px;
 }
+
