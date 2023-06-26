@@ -8,7 +8,7 @@ export default function JobSearchBar() {
     <div className="jobs-search-container">
       <form className="jobs-search-form" action="">
         <input type="text" value={searchText} className="search-bar" placeholder="Search for Jobs" />
-        <button type="submit">Search</button>
+        <button className="job-search-btn" type="submit">Search</button>
       </form>
     </div>
   );
