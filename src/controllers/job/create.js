@@ -2,10 +2,10 @@ const createJob = async (req, res) => {
   let {
     session,
     db: { Job },
-    body: { description, location, salary, role},
+    body: { description, location, salary, position, job_type, link,},
   } = req;
 
-  console.log("body", description, location, salary, role)
+  console.log("body", description, location, salary, position, job_type, link)
   console.log("session", session.businessId);
 
 
@@ -16,7 +16,9 @@ const createJob = async (req, res) => {
     description,
     location,
     salary,
-    role,
+    position,
+    job_type,
+    link,
   );
 console.log(job);
   res.send(job);
