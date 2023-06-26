@@ -8,6 +8,7 @@ import logo from "../SVG/logo_purple.svg";
 import "../styles/SignUp.css";
 import { Button } from "@mui/material";
 
+
 export default function SignUpPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser, accountType } =

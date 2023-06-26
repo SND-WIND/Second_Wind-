@@ -1,7 +1,7 @@
 import { fetchHandler, getPostOptions, getPatchOptions } from "../utils";
 
 const baseUrl = "/api/users";
-
+//
 export const createUser = async ({
   username,
   fullName,
@@ -31,7 +31,6 @@ export const createUser = async ({
       cover_image,
     })
   );
-
 // eating errors here for simplicity
 export const getAllUsers = async () => {
   const [users] = await fetchHandler(baseUrl);
