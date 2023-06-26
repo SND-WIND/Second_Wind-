@@ -10,16 +10,11 @@ import jobs from "../SVG/briefcase_fill.svg";
 import bookmarks from "../SVG/bookmark_fill.svg";
 import profile from "../SVG/user_4_fill.svg";
 import settings from "../SVG/settings_4_fill.svg";
-<<<<<<< HEAD
-import { Button } from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
-=======
 import { Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logUserOut } from "../adapters/auth-adapter";
 
 
->>>>>>> main
 
 export default function Menu() {
   
@@ -98,23 +93,14 @@ export default function Menu() {
               </div>
             </Button>
           </Link>
-<<<<<<< HEAD
           <Link to="/landing">
-            <Button variant="contained" color="primary">
+            <Button variant="contained"  onClick={handleLogout}  color="primary">
               <div className="menu-item">
                 <LogoutIcon />
                 <h4>Logout</h4>
               </div>
             </Button>
           </Link>
-=======
-          <Button onClick={handleLogout} variant="contained"  color="primary">
-            <div className="menu-item">
-            <img  alt="" />
-              <h4  >Logout</h4>
-            </div>
-          </Button>
->>>>>>> main
         </div>
       </div>
     </div>
