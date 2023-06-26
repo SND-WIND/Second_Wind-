@@ -82,7 +82,7 @@ export default function Menu() {
           </Link>
           <Button variant="contained"  color="primary">
             <div className="menu-item">
-            <img src={<LogoutIcon/>} alt="" />
+            <img  alt="" />
               <h4>Logout</h4>
 
             </div>
