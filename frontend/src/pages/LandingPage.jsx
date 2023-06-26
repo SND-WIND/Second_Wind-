@@ -12,7 +12,6 @@ function LandingPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   if (currentUser) return <Navigate to="/" />;
-
   return (
     <div className="landing-page">
       <HeroSection />

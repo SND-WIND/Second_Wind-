@@ -54,6 +54,11 @@
 
 .terminate-info {
     color: var(--clr-light);
+    padding-left: 50px;
+}
+
+.terminate-info li{
+  list-style-type: disc;
 }
 
 #terminate-btn {
