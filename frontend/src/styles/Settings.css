@@ -1,0 +1,63 @@
+.settings-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 30px;
+  color: var(--clr-primary);
+}
+
+
+
+.settings-form-class {
+  color: var(--clr-primary);
+  border: 2px solid var(--clr-primary);
+}
+
+.form-label {
+  color: var(--clr-primary);
+}
+
+.settings-toggle-form {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  background-color: #080808;
+  border-radius: 25px;
+  
+  
+}
+
+.settings-forms {
+  width: 43%;
+  
+}
+.settings-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  
+}
+
+
+.settings-submit-btn {
+    background-color: var(--clr-primary);
+}
+
+.terminate-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.terminate-info {
+    color: var(--clr-light);
+}
+
+#terminate-btn {
+    background-color: var(--clr-primary);
+    width: 300px;
+}
+

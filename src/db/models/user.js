@@ -4,12 +4,32 @@ const { hashPassword, isValidPassword } = require("../../utils/auth-utils");
 class User {
   #passwordHash = null;
 
-  constructor({ id, username, full_name, email, password }) {
+  constructor({
+    id,
+    username,
+    full_name,
+    email,
+    password,
+    location,
+    sex,
+    age,
+    status,
+    bio,
+    profile_image,
+    cover_image,
+  }) {
     this.id = id;
     this.username = username;
     this.fullName = full_name;
     this.email = email;
     this.#passwordHash = password;
+    (this.location = location),
+      (this.sex = sex),
+      (this.age = age),
+      (this.status = status),
+      (this.bio = bio),
+      (this.profile_image = profile_image),
+      (this.cover_image = cover_image);
     this.accountType = "user";
   }
 
@@ -29,11 +49,35 @@ class User {
     return user ? new User(user) : null;
   }
 
-  static async create({ username, full_name, email, password }) {
+  static async create({
+    username,
+    full_name,
+    email,
+    password,
+    location,
+    sex,
+    age,
+    status,
+    bio,
+    profile_image,
+    cover_image,
+  }) {
     const passwordHash = await hashPassword(password);
 
     const [user] = await knex("users")
-      .insert({ username, password: passwordHash, full_name, email })
+      .insert({
+        username,
+        password: passwordHash,
+        full_name,
+        email,
+        location,
+        sex,
+        age,
+        status,
+        bio,
+        profile_image,
+        cover_image,
+      })
       .returning("*");
     return new User(user);
   }
@@ -49,11 +93,36 @@ class User {
     return knex.raw("TRUNCATE users;");
   }
 
-  update = async (username) => {
+  update = async (
+    username,
+    password,
+    full_name,
+    email,
+    location,
+    sex,
+    age,
+    status,
+    bio,
+    profile_image,
+    cover_image
+  ) => {
     // dynamic queries are easier if you add more properties
+    const passwordHash = await hashPassword(password);
     const [updatedUser] = await knex("users")
       .where({ id: this.id })
-      .update({ username })
+      .update({
+        username,
+        password: passwordHash,
+        full_name,
+        email,
+        location,
+        sex,
+        age,
+        status,
+        bio,
+        profile_image,
+        cover_image,
+      })
       .returning("*");
     return updatedUser ? new User(updatedUser) : null;
   };
