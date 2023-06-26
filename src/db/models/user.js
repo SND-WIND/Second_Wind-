@@ -93,7 +93,7 @@ class User {
     return knex.raw("TRUNCATE users;");
   }
 
-  update = async (
+  update = async ({
     username,
     password,
     full_name,
@@ -104,7 +104,7 @@ class User {
     status,
     bio,
     profile_image,
-    cover_image
+    cover_image}
   ) => {
     // dynamic queries are easier if you add more properties
     const passwordHash = await hashPassword(password);

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { updateUserInfo } from "../adapters/user-adapter";
+import CurrentUserContext from "../contexts/current-user-context";
+
 
 const SettingsUserForm = () => {
-  const [fullName, setFullName] = useState("");
-  const [location, setLocation] = useState("");
-  const [sex, setSex] = useState("");
-  const [age, setAge] = useState("");
-  const [status, setStatus] = useState("");
+    const { currentUser, setCurrentUser, accountType } =
+      useContext(CurrentUserContext);
+  const [fullName, setFullName] = useState(currentUser.full_name);
+  const [location, setLocation] = useState(currentUser.location);
+  const [sex, setSex] = useState(currentUser.sex);
+  const [age, setAge] = useState(currentUser.age);
+  const [status, setStatus] = useState(currentUser.status);
 
     // const [formData, setFormData] = useState({
     //   fullName: fullName,
@@ -30,10 +34,11 @@ const SettingsUserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const values = {};
+    const values = { id: currentUser.id };
     for (let [name, value] of formData.entries()) {
-      values[name] = value;
+      if (value) values[name] = value;
     }
+
     console.log(values)
     const [data, error] = await updateUserInfo(values);
   };
@@ -45,10 +50,10 @@ const SettingsUserForm = () => {
         Full Name
         <input
           type="text"
-          name="Full Name"
+          name="fullName"
           className="settings-form-class"
           placeholder="Full Name"
-          value={fullName}
+          // value={fullName}
           onChange={handleChange}
         />
       </label>
@@ -57,10 +62,10 @@ const SettingsUserForm = () => {
         Location
         <input
           type="text"
-          name="Location"
+          name="location"
           className="settings-form-class"
           placeholder="City, State"
-          value={location}
+          // value={location}
           onChange={handleChange}
         />
       </label>
@@ -69,10 +74,10 @@ const SettingsUserForm = () => {
         Sex
         <input
           type="text"
-          name="Sex"
+          name="sex"
           className="settings-form-class"
           placeholder="Male, Female or Others"
-          value={sex}
+          // value={sex}
           onChange={handleChange}
         />
       </label>
@@ -81,10 +86,10 @@ const SettingsUserForm = () => {
         Age
         <input
           type="text"
-          name="Age"
+          name="age"
           className="settings-form-class"
           placeholder="Enter your age"
-          value={age}
+          // value={age}
           onChange={handleChange}
         />
       </label>
@@ -93,10 +98,10 @@ const SettingsUserForm = () => {
         Status
         <input
           type="text"
-          name="Status"
+          name="status"
           className="settings-form-class"
           placeholder="Formerly Incarcerated"
-          value={status}
+          // value={status}
           onChange={handleChange}
         />
       </label>
@@ -104,7 +109,6 @@ const SettingsUserForm = () => {
       <button
         className="settings-submit-btn"
         type="submit"
-        onSubmit={handleSubmit}
       >
         Submit
       </button>

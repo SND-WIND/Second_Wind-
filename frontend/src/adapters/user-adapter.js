@@ -50,10 +50,10 @@ export const getUserPosts = async (id) => {
 
 export const updateUserInfo = async ({
   id,
-  // username,
-  // fullName,
-  // email,
-  // password,
+  username,
+  fullName,
+  email,
+  password,
   location,
   sex,
   age,
@@ -65,11 +65,10 @@ export const updateUserInfo = async ({
   fetchHandler(
     `${baseUrl}/${id}`,
     getPatchOptions({
-      // id,
-      // username,
-      // fullName,
-      // email,
-      // password,
+      username,
+      fullName,
+      email,
+      password,
       location,
       sex,
       age,
