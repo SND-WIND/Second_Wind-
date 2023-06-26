@@ -219,6 +219,10 @@ picture {
 .btn {
   text-transform: none !important;
 }
+.btn-text-black {
+  text-transform: none !important;
+  color: black !important;
+}
 
 .case-fix {
   text-decoration: none !important;
