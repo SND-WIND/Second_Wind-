@@ -2,12 +2,14 @@ const knex = require("../knex");
 
 
 class Job {
-  constructor({ id, description, location, salary, role }) {
+  constructor({ id, description, location, salary, position  }) {
     this.id = id;
     this.description = description;
     this.location = location;
     this.salary = salary;
-    this.role = role;
+    this.position = position;
+    this.job_type = job_type;
+    this.link = link;
   }
 
 
@@ -36,7 +38,7 @@ class Job {
       return null;
     }
   }
-  static async create( business_id, description, location, salary, role) {
+  static async create( business_id, description, location, salary, position, job_type, link) {
     try {
       const [job] = await knex("jobs")
         .insert({
@@ -44,7 +46,9 @@ class Job {
           description,
           location,
           salary,
-          role,
+          position,
+          job_type,
+          link,
         })
         .returning("*");
       return job;
@@ -74,7 +78,7 @@ class Job {
     // dynamic queries are easier if you add more properties
     const [updatedJob] = await knex("jobs")
       .where({ id })
-      .update({ description, location, salary, role })
+      .update({ description, location, salary, position, job_type, link })
       .returning("*");
     return updatedJob;
   }
