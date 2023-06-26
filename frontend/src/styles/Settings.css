@@ -6,9 +6,7 @@
   color: var(--clr-primary);
 }
 
-.settings-toggle-form {
-    width: 75%;
-}
+
 
 .settings-form-class {
   color: var(--clr-primary);
@@ -20,17 +18,29 @@
 }
 
 .settings-toggle-form {
+  width: 75%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  
   background-color: #080808;
   border-radius: 25px;
-  padding: 80px;
+  
+  
 }
 
 .settings-forms {
   width: 43%;
+  
 }
+.settings-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  
+}
+
 
 .terminate-wrapper {
     display: flex;

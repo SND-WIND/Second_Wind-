@@ -212,9 +212,7 @@ picture {
     color: var(--clr-light);
 }
 
-.menu-item:hover {
-    background-color: #151515;
-}
+
 
 .menu-item{
     display: flex;
