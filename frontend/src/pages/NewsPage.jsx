@@ -11,7 +11,7 @@ export default function NewsPage() {
 
   if (!currentUser) return <Navigate to="/landing" />;
     return (
-        <div className="page-container">
+        <div className="news-container">
             <Menu />
             <News />
             <Messages />

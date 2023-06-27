@@ -47,3 +47,15 @@
   margin-bottom: 60px;
 }
 
+.accountToggler{
+  display: flex;
+  gap: 30px;
+  color: var(--clr-light);
+
+}
+
+.formType:hover{
+  color: var(--clr-black);
+  cursor: pointer;
+  font-weight: var(--fw-medium);
+}

@@ -7,6 +7,7 @@ import { createComment, getAllComments } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
+import Comment from "./Comment";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -71,9 +72,10 @@ function Post({ post }) {
   return (
     <div className="post-container" data-post-id={post.id}>
       <div className="post">
-        <div className="profile-pic">
-          <img src={post.profile_image} alt="" />
-        </div>
+        <div
+          className="profile-pic"
+          style={{ backgroundImage: `url(${post.profile_image})` }}
+        ></div>
         <div className="post-content">
           <div className="name-options">
             <h4 className="post-author" onClick={handleClick}>
@@ -87,35 +89,30 @@ function Post({ post }) {
             )} */}
           </div>
           <p className="post-caption">{post.caption}</p>
-          <div className="post-image">
-            <img src={post.image_url} alt="" />
-          </div>
+          <div
+            className="post-image"
+            style={{ backgroundImage: `url(${post.profile_image})` }}
+          ></div>
         </div>
       </div>
 
       <div className="post-footer">
-        <div className="post-likes lcb">
-          <div onClick={handleLike} className="lcb">
+        <div className="post-likes">
+          <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
             <h5>Like</h5>
+            <span>{post.like_count}</span>
           </div>
-          <span>{post.like_count}</span>
         </div>
 
-        <div className="post-comments">
-          <div className="lcb" onClick={openComments}>
-            <img src={CommentIcon} alt="" className="like-icon" />
-            <h5>Comment</h5>
-          </div>
-          <span>{/*post.comment_count*/}</span>
+        <div className="post-comments" onClick={openComments}>
+          <img src={CommentIcon} alt="" className="like-icon" />
+          <h5>Comment</h5>
         </div>
 
-        <div className="post-bookmarks">
-          <div onClick={handleBookmark} className="lcb">
+        <div className="post-bookmarks" onClick={handleBookmark}>
             <img src={BookmarkIcon} alt="" className="bookmark-icon" />
             <h5>Bookmark</h5>
-          </div>
-          <span>{post.likes}</span>
         </div>
 
         {/* {currentUser.id === post.user_id && (
@@ -126,20 +123,30 @@ function Post({ post }) {
         )} */}
       </div>
 
+      <h3 className="comment-title">Comments</h3>
       <form className="add-comment">
-        <div className="user-profile">
-          <div className="profile-pic">
-            <img src="" alt="" />
-          </div>
+        <div className="comment-profile">
+          <div
+            className="comments-profile-pic"
+            style={{ backgroundImage: `url(${post.profile_image})` }}
+          ></div>
           <h5>{post.username}</h5>
         </div>
         <textarea
           type="text"
           placeholder="Add a comment..."
+          id="add-comment-input"
           onChange={handleCommentTextChange}
         />
-        <button onClick={handleComment}>Submit</button>
+        <button className="comments-submit-btn" onClick={handleComment}>
+          Submit
+        </button>
       </form>
+      <div className="all-comments">
+        {comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
+      </div>
     </div>
   );
 }

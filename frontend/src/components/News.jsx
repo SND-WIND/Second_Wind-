@@ -17,7 +17,7 @@ export default function News() {
     }, []);
             console.log(articles);
     return (
-      <div className="middle-item">
+      <div className="news-feed">
         <h1>News</h1>
         {articles.map((article) => (
           <div key={article.url} className="blog-card">

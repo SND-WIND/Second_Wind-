@@ -11,7 +11,6 @@ exports.up = (knex) => {
     table.string("location").notNullable();
     table.integer("salary").notNullable();
     table.string("position").notNullable();
-    table.string("website");
     table.string("job_type").notNullable();
     table.string("link").notNullable(); 
     table.timestamps(true, true);
