@@ -5,12 +5,18 @@ import CurrentUserContext from "../contexts/current-user-context";
 import logo from "../SVG/logo_black.svg";
 import "../styles/Login.css";
 import { Button } from "@mui/material";
+import { color } from "@mui/system";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState("");
   const { currentUser, setCurrentUser, setAccountType } =
     useContext(CurrentUserContext);
+  const [formAccountType, setFormAccountType] = useState("users");
+
+  const handleClick = (type) => {
+    setFormAccountType(type);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,9 +25,9 @@ export default function LoginPage() {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    setAccountType("user"); // will change this later
+    setAccountType(formAccountType);
 
-    const [user, error] = await logUserIn({ username, password });
+    const [user, error] = await logUserIn({ type: formAccountType, username, password });
     if (error) return setErrorText(error.statusText);
     setCurrentUser(user);
     navigate("/");
@@ -34,6 +40,14 @@ export default function LoginPage() {
       <div className="login">
         <img src={logo} alt="Logo" className="logo" />
         {!!errorText && <p>{errorText}</p>}
+        <div className="accountToggler">
+          <h5 className="formType" onClick={() => handleClick("users")}>
+            Personal Account
+          </h5>
+          <h5 className="formType" onClick={() => handleClick("businesses")}>
+            Organization
+          </h5>
+        </div>
         <form className="login-form" onSubmit={handleSubmit}>
           <h1>Login</h1>
           <label htmlFor="username">Username</label>
@@ -42,7 +56,12 @@ export default function LoginPage() {
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" required />
 
-          <Button variant="contained" color="black" className="login-btn btn" type="submit">
+          <Button
+            variant="contained"
+            color="black"
+            className="login-btn btn"
+            type="submit"
+          >
             Log in
           </Button>
           <h5>

@@ -72,9 +72,10 @@ function Post({ post }) {
   return (
     <div className="post-container" data-post-id={post.id}>
       <div className="post">
-        <div className="profile-pic">
-          <img src={post.profile_image} alt="" />
-        </div>
+        <div
+          className="profile-pic"
+          style={{ backgroundImage: `url(${post.profile_image})` }}
+        ></div>
         <div className="post-content">
           <div className="name-options">
             <h4 className="post-author" onClick={handleClick}>
@@ -88,35 +89,30 @@ function Post({ post }) {
             )} */}
           </div>
           <p className="post-caption">{post.caption}</p>
-          <div className="post-image">
-            <img src={post.image_url} alt="" />
-          </div>
+          <div
+            className="post-image"
+            style={{ backgroundImage: `url(${post.profile_image})` }}
+          ></div>
         </div>
       </div>
 
       <div className="post-footer">
-        <div className="post-likes lcb">
-          <div onClick={handleLike} className="lcb">
+        <div className="post-likes">
+          <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
             <h5>Like</h5>
+            <span>{post.like_count}</span>
           </div>
-          <span>{post.like_count}</span>
         </div>
 
-        <div className="post-comments">
-          <div className="lcb" onClick={openComments}>
-            <img src={CommentIcon} alt="" className="like-icon" />
-            <h5>Comment</h5>
-          </div>
-          <span>{/*post.comment_count*/}</span>
+        <div className="post-comments" onClick={openComments}>
+          <img src={CommentIcon} alt="" className="like-icon" />
+          <h5>Comment</h5>
         </div>
 
-        <div className="post-bookmarks">
-          <div onClick={handleBookmark} className="lcb">
+        <div className="post-bookmarks" onClick={handleBookmark}>
             <img src={BookmarkIcon} alt="" className="bookmark-icon" />
             <h5>Bookmark</h5>
-          </div>
-          <span>{post.likes}</span>
         </div>
 
         {/* {currentUser.id === post.user_id && (
@@ -129,13 +125,11 @@ function Post({ post }) {
 
       <h3 className="comment-title">Comments</h3>
       <form className="add-comment">
-        <div className="user-profile">
-          <div className="comments-profile-pic">
-            <img
-              src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-              alt=""
-            />
-          </div>
+        <div className="comment-profile">
+          <div
+            className="comments-profile-pic"
+            style={{ backgroundImage: `url(${post.profile_image})` }}
+          ></div>
           <h5>{post.username}</h5>
         </div>
         <textarea

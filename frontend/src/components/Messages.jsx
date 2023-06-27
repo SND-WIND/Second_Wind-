@@ -65,7 +65,7 @@ export default function Messages() {
   }
 
   return (
-    <div className="messages-container right-item" >
+    <div className="messages-container" >
       <h1>Chatting with {chattingWith.username}</h1>
       <ul>
         {messages.map((msg, index) => 

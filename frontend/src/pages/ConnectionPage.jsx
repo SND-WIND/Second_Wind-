@@ -12,7 +12,7 @@ export default function ConnectPage() {
   if (!currentUser) return <Navigate to="/landing" />;
 
   return (
-    <div className="page-container">
+    <div className="connect-page">
       <Menu />
       <Connections />
       <Messages />
