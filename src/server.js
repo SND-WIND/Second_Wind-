@@ -1,9 +1,13 @@
 const express = require('express');
 const path = require('path');
+const http = require('http');
+const socketIo = require('socket.io');
 const handleCookieSessions = require('./middleware/handle-cookie-sessions');
 const routes = require('./routes');
 
 const app = express();
+const server = http.createServer(app); // create a server using http and pass your express app to it
+const io = socketIo(server, { cors: { origin: "*" } }); // set up socket.io to use that server with CORS
 
 app.use(handleCookieSessions);
 app.use(express.json());
@@ -16,4 +20,22 @@ app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
-module.exports = app;
+// Socket.io connection
+io.on('connection', (socket) => {
+  console.log('New client connected');
+
+  // You can listen for custom events here.
+  // For example, listening for a 'chat message' event:
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+
+    // Then, you could emit the 'chat message' event to all connected clients:
+    io.emit('chat message', msg);
+  });
+
+  // Disconnect listener
+  socket.on('disconnect', () => console.log('Client disconnected'));
+});
+
+// Remember to export the server, not the app
+module.exports = server;
