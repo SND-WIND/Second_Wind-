@@ -28,6 +28,7 @@ export default function SignUpPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("submit");
     setErrorText("");
     if (password !== passwordConfirm) setErrorText("Passwords do not match");
     if (accountType === "user") {
@@ -163,7 +164,7 @@ export default function SignUpPage() {
                 value={passwordConfirm}
                 required
               />
-              <Button variant="contained" color="black" className="signupbtn btn">Sign Up Now!</Button>
+              <Button type="submit" variant="contained" color="black" className="signupbtn btn">Sign Up Now!</Button>
               <h5>
                 Already have an account with us?{" "}
                 <Link to="/login" className="signup-link">
