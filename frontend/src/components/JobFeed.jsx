@@ -6,6 +6,13 @@ import CreateJobModal from "./CreateJobModal";
 
 export default function JobFeed() {
   const { accountType } = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    const getJobs = async () => {
+      
+    }
+  }, []);
+
   return (
     <div className="job-feed">
       <JobSearchBar />

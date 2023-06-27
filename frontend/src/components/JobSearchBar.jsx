@@ -1,34 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
-import SearchIcon from "../SVG/search_line.svg"
+import { searchJob } from "../adapters/job-adapter";
+import SearchIcon from "../SVG/search_line.svg";
 
 export default function JobSearchBar() {
   const [searchText, setSearchText] = useState("");
   const [results, setResults] = useState([]);
 
-  const changeHandler = (e) => {
-    setSearchText(e.target.value)
-  }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(searchText)
-  //   setSearchText(searchText);
-  //   // const [data, error] = await createJob(values);
-  //   // console.log(data);
-  // }
-
-  useEffect(() => {
-    fetch(`/api/jobs?query=${searchText}`)
-      .then((response) => response.json())
-      .then((data) => setResults(data.results));
-      //console.log(data.results);
-  }, [searchText]);
+  const changeHandler = async (e) => {
+    const position = e.target.value;
+    console.log(position);
+    const data = await searchJob({ position });
+    console.log(data);
+  };
 
   return (
     <div className="jobs-search-container">
       <form className="jobs-search-form" action="">
-        <input type="text" className="search-bar" onChange={changeHandler}placeholder="Search for Jobs" />
-        <button className="job-search-btn" type="submit">Search</button>
+        <input
+          type="text"
+          className="search-bar"
+          onChange={changeHandler}
+          placeholder="Search for Jobs"
+        />
+        <button className="job-search-btn" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

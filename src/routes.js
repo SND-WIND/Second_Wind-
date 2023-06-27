@@ -20,7 +20,7 @@ Router.post("/comments/list", commentController.list);
 Router.get("/jobs", jobController.list);
 // Router.get("/connections", connectionController.list);
 Router.get("/connections/request", connectionController.listRequest);
-Router.post("/jobs/search", jobController.search);
+Router.get("/jobs/search", jobController.search);
 
 Router.get("/posts/:id/likes", likeController.list);
 
