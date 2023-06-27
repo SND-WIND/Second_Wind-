@@ -6,6 +6,7 @@ const bookmarkController = require("./controllers/bookmark");
 const commentController = require("./controllers/comment");
 const likeController = require("./controllers/like");
 const jobController = require("./controllers/job");
+const connectionController = require("./controllers/connection");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
 
@@ -17,6 +18,8 @@ Router.get("/posts", postController.list);
 Router.get("/bookmarks", bookmarkController.list);
 Router.post("/comments/list", commentController.list);
 Router.get("/jobs", jobController.list);
+// Router.get("/connections", connectionController.list);
+Router.get("/connections/request", connectionController.listRequest);
 
 Router.get("/posts/:id/likes", likeController.list);
 
@@ -30,6 +33,7 @@ Router.post("/comments", commentController.create);
 Router.post("/likes", likeController.create);
 Router.post("/jobs", jobController.create);
 Router.post("/bookmarks", bookmarkController.create);
+Router.post("/connections", connectionController.create);
 
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);

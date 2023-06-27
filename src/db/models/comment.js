@@ -92,21 +92,4 @@ class Comment {
   }
 }
 
-const testModel = async () => {
-  const user_id = 8; // Replace with the actual user ID
-  const post_id = 3; // Replace with the actual post ID
-  const commentText = "This is a new comment";
-  const commentObj = await Comment.create({
-    user_id,
-    post_id,
-    comment: commentText,
-  });
-  // const onePost = await Post.find(6);
-  //const allPosts = await Post.list();
-  //const removeComment = await Comment.delete(4);
-  console.log(commentObj);
-};
-
-//testModel();
-
 module.exports = Comment;
