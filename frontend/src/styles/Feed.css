@@ -45,3 +45,33 @@
     border-top: 0.5px solid rgba(255, 255, 255, 0.20);
     padding: 15px;
 }
+
+.comment-title{
+    color: var(--clr-light);
+    margin: 15px 0;
+}
+
+.add-comment {
+    background-color: #080808;
+    padding: 15px;
+    border-radius: 15px;
+    border: 0.5px solid rgba(255, 255, 255, 0.32);
+}
+
+.comments-profile-pic {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#add-comment-input{
+    background-color: #080808;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.32);
+}
+
+.comments-submit-btn {
+    margin-top: 10px;
+}
+
+

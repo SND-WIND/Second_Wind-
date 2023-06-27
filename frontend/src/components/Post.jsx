@@ -7,6 +7,7 @@ import { createComment, getAllComments } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
+import Comment from "./Comment";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -126,20 +127,32 @@ console.log(post)
         )} */}
       </div>
 
+      <h3 className="comment-title">Comments</h3>
       <form className="add-comment">
         <div className="user-profile">
-          <div className="profile-pic">
-            <img src="" alt="" />
+          <div className="comments-profile-pic">
+            <img
+              src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+              alt=""
+            />
           </div>
           <h5>{post.username}</h5>
         </div>
         <textarea
           type="text"
           placeholder="Add a comment..."
+          id="add-comment-input"
           onChange={handleCommentTextChange}
         />
-        <button onClick={handleComment}>Submit</button>
+        <button className="comments-submit-btn" onClick={handleComment}>
+          Submit
+        </button>
       </form>
+      <div className="all-comments">
+        {comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
+      </div>
     </div>
   );
 }
