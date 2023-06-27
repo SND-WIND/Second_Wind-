@@ -5,23 +5,18 @@
   gap: 80px;
   padding: 10px;
   background-color: var(--clr-black);
-
+  justify-content: space-between;
 }
 
 .feed-container {
-  width: 45%;
+  width: 46%;
   background-color: var(--clr-black);
   padding: 10px;
 }
 
-.create-post {
-  background-color: var(--clr-grey);
-  padding: 10px;
-  border-radius: 15px;
-}
-
 .post-list {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
 }
@@ -75,8 +70,9 @@
 
 .profile-pic {
   width: 50px;
+  min-width: 50px;
+  min-width: 50px;
   height: 50px;
-  background-image: url("https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,23 +80,10 @@
   margin-bottom: 10px;
 }
 
-/* #create-post-caption{
-    width: 100%;
-    padding: 15px;
-    height: 146px;
-    background-color: #151515;
-    color: var(--clr-light);
-    outline: none;
-    padding-left: 10px;
-    border-radius: 10px;
-    border: 0px solid var(--clr-black);
-    font-family: var(--ff-primary);
-    font-size: var(--fs-xs);
-    font-weight: 500;
-} */
-
-textarea {
+#create-post-caption {
+  min-width: 90%;
   width: 100%;
+  max-width: 100%;
   color: var(--clr-light);
   background-color: #151515;
   border: none;
@@ -111,41 +94,42 @@ textarea {
   font-style: italic;
 }
 
-.post-footer{
+.post-footer {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .post-likes {
+  display: flex;
+  align-items: center;
   color: var(--clr-light);
+  cursor: pointer;
 }
 
 .post-comments {
+    display: flex;
+  align-items: center;
   color: var(--clr-light);
+  cursor: pointer;
 }
 
 .post-bookmarks {
+    display: flex;
+  align-items: center;
   color: var(--clr-light);
+  cursor: pointer;
 }
 
-.lcb {
+.likes {
   display: flex;
+  gap: 5px;
 }
 
-.user-profile{
+.user-profile {
   display: flex;
   color: var(--clr-light);
   align-items: center;
   gap: 15px;
-}
-
-
-
-.messages-container {
-  display: flex;
-  width: 27%;
-  background-color: var(--clr-grey);
-  color: var(--clr-light);
 }
 
 /* .card {
@@ -158,7 +142,7 @@ textarea {
 } */
 
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -191,4 +175,3 @@ textarea {
 .modal-content button {
   margin-right: 10px;
 }
-

@@ -7,9 +7,9 @@ export const checkForLoggedInUser = async () => {
   return data;
 };
 
-export const logUserIn = async ({ username, password }) =>
+export const logUserIn = async ({ type, username, password }) =>
   fetchHandler(
-    `${baseUrl}/users/login`,
+    `${baseUrl}/${type}/login`,
     getPostOptions({ username, password })
   );
 

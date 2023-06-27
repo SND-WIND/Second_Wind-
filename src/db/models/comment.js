@@ -8,7 +8,19 @@ class Comment {
 
   static async list({ post_id }) {
     try {
-      const query = "SELECT * FROM comments WHERE post_id = ?";
+      const query = `SELECT comments.*,
+      CASE
+        WHEN comments.account_type = true THEN users.username
+          WHEN comments.account_type = false THEN businesses.username
+      END AS username,
+      CASE
+          WHEN comments.account_type = true THEN users.profile_image
+          WHEN comments.account_type = false THEN businesses.profile_image
+      END AS profile_image
+      FROM comments
+      LEFT JOIN users ON users.id = comments.user_id AND comments.account_type = true
+      LEFT JOIN businesses ON businesses.id = comments.user_id AND comments.account_type = false
+      WHERE post_id = ?;`;
       const { rows } = await knex.raw(query, [post_id]);
       return rows;
     } catch (err) {

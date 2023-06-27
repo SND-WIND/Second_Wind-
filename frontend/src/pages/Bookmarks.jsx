@@ -5,6 +5,7 @@ import Menu from "../components/Menu";
 import PostList from "../components/PostList";
 import Messages from "../components/Messages";
 import "../styles/Bookmark.css"
+import BookmarkList from "../components/BookmarkList";
 
 export default function BookmarksPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -14,7 +15,7 @@ export default function BookmarksPage() {
   return (
     <div className="bookmark-page">
       <Menu />
-      <PostList />
+      <BookmarkList />
       <Messages />
     </div>
   );

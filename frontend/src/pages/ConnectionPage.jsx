@@ -7,14 +7,15 @@ import Connections from "../components/Connections";
 import "../styles/Connection.css";
 
 export default function ConnectPage() {
-    const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   if (!currentUser) return <Navigate to="/landing" />;
-    return (
-        <div className="page-container">
-            <Menu />
-            <Connections />
-            <Messages />
-        </div>
-    );
+
+  return (
+    <div className="connect-page">
+      <Menu />
+      <Connections />
+      <Messages />
+    </div>
+  );
 }
