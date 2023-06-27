@@ -14,8 +14,8 @@ export const logUserIn = async ({ type, username, password }) =>
   );
 
 // the logout route pretty much can't fail with our setup, but if yours can, change this
-export const logUserOut = async () => {
-  await fetchHandler(`${baseUrl}/users/logout`, deleteOptions);
+export const logUserOut = async (accountType) => {
+  await fetchHandler(`${baseUrl}/${accountType}/logout`, deleteOptions);
   return true;
 };
 

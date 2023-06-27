@@ -1,14 +1,16 @@
 import React, { useEffect, useContext } from "react";
+import CurrentUserContext from "../contexts/current-user-context";
 import JobList from "../components/JobList";
 import JobSearchBar from "./JobSearchBar";
 import CreateJobModal from "./CreateJobModal";
 
 export default function JobFeed() {
+  const { accountType } = useContext(CurrentUserContext);
   return (
-  <div className="job-feed">
-    <JobSearchBar />
-    <CreateJobModal />
-    <JobList />
-  </div>
+    <div className="job-feed">
+      <JobSearchBar />
+      {accountType === "business" && <CreateJobModal />}
+      <JobList />
+    </div>
   );
 }
