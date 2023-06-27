@@ -1,13 +1,15 @@
 const bcrypt = require('bcrypt');
 
 exports.seed = async function(knex) {
-    // Delete existing data
+    
     await knex('likes').del();
+    await knex('comments').del();
+    await knex('bookmarks').del();
     await knex('posts').del();
     
     await knex('users').del();
     await knex('businesses').del();
-    await knex('comments').del();
+    
     
     
 
@@ -26,9 +28,9 @@ exports.seed = async function(knex) {
 
     for(let user of users){
         await knex('posts').insert([
-            {user_id: user.id, account_type: 'personal', caption: "This is my first post since I got out. It's been a journey and I'm excited for what's ahead. #newbeginnings",  image_url: `https://craiglpc.com/wp-content/uploads/2015/12/New-beginnings.jpg`},
-            {user_id: user.id, account_type: 'personal', caption: `Hello everyone so Excited to use this platform and turn my life around`, image_url: `http://example.com/post_image_${user.username}_2.jpg`},
-            {user_id: user.id, account_type: 'personal',  caption: `We will rise up!`, image_url: `https://i0.wp.com/www.northcarolinahealthnews.org/wp-content/uploads/2021/07/Re-entry-graphic-3.jpg?fit=1200%2C674&ssl=1`}
+            {user_id: user.id, account_type: true, caption: "This is my first post since I got out. It's been a journey and I'm excited for what's ahead. #newbeginnings",  image_url: `https://craiglpc.com/wp-content/uploads/2015/12/New-beginnings.jpg`},
+            {user_id: user.id, account_type: true, caption: `Hello everyone so Excited to use this platform and turn my life around`, image_url: `http://example.com/post_image_${user.username}_2.jpg`},
+            {user_id: user.id, account_type: false,  caption: `We will rise up!`, image_url: `https://i0.wp.com/www.northcarolinahealthnews.org/wp-content/uploads/2021/07/Re-entry-graphic-3.jpg?fit=1200%2C674&ssl=1`}
         ]);
     }
 };
