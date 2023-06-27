@@ -19,14 +19,14 @@ const updateUser = async (req, res) => {
       cover_image,
     },
   } = req;
-  
+
   if (!isAuthorized(id, session)) return res.sendStatus(403);
 
   const user = await User.find(id);
   if (!user) return res.sendStatus(404);
 
-  const updatedUser = await user.update(
-    {username,
+  const updatedUser = await user.update({
+    username,
     full_name: fullName,
     email,
     password,
@@ -36,8 +36,8 @@ const updateUser = async (req, res) => {
     status,
     bio,
     profile_image,
-    cover_image}
-  );
+    cover_image,
+  });
   if (!updatedUser) return res.sendStatus(404);
   res.send(updatedUser);
 };
