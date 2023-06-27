@@ -15,6 +15,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { logUserOut } from "../adapters/auth-adapter";
 
 
+
 export default function Menu() {
   
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function Menu() {
         <img src={logo} alt="" width="200px" />
         <div className="menu-items">
           <Link to="/">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" >
               <div className="menu-item">
                 <img src={home} alt="" />
                 <h4>Home</h4>
@@ -43,7 +44,7 @@ export default function Menu() {
           </Link>
 
           <Link to="/connect">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={connect} alt="" />
                 <h4>Connect</h4>
@@ -51,7 +52,7 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/news">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={news} alt="" />
                 <h4>News</h4>
@@ -59,7 +60,7 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/jobs">
-            <Button variant="text" color="primary">
+            <Button variant="text" color="primary" className="case-fix">
               <div className="menu-item">
                 <img src={jobs} alt="" />
                 <h4>Jobs</h4>
@@ -85,19 +86,21 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/settings">
-            <Button variant="text" color="primary" >
+            <Button variant="text" color="primary">
               <div className="menu-item">
                 <img src={settings} alt="" />
                 <h4>Settings</h4>
               </div>
             </Button>
           </Link>
-          <Button onClick={handleLogout} variant="contained"  color="primary">
-            <div className="menu-item">
-            <img  alt="" />
-              <h4  >Logout</h4>
-            </div>
-          </Button>
+          <Link to="/landing">
+            <Button variant="contained"  onClick={handleLogout}  color="primary">
+              <div className="menu-item">
+                <LogoutIcon />
+                <h4>Logout</h4>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

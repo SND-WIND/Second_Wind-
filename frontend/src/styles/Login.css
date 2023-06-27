@@ -19,8 +19,8 @@
 }
 
 .login-btn:hover {
-  background-color: #000000;
-  color:var(--clr-light)
+  background-color: var(--clr-light);
+  color:var(--clr-black);
 }
 
 .signup-link {

@@ -9,6 +9,7 @@ export default function CurrentUserContextProvider({ children }) {
   useEffect(() => {
     async function getCurrentUser() {
       const user = await checkForLoggedInUser();
+      if (!user) return;
       console.log(user);
       setAccountType(user.accountType);
     }

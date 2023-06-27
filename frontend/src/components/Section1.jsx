@@ -13,10 +13,7 @@ const Section1 = () => {
           Connect with people who understands you
         </h2>
         <p className="section1-description">
-          Lorem ipsum dolor sit amet consectetur. Suspendisse suspendisse tempor
-          et ipsum sit egestas nunc. Diam in cum a in. Lorem ipsum dolor sit
-          amet consectetur. Suspendisse suspendisse tempor et ipsum sit egestas
-          nunc. Diam in cum a in.
+          SecondWind: Your Community, Your Reintegration. Connect with those who truly understand your journey, and rediscover the strength within you. In our shared experiences, find the support you need to navigate life after incarceration. Because nobody should walk this path alone. Join SecondWind today, and move forward together.
         </p>
       </div>
       <div className="section1-right">
