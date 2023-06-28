@@ -9,6 +9,8 @@ import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import optionDots from "../SVG/option_dots_white.svg"
 import Comment from "./Comment";
+import UpdatePostModal from "../components/UpdatePostModal"
+import { Button } from "@mui/material";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ function Post({ post }) {
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
-  const {id } = useHref();
+  const href = useHref();
   const [showComments, setShowComments] = useState(false);
 
   const handleClick = (e) => {
@@ -88,11 +90,8 @@ function Post({ post }) {
             <h4 className="post-author" onClick={handleClick}>
               {post.username} 
             </h4>
-            {href === `/users/${currentUser.id}` && (
-              <div>
-                <img src={optionDots} alt="" width="15px" height="15px"/>
+            {href == `/users/${currentUser.id}` && (
                 <UpdatePostModal />
-              </div>
             )}
           </div>
           <p className="post-caption">{post.caption}</p>
@@ -107,7 +106,6 @@ function Post({ post }) {
         <div className="post-likes">
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
-            /* //Like if one like else likes */
             <h5>Like</h5> 
             <span>{post.like_count}</span>
           </div>
@@ -123,13 +121,6 @@ function Post({ post }) {
             <img src={BookmarkIcon} alt="" className="bookmark-icon" />
             <h5>Bookmark</h5>
         </div>
-
-        {/* {currentUser.id === post.user_id && (
-          <div className="options">
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
-        )} */}
       </div>
 
       {showComments && ( // Render comments section only if showComments is true
@@ -149,7 +140,7 @@ function Post({ post }) {
               id="add-comment-input"
               onChange={handleCommentTextChange}
             />
-            <Button variant="contained"  color="primary" className="comments-submit-btn" onClick={handleComment}>
+            <Button variant="contained" color="primary" className="comments-submit-btn" onClick={handleComment}>
               Submit
             </Button>
           </form>
