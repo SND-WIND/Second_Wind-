@@ -1,8 +1,9 @@
-import React, { useState, useEffect,useContext} from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { TextField, Button, Card, CardContent, Typography } from '@mui/material';
 import { getAllUsers } from "../adapters/user-adapter";
 import { createMessage, getConversation } from "../adapters/messages-adapter";
 import CurrentUserContext from '../contexts/current-user-context';
+import io from "socket.io-client";
 
 
 export default function Messages() {
@@ -10,33 +11,64 @@ export default function Messages() {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const [chattingWith, setChattingWith] = useState(null);
-
   const { currentUser } = useContext(CurrentUserContext);
+  const socketRef = useRef();
+
   useEffect(() => {
-    getAllUsers().then(setUsers);
-  }, []);
+    getAllUsers().then(users => setUsers(users.filter(user => user.id !== currentUser.id)));
+
+    socketRef.current = io('http://localhost:3000');
+
+    socketRef.current.on("connect", () => {
+      console.log("Connected to the server");
+    });
+
+    socketRef.current.on("new message", (msg) => {
+      console.log("Message received", msg);
+      setMessages((oldMessages) => [...oldMessages, msg]);
+    });
+
+    return () => {
+      socketRef.current.disconnect();
+    };
+  }, [currentUser]);
+
+  // Fetch all messages related to the conversation when chattingWith changes
+  useEffect(() => {
+    if (chattingWith) {
+      getConversation(chattingWith.id)
+        .then(([messages]) => {
+          console.log("messages after sending:", messages);
+          setMessages(messages);
+        })
+        .catch(error => console.error(error));
+    }
+  }, [chattingWith]);
 
   const startChat = (user) => {
+    console.log(user)
     setChattingWith(user);
   }
-
+  const handleBack = () => {
+    setChattingWith(null);
+  }
   const sendMessage = async (event) => {
     event.preventDefault();
-    const newMessage = await createMessage(currentUser.id,chattingWith.id, message);
-    const [messages] = await getConversation(chattingWith.id);
-    console.log("msg",messages);
-    setMessages(messages);
+    const newMessage = await createMessage(currentUser.id, chattingWith.id, message);
+    socketRef.current.emit("chat message", newMessage);
+    getConversation(chattingWith.id)
+      .then(([messages]) => {
+        console.log("messages after sending:", messages);
+        setMessages(messages);
+      })
+      .catch(error => console.error(error));
     setMessage('');
-  }
-  
+  };
 
 
   if (!chattingWith) {
     return (
       <div>
-        //TO FIX:
-        //show all users EXECEPT the current user
-        //
         {users.map(user => (
           <Card key={user.id} onClick={() => startChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
             <CardContent>
@@ -51,29 +83,23 @@ export default function Messages() {
   }
 
   return (
-    //this whole thing needs to be underneath inline with the messages header
-    //needs to be stylized much better
-    // other user background color white black text
-    //user  background color purple maybe white text
-    //text area needs a bubble line with a dope send button
-    //
     <div className="messages-container" >
-      <h1>Chatting with {chattingWith.username}</h1>
+      <Button onClick={handleBack} variant="contained" color="secondary">Back</Button>
+      <h1>{chattingWith.username}</h1>
       <ul>
-        {messages.map(message => (
-          
-          <li key={message.id}>
+        {messages.map((message, index) => (
+          <li key={index} className={`message-bubble ${message.sender_id === currentUser.id ? "right" : "left"}`}>
             <p>{message.text}</p>
           </li>
         ))}
       </ul>
       <form onSubmit={sendMessage}>
-        <TextField 
+        <TextField
           multiline
           label="Message"
-          value={message} 
+          value={message}
           color="primary"
-          onChange={e => setMessage(e.target.value)} 
+          onChange={e => setMessage(e.target.value)}
           variant="filled" />
         <Button type="submit" variant="contained" color="primary">Send</Button>
       </form>
