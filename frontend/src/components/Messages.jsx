@@ -1,80 +1,75 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import { TextField, Button, Card, CardContent, Typography } from '@mui/material';
-import io from "socket.io-client";
 import { getAllUsers } from "../adapters/user-adapter";
-const socket = io.connect('http://localhost:3000'); 
+import { createMessage, getConversation } from "../adapters/messages-adapter";
+import CurrentUserContext from '../contexts/current-user-context';
 
-function UserCard({ user, onStartChat }) {
-  return (
-    <Card onClick={() => onStartChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-          {user.username}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-}
 
 export default function Messages() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [room, setRoom] = useState('');
   const [users, setUsers] = useState([]);
   const [chattingWith, setChattingWith] = useState(null);
 
+  const { currentUser } = useContext(CurrentUserContext);
   useEffect(() => {
     getAllUsers().then(setUsers);
-    socket.on('connect', () => {
-    
-      console.log('Connected to the server');
-    });
-
-    socket.on('chat message', (msg) => {
-      setMessages((oldMessages) => [...oldMessages, msg]);
-    });
-
-    // Use the function to fetch users from the backend
-    
-
-    return () => {
-      socket.off('connect');
-      socket.off('chat message');
-    };
   }, []);
 
   const startChat = (user) => {
     setChattingWith(user);
-    setRoom(user.id); // use the user id as the room id
   }
 
-  const sendMessage = (event) => {
+  const sendMessage = async (event) => {
     event.preventDefault();
-    socket.emit('chat message', { room, message });
+    const newMessage = await createMessage(currentUser.id,chattingWith.id, message);
+    const [messages] = await getConversation(chattingWith.id);
+    console.log("msg",messages);
+    setMessages(messages);
     setMessage('');
   }
+  
+
 
   if (!chattingWith) {
     return (
       <div>
+        //TO FIX:
+        //show all users EXECEPT the current user
+        //
         {users.map(user => (
-          <UserCard key={user.id} user={user} onStartChat={startChat} />
+          <Card key={user.id} onClick={() => startChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                {user.username}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
       </div>
     )
   }
 
   return (
+    //this whole thing needs to be underneath inline with the messages header
+    //needs to be stylized much better
+    // other user background color white black text
+    //user  background color purple maybe white text
+    //text area needs a bubble line with a dope send button
+    //
     <div className="messages-container" >
       <h1>Chatting with {chattingWith.username}</h1>
       <ul>
-        {messages.map((msg, index) => 
-          <li key={index}>{msg}</li>
-        )}
+        {messages.map(message => (
+          
+          <li key={message.id}>
+            <p>{message.text}</p>
+          </li>
+        ))}
       </ul>
       <form onSubmit={sendMessage}>
         <TextField 
-        multiline
+          multiline
           label="Message"
           value={message} 
           color="primary"

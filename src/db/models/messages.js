@@ -12,11 +12,13 @@ class Messages {
   }
 
   static getConversation(senderId, recipientId) {
+    console.log(senderId, recipientId)
     return knex(this.tableName)
       .where({ sender_id: senderId, recipient_id: recipientId })
       .orWhere({ sender_id: recipientId, recipient_id: senderId }) // To get all messages between the two users
       .orderBy('created_at', 'desc');
   }
+  
 }
 
 module.exports = Messages;

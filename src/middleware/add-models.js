@@ -16,6 +16,7 @@ const addModels = (req, res, next) => {
     Comment,
     Like,
     Job,
+    Messages,
   };
   next();
 };
