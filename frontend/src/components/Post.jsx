@@ -7,9 +7,8 @@ import { createComment, getAllComments } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
-import Comment from "./Comment";
-import UpdatePostModal from "./UpdatePostModal"
 import optionDots from "../SVG/option_dots_white.svg"
+import Comment from "./Comment";
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -18,25 +17,25 @@ function Post({ post }) {
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
-const href = useHref();
+  const {id } = useHref();
+  const [showComments, setShowComments] = useState(false);
+
   const handleClick = (e) => {
     if (post.account_type) navigate(`/users/${post.user_id}`);
     else navigate(`/businesses/${post.business_id}`);
   };
-
-  // useEffect(() => {
-  //   setLikes();
-  // }, [post]);
 
   const handleLike = async (e) => {
     if (likeId) {
       const data = await deleteLike({ like_id: likeId });
       console.log(data);
       setLikeId(null);
+      post.like_count -= 1; // Decrement like count
     } else {
       const data = await createLike({ post_id: post.id });
       console.log(data);
       setLikeId(data.id);
+      post.like_count += 1; // Increment like count
     }
   };
 
@@ -48,15 +47,21 @@ const href = useHref();
       post_id: post.id,
     });
     console.log(data);
+    setComments([...comments, data]); // Add new comment to comments state variable
   };
 
   const handleCommentTextChange = async (e) =>
     setCommentTextValue(e.target.value);
 
-  const openComments = async (e) => {
-    const data = await getAllComments({ post_id: post.id });
-    console.log(data);
-    setComments(data);
+  const toggleComments = async (e) => {
+    if (showComments) {
+      setComments([]);
+    } else {
+      const data = await getAllComments({ post_id: post.id });
+      console.log(data);
+      setComments(data);
+    }
+    setShowComments(!showComments);
   };
 
   const handleBookmark = async (e) => {
@@ -81,11 +86,11 @@ const href = useHref();
         <div className="post-content">
           <div className="name-options">
             <h4 className="post-author" onClick={handleClick}>
-              {post.username}
+              {post.username} 
             </h4>
-            {href == `/users/${currentUser.id}` && (
+            {href === `/users/${currentUser.id}` && (
               <div>
-                {/* <img src={optionDots} alt="" width="15px" height="15px"/> */}
+                <img src={optionDots} alt="" width="15px" height="15px"/>
                 <UpdatePostModal />
               </div>
             )}
@@ -102,14 +107,16 @@ const href = useHref();
         <div className="post-likes">
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
-            <h5>Like</h5>
+            /* //Like if one like else likes */
+            <h5>Like</h5> 
             <span>{post.like_count}</span>
           </div>
         </div>
 
-        <div className="post-comments" onClick={openComments}>
+        <div className="post-comments" onClick={toggleComments}>
           <img src={CommentIcon} alt="" className="like-icon" />
           <h5>Comment</h5>
+          
         </div>
 
         <div className="post-bookmarks" onClick={handleBookmark}>
@@ -125,30 +132,35 @@ const href = useHref();
         )} */}
       </div>
 
-      <h3 className="comment-title">Comments</h3>
-      <form className="add-comment">
-        <div className="comment-profile">
-          <div
-            className="comments-profile-pic"
-            style={{ backgroundImage: `url(${post.profile_image})` }}
-          ></div>
-          <h5>{post.username}</h5>
-        </div>
-        <textarea
-          type="text"
-          placeholder="Add a comment..."
-          id="add-comment-input"
-          onChange={handleCommentTextChange}
-        />
-        <button className="comments-submit-btn" onClick={handleComment}>
-          Submit
-        </button>
-      </form>
-      <div className="all-comments">
-        {comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
-        ))}
-      </div>
+      {showComments && ( // Render comments section only if showComments is true
+        <>
+          <h3 className="comment-title">Comments</h3>
+          <form className="add-comment">
+            <div className="comment-profile">
+              <div
+                className="comments-profile-pic"
+                style={{ backgroundImage: `url(${post.profile_image})` }}
+              ></div>
+              <h5>{post.username}</h5>
+            </div>
+            <textarea
+              type="text"
+              placeholder="Add a comment..."
+              id="add-comment-input"
+              onChange={handleCommentTextChange}
+            />
+            <Button variant="contained"  color="primary" className="comments-submit-btn" onClick={handleComment}>
+              Submit
+            </Button>
+          </form>
+          <div className="all-comments">
+            {comments.map((comment) => (
+              
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
