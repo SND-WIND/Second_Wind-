@@ -22,10 +22,10 @@ export const getAllJobs = async () => {
 
 export const getJob = async (id) => fetchHandler(`${baseUrl}/${id}`);
 
-export const searchJob = async ({ position }) => {
+export const searchJob = async (position) => {
   const [jobs] = await fetchHandler(`${baseUrl}/search/?query=${position}`);
   return jobs || [];
-}
+};
 
 export const updateJob = async ({
   description,
