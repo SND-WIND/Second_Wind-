@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import React, { useContext, useState, useEffect, href } from "react";
+import { useNavigate, Navigate, Link, useHref, } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
@@ -8,6 +8,8 @@ import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import Comment from "./Comment";
+import UpdatePostModal from "./UpdatePostModal"
+import optionDots from "../SVG/option_dots_white.svg"
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ function Post({ post }) {
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
-
+const href = useHref();
   const handleClick = (e) => {
     if (post.account_type) navigate(`/users/${post.user_id}`);
     else navigate(`/businesses/${post.business_id}`);
@@ -81,12 +83,12 @@ function Post({ post }) {
             <h4 className="post-author" onClick={handleClick}>
               {post.username}
             </h4>
-            {/* {href === `/users/${id}` && (
+            {href == `/users/${currentUser.id}` && (
               <div>
-                <img src={optionsIcon} alt="" width="15px" />
-                <UpdatePostModal/>
+                {/* <img src={optionDots} alt="" width="15px" height="15px"/> */}
+                <UpdatePostModal />
               </div>
-            )} */}
+            )}
           </div>
           <p className="post-caption">{post.caption}</p>
           <div

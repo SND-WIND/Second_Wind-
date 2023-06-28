@@ -33,10 +33,17 @@
 .job-feed {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   width: 46%;
   max-width: 830px;
   background-color: var(--clr-black);
   padding: 10px;
+}
+
+.jobs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .job-container {
