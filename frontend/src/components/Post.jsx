@@ -12,6 +12,27 @@ import Comment from "./Comment";
 import UpdatePostModal from "../components/UpdatePostModal"
 import { Button } from "@mui/material";
 
+function formatTime(created_at) {
+  const date = new Date(created_at);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? "pm" : "am";
+  const formattedHours = hours % 12 || 12;
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  const timeString = formattedHours + ":" + formattedMinutes + " " + ampm;
+  const month = date.toLocaleString("default", { month: "short" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const dateString = `${month} ${day}, ${year}`;
+  const formattedTime = `${timeString} - ${dateString}`;
+  const regex = /(\d{1,2}):(\d{2}) (am|pm) - (\w{3}) (\d{1,2}), (\d{4})/;
+  const match = formattedTime.match(regex);
+  const [, hoursStr, minutesStr, ampmStr, monthStr, dayStr, yearStr] = match;
+  const formattedDate = `${monthStr} ${dayStr}, ${yearStr}`;
+  const formattedTimeString = `${hoursStr}:${minutesStr} ${ampmStr}`;
+  return `${formattedTimeString} on ${formattedDate}`;
+}
+
 function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
@@ -87,12 +108,13 @@ function Post({ post }) {
         ></div>
         <div className="post-content">
           <div className="name-options">
-            <h4 className="post-author" onClick={handleClick}>
-              {post.username} 
-            </h4>
-            {href == `/users/${currentUser.id}` && (
-                <UpdatePostModal />
-            )}
+            <div>
+              <h4 className="post-author" onClick={handleClick}>
+                {post.username}
+              </h4>
+              <h6 className="post-time">{formatTime(post.created_at)}</h6>
+            </div>
+            {href == `/users/${currentUser.id}` && <UpdatePostModal />}
           </div>
           <p className="post-caption">{post.caption}</p>
           <div
@@ -106,7 +128,7 @@ function Post({ post }) {
         <div className="post-likes">
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
-            <h5>Like</h5> 
+            <h5>Like</h5>
             <span>{post.like_count}</span>
           </div>
         </div>
@@ -114,12 +136,11 @@ function Post({ post }) {
         <div className="post-comments" onClick={toggleComments}>
           <img src={CommentIcon} alt="" className="like-icon" />
           <h5>Comment</h5>
-          
         </div>
 
         <div className="post-bookmarks" onClick={handleBookmark}>
-            <img src={BookmarkIcon} alt="" className="bookmark-icon" />
-            <h5>Bookmark</h5>
+          <img src={BookmarkIcon} alt="" className="bookmark-icon" />
+          <h5>Bookmark</h5>
         </div>
       </div>
 
@@ -140,13 +161,17 @@ function Post({ post }) {
               id="add-comment-input"
               onChange={handleCommentTextChange}
             />
-            <Button variant="contained" color="primary" className="comments-submit-btn" onClick={handleComment}>
+            <Button
+              variant="contained"
+              color="primary"
+              className="comments-submit-btn"
+              onClick={handleComment}
+            >
               Submit
             </Button>
           </form>
           <div className="all-comments">
             {comments.map((comment) => (
-              
               <Comment key={comment.id} comment={comment} />
             ))}
           </div>
