@@ -7,6 +7,7 @@ const commentController = require("./controllers/comment");
 const likeController = require("./controllers/like");
 const jobController = require("./controllers/job");
 const connectionController = require("./controllers/connection");
+const messageController = require("./controllers/messages");
 const addModels = require("./middleware/add-models");
 const checkAuthentication = require("./middleware/check-authentication");
 
@@ -22,6 +23,7 @@ Router.get("/jobs", jobController.list);
 Router.get("/connections/request", connectionController.listRequest);
 Router.get("/jobs/search", jobController.search);
 
+Router.get("/messages/:id", messageController.find);
 Router.get("/posts/:id/likes", likeController.list);
 
 Router.get("/users/:id/posts", postController.listUserPosts);
@@ -35,6 +37,7 @@ Router.post("/likes", likeController.create);
 Router.post("/jobs", jobController.create);
 Router.post("/bookmarks", bookmarkController.create);
 Router.post("/connections", connectionController.create);
+Router.post("/messages", messageController.create);
 
 Router.get("/users/:id", userController.show);
 Router.get("/posts/:id", postController.find);

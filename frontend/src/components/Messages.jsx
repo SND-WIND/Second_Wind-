@@ -1,64 +1,82 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { TextField, Button, Card, CardContent, Typography } from '@mui/material';
-import io from "socket.io-client";
 import { getAllUsers } from "../adapters/user-adapter";
-const socket = io.connect('http://localhost:3000'); 
+import { createMessage, getConversation } from "../adapters/messages-adapter";
+import CurrentUserContext from '../contexts/current-user-context';
+import io from "socket.io-client";
 
-function UserCard({ user, onStartChat }) {
-  return (
-    <Card onClick={() => onStartChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-          {user.username}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-}
 
 export default function Messages() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [room, setRoom] = useState('');
   const [users, setUsers] = useState([]);
   const [chattingWith, setChattingWith] = useState(null);
+  const { currentUser } = useContext(CurrentUserContext);
+  const socketRef = useRef();
 
   useEffect(() => {
-    getAllUsers().then(setUsers);
-    socket.on('connect', () => {
-    
-      console.log('Connected to the server');
+    getAllUsers().then(users => setUsers(users.filter(user => user.id !== currentUser.id)));
+
+    socketRef.current = io('http://localhost:3000');
+
+    socketRef.current.on("connect", () => {
+      console.log("Connected to the server");
     });
 
-    socket.on('chat message', (msg) => {
+    socketRef.current.on("new message", (msg) => {
+      console.log("Message received", msg);
       setMessages((oldMessages) => [...oldMessages, msg]);
     });
 
-    // Use the function to fetch users from the backend
-    
-
     return () => {
-      socket.off('connect');
-      socket.off('chat message');
+      socketRef.current.disconnect();
     };
-  }, []);
+  }, [currentUser]);
+
+  // Fetch all messages related to the conversation when chattingWith changes
+  useEffect(() => {
+    if (chattingWith) {
+      getConversation(chattingWith.id)
+        .then(([messages]) => {
+          console.log("messages after sending:", messages);
+          setMessages(messages);
+        })
+        .catch(error => console.error(error));
+    }
+  }, [chattingWith]);
 
   const startChat = (user) => {
+    console.log(user)
     setChattingWith(user);
-    setRoom(user.id); // use the user id as the room id
   }
-
-  const sendMessage = (event) => {
+  const handleBack = () => {
+    setChattingWith(null);
+  }
+  const sendMessage = async (event) => {
     event.preventDefault();
-    socket.emit('chat message', { room, message });
+    const newMessage = await createMessage(currentUser.id, chattingWith.id, message);
+    socketRef.current.emit("chat message", newMessage);
+    getConversation(chattingWith.id)
+      .then(([messages]) => {
+        console.log("messages after sending:", messages);
+        setMessages(messages);
+      })
+      .catch(error => console.error(error));
     setMessage('');
-  }
+  };
+
 
   if (!chattingWith) {
     return (
       <div>
         {users.map(user => (
-          <UserCard key={user.id} user={user} onStartChat={startChat} />
+          <Card key={user.id} onClick={() => startChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                {user.username}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
       </div>
     )
@@ -66,19 +84,22 @@ export default function Messages() {
 
   return (
     <div className="messages-container" >
-      <h1>Chatting with {chattingWith.username}</h1>
+      <Button onClick={handleBack} variant="contained" color="secondary">Back</Button>
+      <h1>{chattingWith.username}</h1>
       <ul>
-        {messages.map((msg, index) => 
-          <li key={index}>{msg}</li>
-        )}
+        {messages.map((message, index) => (
+          <li key={index} className={`message-bubble ${message.sender_id === currentUser.id ? "right" : "left"}`}>
+            <p>{message.text}</p>
+          </li>
+        ))}
       </ul>
       <form onSubmit={sendMessage}>
-        <TextField 
-        multiline
+        <TextField
+          multiline
           label="Message"
-          value={message} 
+          value={message}
           color="primary"
-          onChange={e => setMessage(e.target.value)} 
+          onChange={e => setMessage(e.target.value)}
           variant="filled" />
         <Button type="submit" variant="contained" color="primary">Send</Button>
       </form>

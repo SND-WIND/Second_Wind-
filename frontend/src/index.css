@@ -283,4 +283,20 @@ picture {
   position: sticky;
   top: 0;
   right: 0;
+  flex-direction: column;
+}
+
+.message-bubble {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+.message-bubble.right {
+  background-color: #a674fe;
+  align-self: flex-end;
+}
+.message-bubble.left {
+  background-color: grey;
+  align-self: flex-start;
 }

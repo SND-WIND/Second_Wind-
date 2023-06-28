@@ -1,6 +1,6 @@
 import React from 'react'
 import connectIcon from "../SVG/user_add_fill.svg"
-import section1Img from "../SVG/laptop.png"
+import section1Img from "../SVG/mac.png"
 
 const Section1 = () => {
   return (
