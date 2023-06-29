@@ -6,6 +6,7 @@ import Messages from "../components/Messages";
 import PostList from "../components/PostList";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getUser } from "../adapters/user-adapter";
+import { getBusiness } from "../adapters/business-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
 import UpdateUsernameForm from "../components/UpdateUsernameForm";
 import "../styles/User.css";
@@ -36,11 +37,16 @@ export default function UserPage() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const [user, error] = await getUser(id);
-      if (error) return setErrorText(error.statusText);
-      setUserProfile(user);
+      if (href === `/users/${id}`) {
+        const [user, error] = await getUser(id);
+        if (error) return setErrorText(error.statusText);
+        setUserProfile(user);
+      } else if (href === `/businesses/${id}`) {
+        const [user, error] = await getBusiness(id);
+        if (error) return setErrorText(error.statusText);
+        setUserProfile(user);
+      }
     };
-
     loadUser();
   }, [id]);
 
@@ -64,20 +70,7 @@ export default function UserPage() {
   return (
     <div className="profile-container">
       <Menu />
-      <UserProfile />
-      {/* <PostList /> */}
-      {/* <h1>{profileUsername}</h1> */}
-      {/* {!!isCurrentUserProfile && (
-        <button onClick={handleLogout}>Log Out</button>
-      )} */}
-      {/* <p>If the user had any data, here it would be</p>
-      <p>Fake Bio or something</p> */}
-      {/* {!!isCurrentUserProfile && (
-        <UpdateUsernameForm
-          currentUser={currentUser}
-          setCurrentUser={setCurrentUser}
-        />
-      )} */}
+      <UserProfile user={userProfile} />
       <Messages />
     </div>
   );

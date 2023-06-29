@@ -7,10 +7,15 @@ export const getAllBookmarks = async () => {
   return bookmarks || [];
 };
 
-export const createBookmark = async ({ post_id }) => {
-  const [bookmark] = await fetchHandler(baseUrl, getPostOptions({ post_id }));
+export const createBookmark = async ({ post_id, post_type}) => {
+  const [bookmark] = await fetchHandler(baseUrl, getPostOptions({ post_id, post_type }));
   return bookmark;
 };
+
+// export const createJobBookmark = async ({ job_id }) => {
+//   const [bookmark] = await fetchHandler(baseUrl, getPostOptions({ job_id }));
+//   return bookmark;
+// };
 
 export const deleteBookmark = async ({ bookmark_id }) => {
   const [bookmark] = await fetchHandler(

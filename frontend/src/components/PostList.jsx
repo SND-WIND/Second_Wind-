@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHref } from "react-router-dom";
 import Post from "./Post";
+import Job from "./Job";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
+import { getBusinessPosts } from "../adapters/business-adapter";
 import { getAllBookmarks } from "../adapters/bookmark-adapter";
-import Job  from "./Job";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -23,7 +24,7 @@ function PostList() {
         console.log("users", data);
         setPosts(data);
       } else if (href === `/businesses/${id}`) {
-        const data = await getUserPosts(id);
+        const data = await getBusinessPosts(id);
         console.log("businesses", data);
         setPosts(data);
       } else if (href === `/bookmarks`) {
@@ -50,13 +51,12 @@ function PostList() {
   return (
     <div className="post-list">
       {posts.map((post, index) => {
-        if (post.bookmark_post_type){
-          return <Job key = {index} job = {post} /> 
-        }else {
-          return <Post key={index} post={post} />    
+        if (post.bookmark_post_type === false) {
+          return <Job key={index} job={post} />;
+        } else {
+          return <Post key={index} post={post} />;
         }
-       } 
-       )}
+      })}
     </div>
   );
 }

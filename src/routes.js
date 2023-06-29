@@ -27,8 +27,9 @@ Router.get("/messages/:id", messageController.find);
 Router.get("/posts/:id/likes", likeController.list);
 
 Router.get("/users/:id/posts", postController.listUserPosts);
+Router.get("/businesses/:id/posts", postController.listBusinessPosts);
 //get only jobs from certain business
-Router.get("/business/:id/jobs", jobController.listBusinessPosts);
+Router.get("/businesses/:id/jobs", jobController.listBusinessPosts);
 
 Router.post("/users", userController.create);
 Router.post("/posts", postController.create);
