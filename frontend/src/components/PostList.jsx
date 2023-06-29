@@ -3,6 +3,7 @@ import { useParams, useHref } from "react-router-dom";
 import Post from "./Post";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
+import { getBusinessPosts } from "../adapters/business-adapter";
 import { getAllBookmarks } from "../adapters/bookmark-adapter";
 
 function PostList() {
@@ -10,7 +11,7 @@ function PostList() {
   const [page, setPage] = useState(1);
   const { id } = useParams();
   const href = useHref();
-  const reversedPosts = posts.slice().reverse();
+
   useEffect(() => {
     async function fetchPosts() {
       if (href === "/") {
@@ -22,7 +23,7 @@ function PostList() {
         console.log("users", data);
         setPosts(data);
       } else if (href === `/businesses/${id}`) {
-        const data = await getUserPosts(id);
+        const data = await getBusinessPosts(id);
         console.log("businesses", data);
         setPosts(data);
       } else if (href === `/bookmarks`) {
@@ -48,8 +49,7 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {reversedPosts.map((post) => (
-        
+      {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>

@@ -19,7 +19,7 @@ function CreatePost() {
     const [data, error] = await createPost(values);
     console.log(data);
   };
-console.log(currentUser)
+
   return (
     <form action="" className="post-form" onSubmit={handleSubmit}>
       <div className="profile-caption">

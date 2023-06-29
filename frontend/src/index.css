@@ -243,6 +243,16 @@ picture {
   gap: 30px;
 }
 
+.menu-item.selected {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px 45px;
+  border-radius: 10px;
+  gap: 30px;
+  background-color: beige;
+}
+
 .profile-settings {
   display: flex;
   flex-direction: column;

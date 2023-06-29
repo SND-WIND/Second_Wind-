@@ -9,7 +9,7 @@ import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import optionDots from "../SVG/option_dots_white.svg";
 import Comment from "./Comment";
-import UpdatePostModal from "../components/UpdatePostModal"
+import UpdatePostModal from "../components/UpdatePostModal";
 import { Button } from "@mui/material";
 
 function formatTime(created_at) {
@@ -37,6 +37,7 @@ function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
   const [likeId, setLikeId] = useState(post.like_id);
+  const [likeCount, setLikeCount] = useState(Number(post.like_count));
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
@@ -54,18 +55,17 @@ function Post({ post }) {
       const data = await deleteLike({ like_id: likeId });
       console.log(data);
       setLikeId(null);
-      post.like_count -= 1; // Decrement like count
+      setLikeCount(likeCount - 1); // Decrement like count
     } else {
       const data = await createLike({ post_id: post.id });
       console.log(data);
       setLikeId(data.id);
-      post.like_count += 1; // Increment like count
+      setLikeCount(likeCount + 1); // Increment like count
     }
   };
 
   const handleComment = async (e) => {
     e.preventDefault();
-    console.log(commentTextValue);
     const [data] = await createComment({
       comment: commentTextValue,
       post_id: post.id,
@@ -130,7 +130,7 @@ function Post({ post }) {
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
             <h5>Like</h5>
-            <span>{post.like_count}</span>
+            <span>{likeCount}</span>
           </div>
         </div>
 
@@ -152,9 +152,9 @@ function Post({ post }) {
             <div className="comment-profile">
               <div
                 className="comments-profile-pic"
-                style={{ backgroundImage: `url(${post.profile_image})` }}
+                style={{ backgroundImage: `url(${currentUser.profile_image})` }}
               ></div>
-              <h5>{post.username}</h5>
+              <h5>{currentUser.username}</h5>
             </div>
             <textarea
               type="text"

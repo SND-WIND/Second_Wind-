@@ -7,7 +7,7 @@ const listUsersPosts = async (req, res) => {
 
   const posts = await Post.listUserPost({
     user_id: id,
-    account_type: session.userType === "user",
+    account_type: true,
   });
 
   res.send(posts);
