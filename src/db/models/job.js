@@ -52,8 +52,17 @@ class Job {
       const query = `SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
       FROM jobs
       JOIN businesses ON business_id = jobs.business_id
-      WHERE position = ?;`;
-      const { rows } = await knex.raw(query, [position]);
+      WHERE 
+        jobs.position ILIKE '%' || ? || '%' OR
+        jobs.job_type ILIKE '%' || ? || '%' OR
+        jobs.location ILIKE '%' || ? || '%' OR
+        jobs.description ILIKE '%' || ? || '%';`;
+      const { rows } = await knex.raw(query, [
+        position,
+        position,
+        position,
+        position,
+      ]);
       return rows;
     } catch (err) {
       console.error(err);
