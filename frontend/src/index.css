@@ -285,7 +285,7 @@ picture {
   right: 0;
   flex-direction: column;
   height: 100vh;
-  margin-top:2em;
+  margin-top: 2em;
 }
 
 .message-bubble {
@@ -308,4 +308,25 @@ picture {
   justify-content: flex-end;
   height: 100%;
   margin-bottom: 4em;
+}
+
+.uploadcare--widget__button {
+  background-color: var(--clr-grey);
+  width: 20px;
+  height: 20px;
+  font-size: 0px;
+  background-image: url(../src/SVG/img_icon.svg);
+  background-position: center;
+  background-size: cover;
+}
+
+.uploadcare--widget__button:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  width: 20px;
+  height: 20px;
+  font-size: 0px;
+  background-image: url(../src/SVG/img_icon.svg);
+  background-position: center;
+  background-size: cover;
 }

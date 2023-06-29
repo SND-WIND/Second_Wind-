@@ -30,15 +30,14 @@
 .upload-cover {
   position: relative;
   top: 85%;
-  left: 78%;
+  left: 95%;
 
 }
 
 .upload-profile {
-    /* position: relative;
-  top: 85%;
-  left: 100%; */
-  color: var(--clr-black);
+  position: relative;
+  top: 55%;
+  left: 24%;
 }
 
 .profile-img {

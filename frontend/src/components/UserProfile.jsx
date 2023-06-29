@@ -3,6 +3,7 @@ import CurrentUserContext from "../contexts/current-user-context";
 import PostList from "./PostList";
 import { Widget } from "@uploadcare/react-widget";
 import { updateUserInfo } from "../adapters/user-adapter";
+import imgIcon from "../SVG/img_icon.svg";
 
 export default function userProfile() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);

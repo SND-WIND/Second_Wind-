@@ -54,25 +54,12 @@ function CreatePost() {
       </div>
       <div className="options">
         <div className="option-items">
-          <div>
-            {uploadedImage ? (
-              <div>
-                <button onClick={handleImageRemove}>Remove Image</button>
-              </div>
-            ) : (
+          <div className="create-post-img-icon">
               <Widget
                 publicKey="7363573380cc43836898"
                 onChange={(file) => setUploadedImage(file && file.cdnUrl)}
               />
-            )}
           </div>
-          <img
-            src={img_icon}
-            alt=""
-            className="option-item"
-            width="20px"
-            height="20px"
-          />
           <img
             src={emoji}
             alt=""
