@@ -51,7 +51,7 @@ function PostList() {
   return (
     <div className="post-list">
       {posts.map((post, index) => {
-        if (post.bookmark_post_type) {
+        if (post.bookmark_post_type === false) {
           return <Job key={index} job={post} />;
         } else {
           return <Post key={index} post={post} />;

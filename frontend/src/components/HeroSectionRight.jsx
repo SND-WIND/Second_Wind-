@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import rightArrow from "../SVG/right_arrow_white.svg";
 import leftArrow from "../SVG/left_arrow_white.svg"
 import { Button } from "@mui/material";
+
 function HeroSectionRight () {
     return (
       <div className="hero-section-right">

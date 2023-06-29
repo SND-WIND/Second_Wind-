@@ -11,12 +11,21 @@ class Job {
     this.link = link;
   }
 
-  static async list() {
+  static async list({ user_id, account_type }) {
     try {
-      const result =
-        await knex.raw(`SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
-          FROM jobs
-          JOIN businesses ON businesses.id = jobs.business_id;`);
+      const query = `SELECT
+      jobs.*,
+      businesses.name,
+      businesses.username,
+      businesses.profile_image,
+      bookmarks.id AS bookmark_id
+  FROM
+      jobs
+  JOIN
+      businesses ON businesses.id = jobs.business_id
+  LEFT JOIN
+      bookmarks ON bookmarks.post_id = jobs.id AND bookmarks.post_type = false AND bookmarks.user_id = ? AND bookmarks.account_type = ?;`;
+      const result = await knex.raw(query, [user_id, account_type]);
       return result.rows;
     } catch (err) {
       console.error(err);

@@ -53,12 +53,10 @@ function Post({ post }) {
   const handleLike = async (e) => {
     if (likeId) {
       const data = await deleteLike({ like_id: likeId });
-      console.log(data);
       setLikeId(null);
       setLikeCount(likeCount - 1); // Decrement like count
     } else {
       const data = await createLike({ post_id: post.id });
-      console.log(data);
       setLikeId(data.id);
       setLikeCount(likeCount + 1); // Increment like count
     }
@@ -70,7 +68,6 @@ function Post({ post }) {
       comment: commentTextValue,
       post_id: post.id,
     });
-    console.log(data);
     setComments([...comments, data]); // Add new comment to comments state variable
   };
 
@@ -82,7 +79,6 @@ function Post({ post }) {
       setComments([]);
     } else {
       const data = await getAllComments({ post_id: post.id });
-      console.log(data);
       setComments(data);
     }
     setShowComments(!showComments);
@@ -91,11 +87,9 @@ function Post({ post }) {
   const handleBookmark = async (e) => {
     if (bookmarkId) {
       const data = await deleteBookmark({ bookmark_id: bookmarkId });
-      console.log(data);
       setBookmarkId(null);
     } else {
-      const data = await createBookmark({ post_id: post.id, post_type: true});
-      console.log(data);
+      const data = await createBookmark({ post_id: post.id, post_type: true });
       setBookmarkId(data.id);
     }
   };
@@ -115,13 +109,17 @@ function Post({ post }) {
               </h4>
               <h6 className="post-time">{formatTime(post.created_at)}</h6>
             </div>
-            {href == `/users/${currentUser.id}` && <UpdatePostModal postId={post.id} />}
+            {href == `/users/${currentUser.id}` && (
+              <UpdatePostModal postId={post.id} />
+            )}
           </div>
           <p className="post-caption">{post.caption}</p>
-          <div
-            className="post-image"
-            style={{ backgroundImage: `url(${post.image_url})` }}
-          ></div>
+          {post.image_url && (
+            <div
+              className="post-image"
+              style={{ backgroundImage: `url(${post.image_url})` }}
+            ></div>
+          )}
         </div>
       </div>
 
@@ -172,8 +170,8 @@ function Post({ post }) {
             </Button>
           </form>
           <div className="all-comments">
-            {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
+            {comments.map((comment, index) => (
+              <Comment key={index} comment={comment} />
             ))}
           </div>
         </>
