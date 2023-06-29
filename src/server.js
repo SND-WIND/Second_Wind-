@@ -26,11 +26,11 @@ io.on('connection', (socket) => {
 
   // You can listen for custom events here.
   // For example, listening for a 'chat message' event:
-  socket.on('chat message', function(msg){
+  socket.on('new message', function(msg){
     console.log('message: ' + msg);
 
     // Then, you could emit the 'chat message' event to all connected clients:
-    io.emit('chat message', msg);
+    io.emit('new message', [msg]);
   });
 
   // Disconnect listener

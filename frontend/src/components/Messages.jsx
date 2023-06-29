@@ -55,7 +55,7 @@ export default function Messages() {
   const sendMessage = async (event) => {
     event.preventDefault();
     const newMessage = await createMessage(currentUser.id, chattingWith.id, message);
-    socketRef.current.emit("chat message", newMessage);
+    socketRef.current.emit("new message", newMessage);
     getConversation(chattingWith.id)
       .then(([messages]) => {
         console.log("messages after sending:", messages);
@@ -69,6 +69,12 @@ export default function Messages() {
   if (!chattingWith) {
     return (
       <div>
+        <Typography variant="h2" component="div"
+        sx={{ bgcolor: 'primary.main',borderRadius: 5, color: 'white', p: 1, textAlign: 'center' , marginBottom: "1em" }}
+        > 
+        Messages
+        
+        </Typography>
         {users.map(user => (
           <Card key={user.id} onClick={() => startChat(user)} style={{ marginBottom: "10px", cursor: "pointer" }}>
             <CardContent>
@@ -85,7 +91,7 @@ export default function Messages() {
   return (
     <div className="messages-container" >
       <Button onClick={handleBack} variant="contained" color="secondary">Back</Button>
-      <h1>{chattingWith.username}</h1>
+      <h5>Chat with {chattingWith.username}</h5>
       <ul>
         {messages.map((message, index) => (
           <li key={index} className={`message-bubble ${message.sender_id === currentUser.id ? "right" : "left"}`}>
@@ -93,12 +99,13 @@ export default function Messages() {
           </li>
         ))}
       </ul>
-      <form onSubmit={sendMessage}>
+      <form className="message-form" onSubmit={sendMessage}>
         <TextField
           multiline
           label="Message"
           value={message}
-          color="primary"
+          sx={{ bgcolor: 'secondary.main' }}
+
           onChange={e => setMessage(e.target.value)}
           variant="filled" />
         <Button type="submit" variant="contained" color="primary">Send</Button>
