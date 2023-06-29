@@ -2,7 +2,7 @@ const createBookmark = async (req, res) => {
   const {
     session,
     db: { Bookmark },
-    body: { post_id },
+    body: { post_id, post_type  },
   } = req;
 
   const { userId, userType } = session;
@@ -12,6 +12,7 @@ const createBookmark = async (req, res) => {
     user_id: userId,
     account_type: userType === "user",
     post_id,
+    post_type: post_type
   });
   if (!bookmark) return res.status(404);
 
