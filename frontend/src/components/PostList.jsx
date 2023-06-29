@@ -49,7 +49,7 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {reversedPosts.map((post, index) => {
+      {posts.map((post, index) => {
         if (post.bookmark_post_type){
           return <Job key = {index} job = {post} /> 
         }else {
