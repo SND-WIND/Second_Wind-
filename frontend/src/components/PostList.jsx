@@ -10,7 +10,7 @@ function PostList() {
   const [page, setPage] = useState(1);
   const { id } = useParams();
   const href = useHref();
-
+  const reversedPosts = posts.slice().reverse();
   useEffect(() => {
     async function fetchPosts() {
       if (href === "/") {
@@ -48,7 +48,8 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {posts.map((post) => (
+      {reversedPosts.map((post) => (
+        
         <Post key={post.id} post={post} />
       ))}
     </div>

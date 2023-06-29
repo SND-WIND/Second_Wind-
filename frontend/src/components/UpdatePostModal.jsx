@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import optionsIcon from "../SVG/options_icon.svg";
-import updatePost from "../adapters/post-adapter";
+import optionDots from "../SVG/option_dots_white.svg";
+import { updatePost } from "../adapters/post-adapter";
 
-const Modal = () => {
-  const [postText, setPostText] = useState("");
+const UpdatePostModal = () => {
+  const [caption, setCaption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams();
 
   const handleTextChange = (event) => {
-    setPostText(event.target.value);
+    setCaption(event.target.value);
   };
 
   // const handlefetch = async (url, options) => {
@@ -23,21 +23,25 @@ const Modal = () => {
   //   }
   // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const values = {};
-    for (let [name, value] of formData.entries()) {
-      values[name] = value;
-    }
-    const [data, error] = await updatePost(values);
-    console.log(data);
-  };
-
+  // const handleSubmit = async (e) => {};
 
   const handleDeletePost = () => {
-    // Logic for deleting the post
-    console.log("Deleting post");
+    // if (window.confirm("Are you sure you want to delete post?")) {
+    //   try {
+    //     deleteAccount();
+    //     setCurrentUser(null);
+    //     navigate(`/user/${id}`);
+    //   } catch (error) {
+    //     console.error("Failed to delete post:", error);
+    //   }
+    // }
+  };
+
+  const handleUpdatePost = async (e) => {
+    e.preventDefault();
+    //const [caption, id] = await updatePost(caption);
+    const updatedCaption = await updatePost(caption);
+    return updatedCaption;
   };
 
   const handleOpenModal = () => {
@@ -53,25 +57,31 @@ const Modal = () => {
   };
 
   return (
-    <div className="job-modal">
-      <button onClick={handleOpenModal}>
-        <img src={optionsIcon} alt="" width="15px" />
-      </button>
+    <div>
+      <img src={optionDots} onClick={handleOpenModal} alt="" width="5px" />
       {isOpen && (
-        <div className="modal" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={handleModalClick}>
+        <div className="modal-overlay" onClick={handleCloseModal}>
+          <div className="post-modal-content" onClick={handleModalClick}>
             <h2>Update Post</h2>
-            <form>
-              <textarea
-                value={postText}
-                onChange={handleTextChange}
-                placeholder="Enter your post caption here..."
-              ></textarea>
-              <button type="submit" onClick={handleSubmit}>
+            <form className="post-modal-form" onSubmit={handleUpdatePost}>
+              <label htmlFor="" onChange={handleTextChange}>
+                Caption{" "}
+                <textarea
+                  name="description"
+                  // value={postText}
+                  className="post-caption-input"
+                  placeholder="Enter your job description here..."
+                ></textarea>
+              </label>
+              <button id="update-post-btn" type="submit">
                 Update Post
               </button>
             </form>
-            <button type="button" onClick={handleDeletePost}>
+            <button
+              id="delete-post-btn"
+              type="submit"
+              onSubmit={handleDeletePost}
+            >
               Delete Post
             </button>
           </div>
@@ -81,4 +91,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default UpdatePostModal;

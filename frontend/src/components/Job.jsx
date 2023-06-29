@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import JobsPage from "../pages/JobsPage";
 
-export default function Job({job}) {
-  console.log(job)
+export default function Job({ job }) {
   return (
     <div className="job-container">
       <div className="company-pic">
@@ -28,4 +27,4 @@ export default function Job({job}) {
       </div>
     </div>
   );
-};
+}

@@ -1,17 +1,26 @@
+.connect-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 80px;
+  padding: 10px;
+  background-color: var(--clr-black);
+  justify-content: space-between;
+}
 
-
-.card-subtitle, .card-text {
+.card-subtitle,
+.card-text {
   color: var(--clr-light);
 }
 
-.card-image{
-  width:3em;
+.card-image {
+  width: 3em;
   height: 4em;
 }
 
-.card{
+.card {
   background-color: blueviolet;
   border-radius: 10px;
   padding: 10px;
-  margin:10px;
+  margin: 10px;
 }
