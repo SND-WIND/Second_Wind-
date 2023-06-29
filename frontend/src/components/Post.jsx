@@ -94,7 +94,7 @@ function Post({ post }) {
       console.log(data);
       setBookmarkId(null);
     } else {
-      const data = await createBookmark({ post_id: post.id });
+      const data = await createBookmark({ post_id: post.id, post_type: true});
       console.log(data);
       setBookmarkId(data.id);
     }

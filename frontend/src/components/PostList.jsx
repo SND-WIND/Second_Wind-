@@ -4,6 +4,7 @@ import Post from "./Post";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
 import { getAllBookmarks } from "../adapters/bookmark-adapter";
+import Job  from "./Job";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -48,10 +49,14 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {reversedPosts.map((post) => (
-        
-        <Post key={post.id} post={post} />
-      ))}
+      {reversedPosts.map((post, index) => {
+        if (post.bookmark_post_type){
+          return <Job key = {index} job = {post} /> 
+        }else {
+          return <Post key={index} post={post} />    
+        }
+       } 
+       )}
     </div>
   );
 }
