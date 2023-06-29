@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom";
 import optionDots from "../SVG/option_dots_white.svg";
 import { updatePost } from "../adapters/post-adapter";
 
-const UpdatePostModal = () => {
+const UpdatePostModal = ({postId}) => {
   const [caption, setCaption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const { id } = useParams();
 
   const handleTextChange = (event) => {
     setCaption(event.target.value);
@@ -25,10 +24,10 @@ const UpdatePostModal = () => {
 
   // const handleSubmit = async (e) => {};
 
-  const handleDeletePost = () => {
+  const handleDeletePost = async () => {
     // if (window.confirm("Are you sure you want to delete post?")) {
     //   try {
-    //     deleteAccount();
+    //     await deleteAccount();
     //     setCurrentUser(null);
     //     navigate(`/user/${id}`);
     //   } catch (error) {
@@ -39,9 +38,9 @@ const UpdatePostModal = () => {
 
   const handleUpdatePost = async (e) => {
     e.preventDefault();
-    //const [caption, id] = await updatePost(caption);
-    const updatedCaption = await updatePost(caption);
-    return updatedCaption;
+    console.log(postId)
+    const updatedCaption = await updatePost({caption, postId});
+    console.log(updatedCaption)
   };
 
   const handleOpenModal = () => {
@@ -64,11 +63,12 @@ const UpdatePostModal = () => {
           <div className="post-modal-content" onClick={handleModalClick}>
             <h2>Update Post</h2>
             <form className="post-modal-form" onSubmit={handleUpdatePost}>
-              <label htmlFor="" onChange={handleTextChange}>
+              <label htmlFor="">
                 Caption{" "}
                 <textarea
                   name="description"
                   // value={postText}
+                  onChange={handleTextChange}
                   className="post-caption-input"
                   placeholder="Enter your job description here..."
                 ></textarea>

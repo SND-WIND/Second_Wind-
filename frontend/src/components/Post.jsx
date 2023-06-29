@@ -114,7 +114,7 @@ function Post({ post }) {
               </h4>
               <h6 className="post-time">{formatTime(post.created_at)}</h6>
             </div>
-            {href == `/users/${currentUser.id}` && <UpdatePostModal />}
+            {href == `/users/${currentUser.id}` && <UpdatePostModal postId={post.id} />}
           </div>
           <p className="post-caption">{post.caption}</p>
           <div
