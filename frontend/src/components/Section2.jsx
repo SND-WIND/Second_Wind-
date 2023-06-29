@@ -64,7 +64,7 @@ const Section2 = () => {
             formerly imprisoned individuals. This feature provides a curated
             collection of news articles, success stories, and relevant updates
             related to the experiences, challenges, and achievements of formerly
-            incarcerated people. Stay informed and inspired.
+            incarcerated people. 
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import React from 'react'
-import logoPurple from "../SVG/logo_purple.svg"
-
+import React from "react";
+import logoPurple from "../SVG/logo_purple.svg";
+import { Link } from "@mui/material";
 const Footer = () => {
   return (
     <div className="footer-container">
@@ -31,27 +31,36 @@ const Footer = () => {
             width="200px"
           />
           <p className="footer-description">
-            We growing up your business with <br /> personal AI manager.
+            Pick yourself up and dust yourself off you have a <br />
+            Second Wind.
           </p>
         </div>
         <div className="footer-right">
+          
           <div className="footer-menu">
-            <h3 className="menu-title">Platform</h3>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
+            <h3 className="menu-title">Partners</h3>
+            <Link href="https://www.aclu.org/" color="inherit">
+              ACLU
+            </Link>
+            <Link href="https://www.vera.org/" color="inherit">
+              Vera
+            </Link>
+            <Link href="https://eji.org/" color="inherit">
+              Equal Justice Initiative
+            </Link>
           </div>
           <div className="footer-menu">
-            <h3 className="menu-title">Platform</h3>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
-          </div>
-          <div className="footer-menu">
-            <h3 className="menu-title">Platform</h3>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
-            <h5>Careers</h5>
+            <h3 className="menu-title">Resources</h3>
+
+            <Link href="https://saferfoundation.org/" color="inherit">
+              Safer Foundation
+            </Link>
+            <Link href="https://www.lsc.gov/about-lsc/what-legal-aid/get-legal-help" color="inherit">
+              Legal Services Corporation
+            </Link>
+            <Link href="https://eji.org/" color="inherit">
+              Mental Health America
+            </Link>
           </div>
         </div>
       </div>
@@ -59,13 +68,13 @@ const Footer = () => {
       <div className="copyright">
         <h6 className="copyright-text">© 2023 Second Wind Inc.</h6>
         <div className="copyright-right">
-            <h6 className="copyright-text">Terms of service</h6>
-            <h6 className="copyright-text">Privacy Policy</h6>
-            <h6 className="copyright-text">Cookies</h6>
+          <h6 className="copyright-text">Terms of service</h6>
+          <h6 className="copyright-text">Privacy Policy</h6>
+          <h6 className="copyright-text">Cookies</h6>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Footer
+export default Footer;

@@ -89,14 +89,18 @@ function Post({ post }) {
   };
 
   const handleBookmark = async (e) => {
+    const bookmarkIcon = document.querySelector('.bookmark-icon');
+    
     if (bookmarkId) {
       const data = await deleteBookmark({ bookmark_id: bookmarkId });
       console.log(data);
       setBookmarkId(null);
+      bookmarkIcon.classList.remove('bookmarked');
     } else {
       const data = await createBookmark({ post_id: post.id, post_type: true});
       console.log(data);
       setBookmarkId(data.id);
+      bookmarkIcon.classList.add('bookmarked');
     }
   };
 
@@ -141,7 +145,7 @@ function Post({ post }) {
 
         <div className="post-bookmarks" onClick={handleBookmark}>
           <img src={BookmarkIcon} alt="" className="bookmark-icon" />
-          <h5>Bookmark</h5>
+          <h5 className="bookmark-icon">Bookmark</h5>
         </div>
       </div>
 
