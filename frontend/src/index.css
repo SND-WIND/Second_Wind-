@@ -284,6 +284,8 @@ picture {
   top: 0;
   right: 0;
   flex-direction: column;
+  height: 100vh;
+  margin-top:2em;
 }
 
 .message-bubble {
@@ -299,4 +301,11 @@ picture {
 .message-bubble.left {
   background-color: grey;
   align-self: flex-start;
+}
+.message-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  margin-bottom: 4em;
 }
