@@ -12,20 +12,44 @@ class Job {
   }
 
   static async list() {
-    const result =
-      await knex.raw(`SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
-    FROM jobs
-    JOIN businesses ON businesses.id = jobs.business_id;`);
-    return result.rows;
+    try {
+      const result =
+        await knex.raw(`SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
+          FROM jobs
+          JOIN businesses ON businesses.id = jobs.business_id;`);
+      return result.rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 
   static async listBusinessPost({ business_id }) {
-    const query = `SELECT jobs.*, businesses.username, businesses.profile_image
-    FROM jobs
-    JOIN businesses ON business_id = jobs.business_id
-    WHERE business_id <> ?;`;
-    const { rows } = await knex.raw(query, [business_id]);
-    return rows;
+    try {
+      const query = `SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
+      FROM jobs
+      JOIN businesses ON business_id = jobs.business_id
+      WHERE business_id <> ?;`;
+      const { rows } = await knex.raw(query, [business_id]);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+  static async search(position) {
+    try {
+      const query = `SELECT jobs.*, businesses.name, businesses.username, businesses.profile_image
+      FROM jobs
+      JOIN businesses ON business_id = jobs.business_id
+      WHERE position = ?;`;
+      const { rows } = await knex.raw(query, [position]);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
 
   static async find(id) {
@@ -89,43 +113,4 @@ class Job {
   }
 }
 
-//const testModel = async () => {
-// const user_id = 5;
-//const post_id = 7;
-//const LikeObj = await Like.create({ user_id, post_id});
-//   // const onePost = await Post.find(6);
-//   //const allPosts = await Post.list();
-//const removeJob = await Job.delete(43);
-// //   console.log('like removed', removeLike);
-// const business_id = 9;
-// const description = 'description test 1';
-// const location = 'Staten Island';
-// const salary = 65000;
-// const role = 'Head Chef';
-//console.log(await Job.delete(43))
-//console.log('Job', await Job.create(business_id, description, location, salary, role));
-//console.log("LikeObj", LikeObj);
-//    };
-
-//testModel();
-
-//const testModel = async () => {
-// const user_id = 5;
-//const post_id = 7;
-//const LikeObj = await Like.create({ user_id, post_id});
-//   // const onePost = await Post.find(6);
-//   //const allPosts = await Post.list();
-//const removeJob = await Job.delete(43);
-// //   console.log('like removed', removeLike);
-// const business_id = 9;
-// const description = 'description test 1';
-// const location = 'Staten Island';
-// const salary = 65000;
-// const role = 'Head Chef';
-//console.log(await Job.delete(43))
-//console.log('Job', await Job.create(business_id, description, location, salary, role));
-//console.log("LikeObj", LikeObj);
-//  };
-
-//testModel();
 module.exports = Job;

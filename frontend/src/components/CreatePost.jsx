@@ -9,7 +9,6 @@ import italic from "../SVG/italic_fill.svg";
 
 function CreatePost() {
   const { currentUser } = useContext(CurrentUserContext);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -17,8 +16,6 @@ function CreatePost() {
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
-    values.imageUrl =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8VhN_TBlqLwfgyTPtqWTDADiyOu6jiNhuJA&usqp=CAU"; // this is a placeholder
     const [data, error] = await createPost(values);
     console.log(data);
   };

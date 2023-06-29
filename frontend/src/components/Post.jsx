@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, href } from "react";
-import { useNavigate, Navigate, Link, useHref, } from "react-router-dom";
+import { useNavigate, Navigate, Link, useHref } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
 import { createLike, deleteLike, getLikes } from "../adapters/likes-adapter";
@@ -7,7 +7,7 @@ import { createComment, getAllComments } from "../adapters/comment-adapter";
 import LikeIcon from "../SVG/thumb_up_line.svg";
 import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
-import optionDots from "../SVG/option_dots_white.svg"
+import optionDots from "../SVG/option_dots_white.svg";
 import Comment from "./Comment";
 import UpdatePostModal from "../components/UpdatePostModal"
 import { Button } from "@mui/material";
@@ -40,6 +40,7 @@ function Post({ post }) {
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
+  const { id } = useHref();
   const href = useHref();
   const [showComments, setShowComments] = useState(false);
 
@@ -119,7 +120,7 @@ function Post({ post }) {
           <p className="post-caption">{post.caption}</p>
           <div
             className="post-image"
-            style={{ backgroundImage: `url(${post.profile_image})` }}
+            style={{ backgroundImage: `url(${post.image_url})` }}
           ></div>
         </div>
       </div>

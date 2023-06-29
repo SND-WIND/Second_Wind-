@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import Menu from "../components/Menu";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
+import Menu from "../components/Menu";
 import Messages from "../components/Messages";
-import Connections from "../components/Connections";
+import ConnectionList from "../components/ConnectionList";
 import "../styles/Connection.css";
 
 export default function ConnectPage() {
@@ -14,7 +14,7 @@ export default function ConnectPage() {
   return (
     <div className="connect-page">
       <Menu />
-      <Connections />
+      <ConnectionList />
       <Messages />
     </div>
   );
