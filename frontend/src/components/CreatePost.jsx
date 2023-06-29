@@ -7,37 +7,65 @@ import gif from "../SVG/GIF_White.svg";
 import bold from "../SVG/bold_fill.svg";
 import italic from "../SVG/italic_fill.svg";
 
+//Upload Care Blocks import
+import { Widget } from "@uploadcare/react-widget";
+
 function CreatePost() {
   const { currentUser } = useContext(CurrentUserContext);
+  const [uploadedImage, setUploadedImage] = useState(null);
+
+  const handleImageRemove = () => {
+    setUploadedImage(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const values = {};
+    const values = { imageUrl: uploadedImage };
     for (let [name, value] of formData.entries()) {
       values[name] = value;
     }
     const [data, error] = await createPost(values);
-    console.log(data);
   };
 
   return (
     <form action="" className="post-form" onSubmit={handleSubmit}>
       <div className="profile-caption">
-        <div
-          className="profile-pic"
-          style={{ backgroundImage: `url(${currentUser.profile_image})` }}
-        ></div>
-        <textarea
-          name="caption"
-          id="create-post-caption"
-          placeholder="What's on your mind?"
-          // value={caption}
-          // onChange={handleChange}
-          required
-        ></textarea>
+        <div>
+          <div
+            className="profile-pic"
+            style={{ backgroundImage: `url(${currentUser.profile_image})` }}
+          ></div>
+          <textarea
+            name="caption"
+            id="create-post-caption"
+            placeholder="What's on your mind?"
+            required
+          ></textarea>
+        </div>
+        {uploadedImage && (
+          <img
+            className="create-post-upload"
+            src={uploadedImage}
+            alt="Uploaded"
+            width="100%"
+          />
+        )}
       </div>
       <div className="options">
         <div className="option-items">
+          <div>
+            {uploadedImage ? (
+              <div>
+                <button onClick={handleImageRemove}>Remove Image</button>
+              </div>
+            ) : (
+              <Widget
+                publicKey="7363573380cc43836898"
+                onChange={(file) => setUploadedImage(file && file.cdnUrl)}
+              />
+            )}
+          </div>
           <img
             src={img_icon}
             alt=""

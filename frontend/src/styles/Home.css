@@ -27,6 +27,20 @@
   background-color: #151515;
 }
 
+/*Upload Care Styling*/ 
+.my-config {
+  --cfg-pubkey: "7363573380cc43836898";
+  --cfg-img-only: 1;
+  --cfg-multiple: 1;
+  --cfg-max-local-file-size-bytes: 10485760;
+  --cfg-use-cloud-image-editor: 1;
+  --cfg-source-list: "local, url, camera";
+  --darkmode: 1;
+  --h-accent: 262;
+  --s-accent: 99%;
+  --l-accent: 73%;
+}
+
 .post-form {
   width: 100%;
   margin: 0;
@@ -36,6 +50,11 @@
   padding: 10px;
 }
 
+.create-post-upload{
+  width: 100%;
+  max-height: 400px;
+}
+
 .name-options {
   display: flex;
   justify-content: space-between;
@@ -43,6 +62,7 @@
 
 .profile-caption {
   display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 20px;
 }

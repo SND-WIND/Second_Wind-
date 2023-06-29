@@ -27,6 +27,20 @@
   background-size: cover;
 }
 
+.upload-cover {
+  position: relative;
+  top: 85%;
+  left: 78%;
+
+}
+
+.upload-profile {
+    /* position: relative;
+  top: 85%;
+  left: 100%; */
+  color: var(--clr-black);
+}
+
 .profile-img {
   position: relative;
   top: 200px;
