@@ -10,7 +10,6 @@
 
 .jobs-search-container {
   width: 100%;
-  padding: 10px;
 }
 
 .jobs-search-form {
@@ -20,17 +19,31 @@
 }
 
 .search-bar {
-  width: 400px;
+  width: 100%;
+  background-color: var(--clr-grey);
+  border: 1px solid var(--clr-primary);
 }
 
 .job-search-btn {
   height: 50px;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
 }
 
 .job-feed {
-  width: 45%;
-  background-color: var(--clr-grey);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 46%;
+  max-width: 830px;
+  background-color: var(--clr-black);
   padding: 10px;
+}
+
+.jobs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .job-container {
@@ -39,6 +52,7 @@
   padding: 10px;
   background-color: var(--clr-grey);
   color: var(--clr-light);
+  border-radius: 10px;
 }
 
 .company-pic {
@@ -66,27 +80,57 @@
 }
 
 /*Modal*/
-
-.job-modal {
-  width: 50%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
+#create-a-job-btn{
   background-color: var(--clr-primary);
   color: var(--clr-light);
 }
 
+.job-modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  background-color: rgba(21, 21, 21, 0.8);
+  color: var(--clr-light);
+}
+
+.job-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 50%;
+  height: auto;
+  color: var(--clr-light);
+  background-color: var(--clr-primary);
+  padding: 30px;
+  border-radius: 20px;
+}
+
 .job-modal-form {
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   display: flex;
   background-color: var(--clr-primary);
   color: var(--clr-light);
+}
+
+.job-modal-form-inputs{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 30px;
 }
 
 .job-modal-form-left {
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  width: 50%;
   background-color: var(--clr-primary);
   color: var(--clr-light);
 }
@@ -94,6 +138,26 @@
 .job-modal-form-right {
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  width: 50%;
   background-color: var(--clr-primary);
   color: var(--clr-light);
+}
+
+.create-job-input {
+  width: 100%;
+    margin: 0px;
+}
+
+.job-description-input{
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--clr-light);
+  border-radius: 10px;
+}
+
+#create-job-btn{
+  margin-top: 30px;
 }

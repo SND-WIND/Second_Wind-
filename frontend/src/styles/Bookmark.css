@@ -8,3 +8,11 @@
   background-color: var(--clr-black);
 }
 
+.bookmark-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 46%;
+  max-width: 830px;
+  background-color: var(--clr-grey);
+}

@@ -1,47 +1,52 @@
-.page-container {
+.news-container {
   display: flex;
   width: 100vw;
   min-height: 100vh;
   gap: 80px;
   padding: 10px;
   background-color: var(--clr-black);
+  color: var(--clr-light);
+  justify-content: space-between;
 }
 
-.middle-item {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  width: 46%;
+  max-width: 830px;
+  gap: 20px;
 }
 
 .blog-card {
-    display: flex;
-    width: 100%;
-    gap: 20px;
-    background-color: #151515;
-    padding: 20px;
-    border-radius: 15px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  background-color: #151515;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .blog-info {
-    display: flex;
-    max-width: 450px;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  width: 100%;
+  max-width: 650px;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .card-img {
-    width: 150px;
-    height: 150px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .blog-description {
-    font-size:var(--fs-xs) ;
+  font-size: var(--fs-xs);
 }
 
-.read-btn{
-    color: var(--clr-primary);
-    text-decoration: underline;
+.read-btn {
+  color: var(--clr-primary);
+  text-decoration: underline;
 }

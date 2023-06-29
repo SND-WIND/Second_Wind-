@@ -114,7 +114,9 @@ label {
 }
 
 textarea {
+  min-width: 100%;
   width: 100%;
+  max-width: 100%;
   color: var(--clr-light);
   background-color: #151515;
   border: none;
@@ -190,7 +192,11 @@ picture {
 .menu {
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 5px;
+  left: 5px;
   width: 27%;
+  max-width: 360px;
   height: 100vh;
   background-color: var(--clr-grey);
   padding: 10px;
@@ -267,3 +273,39 @@ picture {
   .middle-item {
     margin: 0 auto;
   } */
+
+.messages-container {
+  display: flex;
+  width: 27%;
+  max-width: 360px;
+  background-color: var(--clr-grey);
+  color: var(--clr-light);
+  position: sticky;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  height: 100vh;
+  margin-top:2em;
+}
+
+.message-bubble {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+.message-bubble.right {
+  background-color: #a674fe;
+  align-self: flex-end;
+}
+.message-bubble.left {
+  background-color: grey;
+  align-self: flex-start;
+}
+.message-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  margin-bottom: 4em;
+}

@@ -10,27 +10,20 @@ import jobs from "../SVG/briefcase_fill.svg";
 import bookmarks from "../SVG/bookmark_fill.svg";
 import profile from "../SVG/user_4_fill.svg";
 import settings from "../SVG/settings_4_fill.svg";
-import { Button } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { logUserOut } from "../adapters/auth-adapter";
 
-
-
 export default function Menu() {
-  
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { currentUser, setCurrentUser, accountType, setAccountType } =
+    useContext(CurrentUserContext);
   const handleLogout = async (e) => {
-    await logUserOut();
+    await logUserOut(accountType === "user" ? "users" : "businesses");
     setCurrentUser(null);
+    setAccountType(null);
     navigate("/landing");
   };
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
 
   const profilePage =
     currentUser.accountType === "user" ? "users" : "businesses";
@@ -40,7 +33,7 @@ export default function Menu() {
         <img src={logo} alt="" width="200px" />
         <div className="menu-items">
           <Link to="/">
-            <Button variant="text" color="primary" >
+            <Button variant="text" color="primary">
               <div className="menu-item">
                 <img src={home} alt="" />
                 <h4>Home</h4>
@@ -99,7 +92,7 @@ export default function Menu() {
             </Button>
           </Link>
           <Link to="/landing">
-            <Button variant="contained"  onClick={handleLogout}  color="primary">
+            <Button variant="contained" onClick={handleLogout} color="primary">
               <div className="menu-item">
                 <LogoutIcon />
                 <h4>Logout</h4>
