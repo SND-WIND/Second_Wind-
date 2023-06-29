@@ -11,7 +11,7 @@ function PostList() {
   const [page, setPage] = useState(1);
   const { id } = useParams();
   const href = useHref();
-  const reversedPosts = posts.slice().reverse();
+
   useEffect(() => {
     async function fetchPosts() {
       if (href === "/") {
