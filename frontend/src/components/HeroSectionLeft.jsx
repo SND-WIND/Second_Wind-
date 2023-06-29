@@ -13,13 +13,16 @@ function HeroSectionLeft() {
       />
       <div className="hero-description">
         <h1>Connecting returning citizens back to their society</h1>
-        <p>
+        <p classname="hero-section-details">
           Helping ex-convicts reintegrate into society involves providing them
           with essential resources like jobs, housing healthcare and many more
           to rebuild their lives.
         </p>
         <Link to="/sign-up">
           <Button autoCapitalize="none" variant="contained" color="secondary" className="nav-items btn btn-text-black" id="sign-up-btn">Sign Up</Button>
+        </Link>
+        <Link to="/login">
+          <Button autoCapitalize="none" variant="contained" color="secondary" className="nav-items btn btn-text-black" id="login-btn">Login</Button>
         </Link>
       </div>
     </div>

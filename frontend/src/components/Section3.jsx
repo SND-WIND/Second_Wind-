@@ -19,10 +19,7 @@ const Section3 = () => {
           Get the resources you need to get back to your society{" "}
         </h2>
         <p className="section3-description">
-          Lorem ipsum dolor sit amet consectetur. Suspendisse suspendisse tempor
-          et ipsum sit egestas nunc. Diam in cum a in. Lorem ipsum dolor sit
-          amet consectetur. Suspendisse suspendisse tempor et ipsum sit egestas
-          nunc. Diam in cum a in.{" "}
+        To reintegrate into society successfully, it is crucial to access the resources that support your journey. These resources can encompass a wide range of support systems, including educational opportunities, vocational training, counseling services, and community networks.{" "}
         </p>
       </div>
     </div>

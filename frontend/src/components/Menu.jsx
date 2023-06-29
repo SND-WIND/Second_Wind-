@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -20,10 +20,15 @@ export default function Menu() {
   
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [menuOpen, setMenuOpen] = useState(false);
   const handleLogout = async (e) => {
     await logUserOut();
     setCurrentUser(null);
     navigate("/landing");
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
 
@@ -103,6 +108,10 @@ export default function Menu() {
           </Link>
         </div>
       </div>
+      <button className="toggle-menu" onClick={toggleMenu}>
+        {/* Use your preferred icon for the menu toggle */}
+        {menuOpen ? "Close Menu" : "Open Menu"}
+      </button>
     </div>
   );
 }
