@@ -4,20 +4,7 @@ import LinkButton from './ApplyButton';
 
 import JobsPage from "../pages/JobsPage";
 
-export default function Job({job}) {
-  // const [bookmarkId, setBookmarkId] = useState(job.bookmark_id);
-  // const handleBookmark = async (e) => {
-  //   if (bookmarkId) {
-  //     const data = await deleteBookmark({ bookmark_id: bookmarkId });
-  //     console.log(data);
-  //     setBookmarkId(null);
-  //   } else {
-  //     const data = await createBookmark({ job_id: job.id });
-  //     console.log(data);
-  //     setBookmarkId(data.id);
-  //   }
-  // };
-  console.log(job)
+export default function Job({ job }) {
   return (
     <div className="job-container">
       <div className="company-pic">
@@ -45,4 +32,4 @@ export default function Job({job}) {
       </div>
     </div>
   );
-};
+}

@@ -5,7 +5,6 @@ import CurrentUserContext from "../contexts/current-user-context";
 
 const CreateJobModal = () => {
   const { currentUser } = useContext(CurrentUserContext);
-
   // const [postText, setPostText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   //   const { id } = useParams();

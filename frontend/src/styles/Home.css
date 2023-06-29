@@ -53,6 +53,10 @@
   cursor: pointer;
 }
 
+.post-time {
+  font-size: 14px;
+}
+
 .options {
   display: flex;
   flex-direction: row;
@@ -142,36 +146,49 @@
 } */
 
 .modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Greyish overlay */
+  height: 100vh;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  right: 0;
+  background-color: rgba(21, 21, 21, 0.8);
+  color: var(--clr-light);
 }
 
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 4px;
-  max-width: 400px;
+.post-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+  height: auto;
+  color: var(--clr-light);
+  background-color: var(--clr-primary);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.post-modal-form {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  display: flex;
+  gap:20px;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
 }
 
-.modal-content h2 {
-  margin-top: 0;
-}
-
-.modal-content textarea {
+.post-caption-input{
+  min-width: 100%;
   width: 100%;
-  height: 150px;
-  resize: none;
-  margin-bottom: 10px;
+  max-width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--clr-light);
+  border-radius: 10px;
 }
 
-.modal-content button {
-  margin-right: 10px;
-}
+/* #update-post-btn{
+  margin-top: 30px;
+} */
