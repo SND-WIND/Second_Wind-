@@ -53,6 +53,10 @@
   cursor: pointer;
 }
 
+.post-time {
+  font-size: 14px;
+}
+
 .options {
   display: flex;
   flex-direction: row;

@@ -9,6 +9,29 @@ import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import optionDots from "../SVG/option_dots_white.svg";
 import Comment from "./Comment";
+import UpdatePostModal from "../components/UpdatePostModal"
+import { Button } from "@mui/material";
+
+function formatTime(created_at) {
+  const date = new Date(created_at);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? "pm" : "am";
+  const formattedHours = hours % 12 || 12;
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  const timeString = formattedHours + ":" + formattedMinutes + " " + ampm;
+  const month = date.toLocaleString("default", { month: "short" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const dateString = `${month} ${day}, ${year}`;
+  const formattedTime = `${timeString} - ${dateString}`;
+  const regex = /(\d{1,2}):(\d{2}) (am|pm) - (\w{3}) (\d{1,2}), (\d{4})/;
+  const match = formattedTime.match(regex);
+  const [, hoursStr, minutesStr, ampmStr, monthStr, dayStr, yearStr] = match;
+  const formattedDate = `${monthStr} ${dayStr}, ${yearStr}`;
+  const formattedTimeString = `${hoursStr}:${minutesStr} ${ampmStr}`;
+  return `${formattedTimeString} on ${formattedDate}`;
+}
 
 function Post({ post }) {
   const navigate = useNavigate();
@@ -18,6 +41,7 @@ function Post({ post }) {
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
   const { id } = useHref();
+  const href = useHref();
   const [showComments, setShowComments] = useState(false);
 
   const handleClick = (e) => {
@@ -85,15 +109,13 @@ function Post({ post }) {
         ></div>
         <div className="post-content">
           <div className="name-options">
-            <h4 className="post-author" onClick={handleClick}>
-              {post.username}
-            </h4>
-            {href === `/users/${currentUser.id}` && (
-              <div>
-                <img src={optionDots} alt="" width="15px" height="15px" />
-                <UpdatePostModal />
-              </div>
-            )}
+            <div>
+              <h4 className="post-author" onClick={handleClick}>
+                {post.username}
+              </h4>
+              <h6 className="post-time">{formatTime(post.created_at)}</h6>
+            </div>
+            {href == `/users/${currentUser.id}` && <UpdatePostModal />}
           </div>
           <p className="post-caption">{post.caption}</p>
           <div
@@ -107,7 +129,6 @@ function Post({ post }) {
         <div className="post-likes">
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
-            {/* //Like if one like else likes */}
             <h5>Like</h5>
             <span>{post.like_count}</span>
           </div>
@@ -122,13 +143,6 @@ function Post({ post }) {
           <img src={BookmarkIcon} alt="" className="bookmark-icon" />
           <h5>Bookmark</h5>
         </div>
-
-        {/* {currentUser.id === post.user_id && (
-          <div className="options">
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
-        )} */}
       </div>
 
       {showComments && ( // Render comments section only if showComments is true
