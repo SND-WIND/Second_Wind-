@@ -12,5 +12,5 @@ export const getAllPosts = async () => {
 
 export const getPost = async (id) => fetchHandler(`${baseUrl}/${id}`);
 
-export const updatePost = async ({ caption, id }) =>
-  fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ caption }));
+export const updatePost = async ({ caption, postId }) =>
+  fetchHandler(`${baseUrl}/${postId}`, getPatchOptions({ caption }));

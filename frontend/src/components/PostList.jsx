@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHref } from "react-router-dom";
 import Post from "./Post";
+import Job from "./Job";
 import { getAllPosts } from "../adapters/post-adapter";
 import { getUserPosts } from "../adapters/user-adapter";
 import { getBusinessPosts } from "../adapters/business-adapter";
@@ -49,9 +50,13 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {posts.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
+      {posts.map((post, index) => {
+        if (post.bookmark_post_type) {
+          return <Job key={index} job={post} />;
+        } else {
+          return <Post key={index} post={post} />;
+        }
+      })}
     </div>
   );
 }

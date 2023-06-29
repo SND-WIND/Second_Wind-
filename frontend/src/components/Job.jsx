@@ -1,7 +1,23 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import LinkButton from './ApplyButton';
+import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
+
 import JobsPage from "../pages/JobsPage";
 
 export default function Job({ job }) {
+  const [bookmarkId, setBookmarkId] = useState(job.bookmark_id);
+
+  const handleBookmark = async (e) => {
+    if (bookmarkId) {
+      const data = await deleteBookmark({ bookmark_id: bookmarkId });
+      console.log(data);
+      setBookmarkId(null);
+    } else {
+      const data = await createBookmark({ post_id: job.id, post_type: false });
+      console.log(data);
+      setBookmarkId(data.id);
+    }
+  };
   return (
     <div className="job-container">
       <div className="company-pic">
@@ -19,8 +35,10 @@ export default function Job({ job }) {
         </div>
 
         <div className="job-options">
-          <button>Apply Now</button>
-          <button>Bookmark</button>
+        <LinkButton link={job.link} />
+          {/* <button>Apply Now</button> */}
+          <button onClick = {handleBookmark}>Bookmark</button>
+          {/* <button>Bookmark</button> */}
         </div>
 
         <p className="job-description">{job.description}</p>
