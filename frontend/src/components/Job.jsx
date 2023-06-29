@@ -1,4 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import LinkButton from './ApplyButton';
+//import { createBookmark, deleteBookmark } from "../adapters/bookmark-adapter";
+
 import JobsPage from "../pages/JobsPage";
 
 export default function Job({ job }) {
@@ -19,7 +22,9 @@ export default function Job({ job }) {
         </div>
 
         <div className="job-options">
-          <button>Apply Now</button>
+        <LinkButton link={job.link} />
+          {/* <button>Apply Now</button> */}
+          {/* <button onClick = {handleBookmark}>Bookmark</button> */}
           <button>Bookmark</button>
         </div>
 
