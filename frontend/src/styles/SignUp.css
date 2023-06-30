@@ -55,6 +55,13 @@
   width: 100vw;
 }
 
+.sign-up-img-personal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+}
+
 .header-two-boxes-container {
   width: 100%;
   display: flex;
