@@ -26,7 +26,7 @@ export default function JobFeed() {
   return (
     <div className="job-feed">
       <JobSearchBar setSearchText={setSearchText} />
-      {accountType === "business" && <CreateJobModal />}
+      {accountType === "businesses" && <CreateJobModal />}
       <JobList jobs={jobs} />
     </div>
   );

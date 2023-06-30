@@ -7,6 +7,8 @@ import AccountBox from "../components/AccountBox";
 import logo from "../SVG/logo_purple.svg";
 import "../styles/SignUp.css";
 import { Button } from "@mui/material";
+import personalSignUp from "../SVG/Anything/personal-sign-up.svg";
+import businessSignUp from "../SVG/Anything/business-sign-up.svg"
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -95,7 +97,7 @@ export default function SignUpPage() {
       {showForm && (
         <div className="signUp-container">
           <div className="sign-up-img-personal">
-            <img src="" alt="" />
+            <img src={businessSignUp} alt="" />
           </div>
           <div className="signUp-Form-Right">
             <form
