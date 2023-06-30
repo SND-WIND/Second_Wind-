@@ -243,6 +243,16 @@ picture {
   gap: 30px;
 }
 
+.menu-item.selected {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px 45px;
+  border-radius: 10px;
+  gap: 30px;
+  background-color: #151515;
+}
+
 .profile-settings {
   display: flex;
   flex-direction: column;
@@ -329,4 +339,28 @@ picture {
   background-image: url(../src/SVG/img_icon.svg);
   background-position: center;
   background-size: cover;
+}
+
+
+
+.bookmark-icon {
+  color: white; /* default color */
+}
+
+.bookmarked {
+  background-color: purple; /* color when bookmarked */
+  animation: flash 1s;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+
 }

@@ -5,7 +5,7 @@ import { Widget } from "@uploadcare/react-widget";
 import { updateUserInfo } from "../adapters/user-adapter";
 import imgIcon from "../SVG/img_icon.svg";
 
-export default function userProfile() {
+export default function userProfile({ user }) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [uploadedCoverImage, setUploadedCoverImage] = useState(
     currentUser.cover_image
@@ -39,7 +39,7 @@ export default function userProfile() {
       <div className="profile-cover-pic">
         <div
           className="cover-img"
-          style={{ backgroundImage: `url(${currentUser.cover_image})` }}
+          style={{ backgroundImage: `url(${user.cover_image})` }}
         >
           <div className="upload-cover">
             <Widget
@@ -49,7 +49,7 @@ export default function userProfile() {
           </div>
           <div
             className="profile-img"
-            style={{ backgroundImage: `url(${currentUser.profile_image})` }}
+            style={{ backgroundImage: `url(${user.profile_image})` }}
           ></div>
           <div className="upload-profile">
             <Widget
@@ -60,13 +60,11 @@ export default function userProfile() {
         </div>
       </div>
       <div className="profile-info">
-        <div>
-          <h4 className="profile-username">@{currentUser.username}</h4>
-          <h4 className="profile-name">{currentUser.fullName}</h4>
-          <div className="profile-about-me">
-            <h4>About Me</h4>
-            <p className="profile-bio">{currentUser.bio}</p>
-          </div>
+        <h4 className="profile-username">@{user.username}</h4>
+        <h4 className="profile-name">{user.fullName}</h4>
+        <div className="profile-about-me">
+          <h4>About Me</h4>
+          <p className="profile-bio">{user.bio}</p>
         </div>
       </div>
       <PostList />

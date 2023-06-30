@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import {
+  useNavigate,
+  Navigate,
+  Link,
+  useHref,
+  useParams,
+} from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import logo from "../SVG/logo_purple.svg";
 import home from "../SVG/home_3_fill.svg";
@@ -16,6 +21,8 @@ import { logUserOut } from "../adapters/auth-adapter";
 
 export default function Menu() {
   const navigate = useNavigate();
+  const href = useHref();
+  const { id } = useParams();
   const { currentUser, setCurrentUser, accountType, setAccountType } =
     useContext(CurrentUserContext);
   const handleLogout = async (e) => {
@@ -34,7 +41,9 @@ export default function Menu() {
         <div className="menu-items">
           <Link to="/">
             <Button variant="text" color="primary">
-              <div className="menu-item">
+              <div
+                className={href === "/" ? "menu-item selected" : "menu-item"}
+              >
                 <img src={home} alt="" />
                 <h4>Home</h4>
               </div>
@@ -43,7 +52,11 @@ export default function Menu() {
 
           <Link to="/connect">
             <Button variant="text" color="primary" className="case-fix">
-              <div className="menu-item">
+              <div
+                className={
+                  href === "/connect" ? "menu-item selected" : "menu-item"
+                }
+              >
                 <img src={connect} alt="" />
                 <h4>Connect</h4>
               </div>
@@ -51,7 +64,11 @@ export default function Menu() {
           </Link>
           <Link to="/news">
             <Button variant="text" color="primary" className="case-fix">
-              <div className="menu-item">
+              <div
+                className={
+                  href === "/news" ? "menu-item selected" : "menu-item"
+                }
+              >
                 <img src={news} alt="" />
                 <h4>News</h4>
               </div>
@@ -59,7 +76,11 @@ export default function Menu() {
           </Link>
           <Link to="/jobs">
             <Button variant="text" color="primary" className="case-fix">
-              <div className="menu-item">
+              <div
+                className={
+                  href === "/jobs" ? "menu-item selected" : "menu-item"
+                }
+              >
                 <img src={jobs} alt="" />
                 <h4>Jobs</h4>
               </div>
@@ -67,7 +88,11 @@ export default function Menu() {
           </Link>
           <Link to="/bookmarks">
             <Button variant="text" color="primary">
-              <div className="menu-item">
+              <div
+                className={
+                  href === "/bookmarks" ? "menu-item selected" : "menu-item"
+                }
+              >
                 <img src={bookmarks} alt="" />
                 <h4>Bookmarks</h4>
               </div>
@@ -77,7 +102,13 @@ export default function Menu() {
         <div className="profile-settings">
           <Link to={`/${profilePage}/${currentUser?.id}`}>
             <Button variant="text" color="primary">
-              <div className="menu-item">
+              <div
+                className={
+                  href === `/${profilePage}/${currentUser?.id}`
+                    ? "menu-item selected"
+                    : "menu-item"
+                }
+              >
                 <img src={profile} alt="" />
                 <h4>Profile</h4>
               </div>
@@ -85,7 +116,11 @@ export default function Menu() {
           </Link>
           <Link to="/settings">
             <Button variant="text" color="primary">
-              <div className="menu-item">
+              <div
+                className={
+                  href === "/settings" ? "menu-item selected" : "menu-item"
+                }
+              >
                 <img src={settings} alt="" />
                 <h4>Settings</h4>
               </div>

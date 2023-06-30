@@ -9,7 +9,7 @@ import CommentIcon from "../SVG/comment_fill.svg";
 import BookmarkIcon from "../SVG/bookmark_fill.svg";
 import optionDots from "../SVG/option_dots_white.svg";
 import Comment from "./Comment";
-import UpdatePostModal from "../components/UpdatePostModal"
+import UpdatePostModal from "../components/UpdatePostModal";
 import { Button } from "@mui/material";
 
 function formatTime(created_at) {
@@ -37,6 +37,7 @@ function Post({ post }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
   const [likeId, setLikeId] = useState(post.like_id);
+  const [likeCount, setLikeCount] = useState(Number(post.like_count));
   const [bookmarkId, setBookmarkId] = useState(post.bookmark_id);
   const [comments, setComments] = useState([]);
   const [commentTextValue, setCommentTextValue] = useState("");
@@ -52,25 +53,21 @@ function Post({ post }) {
   const handleLike = async (e) => {
     if (likeId) {
       const data = await deleteLike({ like_id: likeId });
-      console.log(data);
       setLikeId(null);
-      post.like_count -= 1; // Decrement like count
+      setLikeCount(likeCount - 1); // Decrement like count
     } else {
       const data = await createLike({ post_id: post.id });
-      console.log(data);
       setLikeId(data.id);
-      post.like_count += 1; // Increment like count
+      setLikeCount(likeCount + 1); // Increment like count
     }
   };
 
   const handleComment = async (e) => {
     e.preventDefault();
-    console.log(commentTextValue);
     const [data] = await createComment({
       comment: commentTextValue,
       post_id: post.id,
     });
-    console.log(data);
     setComments([...comments, data]); // Add new comment to comments state variable
   };
 
@@ -82,21 +79,22 @@ function Post({ post }) {
       setComments([]);
     } else {
       const data = await getAllComments({ post_id: post.id });
-      console.log(data);
       setComments(data);
     }
     setShowComments(!showComments);
   };
 
   const handleBookmark = async (e) => {
+    const bookmarkIcon = document.querySelector('.bookmark-icon');
+    
     if (bookmarkId) {
       const data = await deleteBookmark({ bookmark_id: bookmarkId });
-      console.log(data);
       setBookmarkId(null);
+      bookmarkIcon.classList.remove('bookmarked');
     } else {
-      const data = await createBookmark({ post_id: post.id, post_type: true});
-      console.log(data);
+      const data = await createBookmark({ post_id: post.id, post_type: true });
       setBookmarkId(data.id);
+      bookmarkIcon.classList.add('bookmarked');
     }
   };
 
@@ -115,13 +113,17 @@ function Post({ post }) {
               </h4>
               <h6 className="post-time">{formatTime(post.created_at)}</h6>
             </div>
-            {href == `/users/${currentUser.id}` && <UpdatePostModal postId={post.id} />}
+            {href == `/users/${currentUser.id}` && (
+              <UpdatePostModal postId={post.id} />
+            )}
           </div>
           <p className="post-caption">{post.caption}</p>
-          <div
-            className="post-image"
-            style={{ backgroundImage: `url(${post.image_url})` }}
-          ></div>
+          {post.image_url && (
+            <div
+              className="post-image"
+              style={{ backgroundImage: `url(${post.image_url})` }}
+            ></div>
+          )}
         </div>
       </div>
 
@@ -130,7 +132,7 @@ function Post({ post }) {
           <div onClick={handleLike} className="likes">
             <img src={LikeIcon} alt="" className="like-icon" />
             <h5>Like</h5>
-            <span>{post.like_count}</span>
+            <span>{likeCount}</span>
           </div>
         </div>
 
@@ -141,7 +143,7 @@ function Post({ post }) {
 
         <div className="post-bookmarks" onClick={handleBookmark}>
           <img src={BookmarkIcon} alt="" className="bookmark-icon" />
-          <h5>Bookmark</h5>
+          <h5 className="bookmark-icon">Bookmark</h5>
         </div>
       </div>
 
@@ -152,9 +154,9 @@ function Post({ post }) {
             <div className="comment-profile">
               <div
                 className="comments-profile-pic"
-                style={{ backgroundImage: `url(${post.profile_image})` }}
+                style={{ backgroundImage: `url(${currentUser.profile_image})` }}
               ></div>
-              <h5>{post.username}</h5>
+              <h5>{currentUser.username}</h5>
             </div>
             <textarea
               type="text"
@@ -172,8 +174,8 @@ function Post({ post }) {
             </Button>
           </form>
           <div className="all-comments">
-            {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
+            {comments.map((comment, index) => (
+              <Comment key={index} comment={comment} />
             ))}
           </div>
         </>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const comment = ({comment}) => {
+  console.log(comment)
   return (
     <div className="comment">
       <div className="comment-profile">
