@@ -7,6 +7,7 @@ import AccountBox from "../components/AccountBox";
 import logo from "../SVG/logo_purple.svg";
 import "../styles/SignUp.css";
 import { Button } from "@mui/material";
+import personalSignUp from "../SVG/Anything/personal-sign-up.svg"
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ export default function SignUpPage() {
       {showForm && (
         <div className="signUp-container">
           <div className="sign-up-img-personal">
-            <img src="" alt="" />
+            <img src={personalSignUp} alt="" />
           </div>
           <div className="signUp-Form-Right">
             <form
@@ -168,7 +169,14 @@ export default function SignUpPage() {
                 value={passwordConfirm}
                 required
               />
-              <Button type="submit" variant="contained" color="black" className="signupbtn btn">Sign Up Now!</Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="black"
+                className="signupbtn btn"
+              >
+                Sign Up Now!
+              </Button>
               <h5>
                 Already have an account with us?{" "}
                 <Link to="/login" className="signup-link">

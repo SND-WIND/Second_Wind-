@@ -6,6 +6,7 @@ import logo from "../SVG/logo_black.svg";
 import "../styles/Login.css";
 import { Button } from "@mui/material";
 import { color } from "@mui/system";
+import loginImg from "../SVG/Anything/login.png"
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -73,7 +74,9 @@ export default function LoginPage() {
         </form>
       </div>
       <div className="login-img-section">
-        <div className="login-image"></div>
+        <div className="login-image">
+          <img src={loginImg} alt="" />
+        </div>
       </div>
     </div>
   );

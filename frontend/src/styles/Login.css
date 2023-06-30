@@ -31,15 +31,9 @@
 .login-img-section {
   width: 60%;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   background-color: var(--clr-black);
-}
-
-.login-image img {
-  width: 200px;
-  height: 200px;
-  max-width: 100%;
 }
 
 .logo{
