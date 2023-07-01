@@ -2,7 +2,7 @@
 # Second_Wind-
 ---
 <a href="https://second-wind.onrender.com/landing">
-<img alt="website-link" title="View Website" src="https://custom-icon-badges.demolab.com/github/followers/BayzU?color=8A48FF&labelColor=A674FE&style=for-the-badge&logo=eye&label=View Website&logoColor=white"/>
+<img alt="website-link" title="View Website" src="https://custom-icon-badges.demolab.com/github/followers/BayzU?color=8A48FF&logo=eye&label=View Website&logoColor=white"/>
 </a>
 
 ## Mission Statement
