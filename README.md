@@ -1,6 +1,8 @@
 
 # Second_Wind-
 ---
+<a href="https://second-wind.onrender.com/landing">
+         <img alt="website-link" title="View Website" src="https://custom-icon-badges.demolab.com/github/followers/BayzU?color=white&labelColor=A674FE&style=for-the-badge&logo=person-add&label=Follow&logoColor=white"/></a>
 
 ## Mission Statement
 
