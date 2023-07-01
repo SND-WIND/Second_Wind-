@@ -23,7 +23,7 @@ export default function UserPage() {
     const page = href.split("/")[1];
     if (
       (page === "users" && accountType === "user") ||
-      (page === "businesses" && accountType === "business")
+      (page === "businesses" && accountType === "businesses")
     ) {
       return true;
     } else {
