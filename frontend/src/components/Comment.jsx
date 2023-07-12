@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const comment = ({comment}) => {
-  console.log(comment)
+const comment = ({ comment }) => {
   return (
     <div className="comment">
       <div className="comment-profile">
@@ -14,6 +13,6 @@ const comment = ({comment}) => {
       <p className="user-comment">{comment.comment}</p>
     </div>
   );
-}
+};
 
-export default comment
+export default comment;
